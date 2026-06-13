@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="XZAf4N79QWMUV8uBKlAU2U5zWjHI09EDAaQ22s3cwkg" />
+    <title>Fred Rénovation — Artisan Couvreur Belgique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,900&family=Barlow:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0B1929;
+            --navy-mid: #132240;
+            --navy-light: #1E3358;
+            --orange: #E8490F;
+            --orange-dark: #C53A08;
+            --orange-pale: #FF7A3D;
+            --blanc: #FFFFFF;
+            --fond: #EAF0FA;
+            --texte: #0B1929;
+            --texte-doux: #4A5878;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--fond); color: var(--texte); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+        /* TOP BAR */
+        .top-bar { background: var(--navy); padding: 0 40px; display: flex; justify-content: space-between; align-items: center; height: 50px; border-bottom: 3px solid var(--orange); }
+        .top-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--blanc); letter-spacing: 0.05em; text-transform: uppercase; }
+        .top-brand span { color: var(--orange); }
+        .top-nav { display: flex; gap: 2px; }
+        .top-nav a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 3px; transition: all 0.2s; }
+        .top-nav a:hover { color: var(--blanc); background: rgba(255,255,255,0.08); }
+        .top-nav a.active { color: var(--orange); }
+/* HERO */
+        .hero { background: var(--navy); position: relative; overflow: hidden; min-height: 560px; display: flex; align-items: center; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.01) 40px, rgba(255,255,255,0.01) 41px); }
+.hero-blob { position: absolute; right: -100px; top: -80px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(232,73,15,0.2) 0%, transparent 65%); pointer-events: none; }
+        .hero-qr-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 3px solid var(--orange);
+        }
+        .hero-qr-badge img { width: 90px; height: 90px; display: block; }
+        .hero-qr-badge-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
+        }
+        .hero-qr-badge-label span { color: var(--orange); }
+        .hero-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--orange) 0%, var(--orange-pale) 50%, var(--orange) 100%); }
+        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; padding: 70px 40px 90px; display: grid; grid-template-columns: 1fr 340px; gap: 60px; align-items: center; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; padding: 5px 14px; border-radius: 3px; margin-bottom: 24px; animation: fadeUp 0.5s 0.1s both; }
+        .hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(70px, 10vw, 120px); font-weight: 900; color: var(--blanc); line-height: 0.87; letter-spacing: -1px; text-transform: uppercase; animation: fadeUp 0.6s 0.2s both; }
+        .hero-title .orange { color: var(--orange); font-style: italic; }
+        .hero-sub { margin-top: 24px; font-size: 19px; font-weight: 400; color: rgba(255,255,255,0.5); line-height: 1.55; animation: fadeUp 0.6s 0.3s both; }
+        .hero-sub strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+        .hero-badges { display: flex; gap: 10px; margin-top: 34px; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s both; }
+        .badge { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); color: var(--blanc); padding: 8px 18px; border-radius: 3px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+        .badge::before { content: '\2713'; color: var(--orange); font-size: 14px; }
+
+        /* CTA BOX */
+        .hero-cta-box { background: var(--orange); border-radius: 8px; padding: 38px 32px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 16px 56px rgba(232,73,15,0.55); animation: fadeUp 0.7s 0.25s both; }
+        .hero-cta-box::before { content: ''; position: absolute; top: -40px; right: -40px; width: 130px; height: 130px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+        .cta-icon { font-size: 38px; margin-bottom: 10px; }
+        .cta-title { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 8px; }
+        .cta-sub { font-size: 13px; color: rgba(255,255,255,0.78); margin-bottom: 24px; }
+        .cta-btn { display: block; background: var(--navy); color: #fff; text-decoration: none; padding: 15px 24px; border-radius: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; }
+        .cta-btn:hover { background: #000; transform: translateY(-2px); }
+        .cta-note { font-size: 11px; color: rgba(255,255,255,0.62); }
+        .cta-tel { display: block; background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; margin-bottom: 10px; border: 2px solid rgba(255,255,255,0.3); }
+        .cta-tel:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+        /* STRIP */
+        .strip { background: var(--orange); overflow: hidden; }
+        .strip-inner { display: flex; justify-content: center; flex-wrap: wrap; }
+        .strip-item { color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 13px 28px; display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255,255,255,0.25); }
+        .strip-item:last-child { border-right: none; }
+        .strip-item::before { content: '\25B6'; font-size: 8px; opacity: 0.7; }
+
+        /* SECTIONS */
+        .section-block { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
+        .section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+        .section-label::before { content: ''; display: block; width: 24px; height: 3px; background: var(--orange); border-radius: 2px; }
+        .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(38px, 5vw, 62px); font-weight: 900; color: var(--navy); text-transform: uppercase; letter-spacing: -0.5px; line-height: 1; margin-bottom: 8px; }
+        .section-title .accent { color: var(--orange); font-style: italic; }
+        .section-desc { font-size: 17px; color: var(--texte-doux); margin-bottom: 50px; }
+
+        /* FOCUS CARDS */
+        .focus-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .focus-card { background: var(--navy); border-radius: 6px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+        .focus-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(11,25,41,0.35); }
+        .focus-card-img { width: 100%; height: 200px; overflow: hidden; position: relative; }
+        .focus-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; filter: brightness(0.72); }
+        .focus-card:hover .focus-card-img img { transform: scale(1.09); filter: brightness(0.88); }
+        .focus-card-cat { position: absolute; top: 0; left: 0; background: var(--orange); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 12px; }
+        .focus-card-body { padding: 18px 18px 22px; }
+        .focus-card-line { width: 32px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 10px; }
+        .focus-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--blanc); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 6px; }
+        .focus-card-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+        /* PRESTATIONS */
+        .prestations-section { background: var(--navy); padding: 70px 0; }
+        .prestations-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .prestations-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 44px; }
+        .prest-count { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+        .prestation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .prest-card { background: var(--navy-light); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.06); }
+        .prest-card:hover { transform: translateY(-6px); box-shadow: 0 22px 52px rgba(0,0,0,0.38); border-color: var(--orange); }
+        .prest-img-box { position: relative; height: 200px; overflow: hidden; background: var(--navy-mid); flex-shrink: 0; }
+        .prest-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s; filter: brightness(0.68); }
+        .prest-card:hover .prest-img-box img { transform: scale(1.06); filter: brightness(0.85); }
+        .prest-num { position: absolute; top: 0; right: 0; background: var(--orange); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; padding: 4px 12px; letter-spacing: 0.05em; }
+        .prest-body { padding: 20px 22px; flex-grow: 1; }
+        .prest-tag { display: inline-block; background: rgba(232,73,15,0.14); color: var(--orange); border: 1px solid rgba(232,73,15,0.38); font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
+        .prest-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--blanc); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 8px; line-height: 1.1; }
+        .prest-text { font-size: 13.5px; color: rgba(255,255,255,0.42); line-height: 1.6; }
+        .prest-footer { padding: 14px 22px; border-top: 1px solid rgba(255,255,255,0.07); }
+        .prest-link { font-size: 11px; font-weight: 800; color: var(--orange); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+        .prest-link:hover { gap: 12px; }
+
+        /* PICTOS */
+        .pictos-section { background: var(--fond); padding: 70px 40px; }
+        .pictos-inner { max-width: 1200px; margin: 0 auto; }
+        .pictos-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; margin-top: 50px; }
+        .picto-card { background: var(--blanc); border-radius: 6px; padding: 22px 10px 18px; text-align: center; border: 2px solid transparent; transition: all 0.25s; }
+        .picto-card:hover { border-color: var(--orange); transform: translateY(-5px); box-shadow: 0 12px 32px rgba(232,73,15,0.14); }
+        .picto-icon { width: 54px; height: 54px; background: var(--orange); border-radius: 6px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
+        .picto-icon svg { width: 28px; height: 28px; fill: #fff; }
+        .picto-label { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.2; margin-bottom: 4px; }
+        .picto-sub { font-size: 11px; color: var(--texte-doux); line-height: 1.4; }
+
+        /* WHY */
+        .why-section { background: var(--orange); padding: 70px 40px; position: relative; overflow: hidden; }
+        .why-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+        .why-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+        .why-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 50px; }
+        .why-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1; }
+        .why-title span { opacity: 0.52; display: block; font-size: 0.52em; letter-spacing: 0.12em; font-weight: 700; }
+        .why-phone-num { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 900; color: #fff; letter-spacing: 0.02em; text-align: right; }
+        .why-phone-note { font-size: 12px; color: rgba(255,255,255,0.68); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-align: right; }
+        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .why-item { background: rgba(255,255,255,0.12); border-radius: 6px; padding: 28px 22px; border: 1px solid rgba(255,255,255,0.18); text-align: center; }
+        .why-icon { font-size: 32px; margin-bottom: 12px; }
+        .why-num { font-family: 'Barlow Condensed', sans-serif; font-size: 54px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px; }
+        .why-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.88); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+        .why-desc { font-size: 13px; color: rgba(255,255,255,0.52); line-height: 1.5; }
+
+        /* CTA BAND */
+        .cta-band { background: var(--navy); padding: 54px 40px; }
+        .cta-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+        .cta-band-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(34px, 4.5vw, 58px); font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1; }
+        .cta-band-title span { color: var(--orange); }
+        .cta-band-sub { font-size: 15px; color: rgba(255,255,255,0.4); margin-top: 10px; }
+        .cta-band-btn { display: inline-block; background: var(--orange); color: #fff; text-decoration: none; padding: 18px 38px; border-radius: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.2s; white-space: nowrap; box-shadow: 0 8px 36px rgba(232,73,15,0.45); }
+        .cta-band-btn:hover { background: var(--orange-dark); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(232,73,15,0.58); }
+
+        /* FOOTER */
+        footer { background: #060f1c; padding: 40px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+        .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: var(--blanc); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .footer-brand span { color: var(--orange); }
+        .footer-sub { font-size: 13px; color: rgba(255,255,255,0.28); }
+        .footer-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+        .footer-links a { color: rgba(255,255,255,0.42); text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 12px; border-radius: 3px; transition: all 0.2s; }
+        .footer-links a:hover { color: var(--blanc); background: rgba(255,255,255,0.07); }
+        .footer-bottom { max-width: 1200px; margin: 20px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+        .review-card { background: var(--fond); border-radius: 8px; padding: 24px; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 10px; }
+        .review-stars { color: var(--orange); font-size: 16px; letter-spacing: 2px; }
+        .review-text { font-size: 14px; color: var(--texte-doux); line-height: 1.7; font-style: italic; flex: 1; }
+        .review-author { font-size: 13px; font-weight: 700; color: var(--navy); }
+        .review-service { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
+        .review-date { font-size: 11px; color: #bbb; }
+
+        .footer-reg { font-family: monospace; letter-spacing: 0.05em; }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CHATBOT */
+        #chat-bubble { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; border-radius: 50%; background: var(--orange); box-shadow: 0 6px 28px rgba(232,73,15,0.52); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: transform 0.2s, box-shadow 0.2s; border: none; }
+        #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(232,73,15,0.68); }
+        #chat-bubble svg { width: 26px; height: 26px; fill: white; }
+        #chat-bubble .chat-close-icon { display: none; }
+        #chat-bubble.open .chat-open-icon { display: none; }
+        #chat-bubble.open .chat-close-icon { display: block; }
+        #chat-notif { position: absolute; top: -4px; right: -4px; width: 20px; height: 20px; background: var(--navy); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--orange); display: flex; align-items: center; justify-content: center; animation: pulse-notif 2s infinite; border: 2px solid var(--orange); }
+        @keyframes pulse-notif { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+        #chat-window { position: fixed; bottom: 104px; right: 28px; width: 360px; max-height: 520px; background: white; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); display: flex; flex-direction: column; z-index: 9998; overflow: hidden; transform: scale(0.85) translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), opacity 0.2s; transform-origin: bottom right; }
+        #chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+        .chat-header { background: var(--navy); padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid var(--orange); }
+        .chat-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .chat-header-name { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 900; color: white; text-transform: uppercase; letter-spacing: 0.05em; }
+        .chat-header-status { font-size: 11px; color: rgba(255,255,255,0.52); display: flex; align-items: center; gap: 5px; }
+        .chat-header-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; display: inline-block; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #f0f4fa; scroll-behavior: smooth; }
+        .chat-messages::-webkit-scrollbar { width: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: #b0bdd4; border-radius: 2px; }
+        .msg { display: flex; gap: 8px; align-items: flex-end; animation: msgIn 0.25s ease both; }
+        @keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        .msg.user { flex-direction: row-reverse; }
+        .msg-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+        .msg.user .msg-avatar { background: var(--navy); }
+        .msg-bubble { max-width: 75%; padding: 10px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.55; color: var(--texte); background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border-bottom-left-radius: 4px; }
+        .msg.user .msg-bubble { background: var(--navy); color: white; border-bottom-left-radius: 14px; border-bottom-right-radius: 4px; }
+        .chat-suggestions { padding: 8px 16px 12px; display: flex; gap: 6px; flex-wrap: wrap; background: #f0f4fa; border-top: 1px solid rgba(0,0,0,0.05); }
+        .suggestion-btn { background: white; border: 1px solid rgba(13,31,60,0.18); color: var(--navy); font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 4px; cursor: pointer; transition: all 0.15s; }
+        .suggestion-btn:hover { background: var(--orange); color: white; border-color: var(--orange); }
+        .chat-input-row { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid rgba(0,0,0,0.07); background: white; }
+        #chat-input { flex: 1; border: 1px solid rgba(13,31,60,0.2); border-radius: 6px; padding: 9px 13px; font-size: 13.5px; color: var(--texte); outline: none; transition: border-color 0.2s; background: #f0f4fa; }
+        #chat-input:focus { border-color: var(--orange); background: white; }
+        #chat-send { background: var(--orange); border: none; border-radius: 6px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+        #chat-send:hover { background: var(--orange-dark); }
+        #chat-send svg { width: 16px; height: 16px; fill: white; }
+        .typing-indicator { display: flex; gap: 4px; padding: 10px 14px; align-items: center; }
+        .typing-indicator span { width: 7px; height: 7px; border-radius: 50%; background: #b0bdd4; animation: typing 1.2s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%,80%,100%{transform:translateY(0);opacity:0.4} 40%{transform:translateY(-5px);opacity:1} }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) { .focus-grid, .prestation-grid { grid-template-columns: repeat(2, 1fr); } .pictos-grid { grid-template-columns: repeat(4, 1fr); } .why-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 900px) { .hero-content { grid-template-columns: 1fr; } .hero-cta-box { max-width: 380px; } .cta-band-inner { grid-template-columns: 1fr; text-align: center; } .footer-inner { grid-template-columns: 1fr; } .footer-links { justify-content: flex-start; } .why-header { flex-direction: column; align-items: flex-start; gap: 20px; } .why-phone-num, .why-phone-note { text-align: left; } }
+        @media (max-width: 640px) { .focus-grid, .prestation-grid { grid-template-columns: 1fr; } .pictos-grid { grid-template-columns: repeat(2, 1fr); } .why-grid { grid-template-columns: 1fr; gap: 12px; } .top-brand { display: none; } .section-block, .pictos-section { padding: 50px 20px; } .prestations-inner { padding: 0 20px; } }
+        /* Fix overflow mobile global */
+        html, body { max-width: 100%; overflow-x: hidden; }
+        @media (max-width: 768px) {
+          .top-bar { padding: 0 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+          .top-nav { gap: 6px; flex-shrink: 0; }
+          .top-nav a { font-size: 10px; padding: 4px 8px; white-space: nowrap; }
+          .hero-content { padding: 40px 16px 60px; grid-template-columns: 1fr; gap: 30px; }
+          .hero-cta-box { max-width: 100%; }
+          .hero-blob { width: 300px; height: 300px; right: -60px; top: -40px; }
+          .section-block { padding: 50px 16px; }
+          .prestations-inner { padding: 0 16px; }
+          .why-section { padding: 50px 16px; }
+          footer { padding: 40px 16px 20px; }
+          .cta-band-inner { padding: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-bar">
+    <div class="top-brand">FRED <span>RÉNOVATION</span></div>
+</div>
+    <div class="top-nav">
+        <a href="#accueil" class="active">Accueil</a>
+        <a href="#prestations">Prestations</a>
+        <a href="#devis">Devis</a>
+        <a href="#contact">Contact</a>
+        <a href="#avis">Avis</a>
+        <a href="#apropos">À Propos</a>
+        <a href="#" onclick="openAdmin(); return false;">Admin</a>
+    </div>
+</nav>
+
+<section class="hero" id="accueil">
+    <div class="hero-blob"></div>
+    <a class="hero-qr-badge" href="https://fredrenovation.vercel.app" target="_blank" title="fredrenovation.vercel.app" style="text-decoration:none;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://fredrenovation.vercel.app&color=0B1929&bgcolor=ffffff&qzone=1&format=png" alt="QR Code Fred Rénovation">
+        <div class="hero-qr-badge-label">Scanner<span>notre site</span></div>
+    </a>
+<div class="hero-stripe"></div>
+    <div class="hero-content">
+        <div class="hero-left">
+            <div class="hero-tag">&#9889; Artisan Couvreur — Belgique</div>
+            <h1 class="hero-title">FRED<br><span class="orange">RÉNOVATION</span></h1>
+            <p class="hero-sub">Votre maison, <strong>notre passion.</strong><br>La solution la plus <strong>intelligente</strong>, pas la plus coûteuse.</p>
+            <div class="hero-badges">
+                <span class="badge">Qualité</span>
+                <span class="badge">Fiabilité</span>
+                <span class="badge">Travail soigné</span>
+            </div>
+        </div>
+        <div class="hero-cta-box">
+            <div class="cta-icon">&#128222;</div>
+            <div class="cta-title">DEVIS GRATUIT</div>
+            <div class="cta-sub">Réponse sous 48h — Intervention rapide</div>
+            <a class="cta-btn" href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Demande%20de%20devis" target="_blank">&#9993; Demander un devis</a>
+            <a class="cta-tel" href="tel:0782253309">&#128222; 07 82 25 33 09</a>
+            <div class="cta-note">Votre artisan local à votre service</div>
+        </div>
+    </div>
+</section>
+
+<div class="strip">
+    <div class="strip-inner" id="strip-display">
+        <span class="strip-item">Toiture &amp; Charpente</span>
+        <span class="strip-item">Toiture Plate EPDM</span>
+        <span class="strip-item">Velux &amp; Lucarnes</span>
+        <span class="strip-item">Interventions Urgentes</span>
+    </div>
+</div>
+
+<div class="section-block">
+    <div class="section-label">Notre Différence</div>
+    <h2 class="section-title">LA SOLUTION <span class="accent">INTELLIGENTE</span></h2>
+    <p class="section-desc">Pas la plus chère — la meilleure pour vous.</p>
+    <div class="focus-grid">
+        <div class="focus-card">
+            <div class="focus-card-img">
+                <span class="focus-card-cat">Menuiserie</span>
+                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=600&auto=format&fit=crop" alt="Menuiserie PVC-ALU">
+            </div>
+            <div class="focus-card-body">
+                <div class="focus-card-line"></div>
+                <div class="focus-card-title">PVC-ALU</div>
+                <div class="focus-card-desc">Portes &amp; Fenêtres. Isolation, sécurité, design sur-mesure.</div>
+            </div>
+        </div>
+        <div class="focus-card">
+            <div class="focus-card-img">
+                <span class="focus-card-cat">Volets</span>
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" alt="Volets Roulants">
+            </div>
+            <div class="focus-card-body">
+                <div class="focus-card-line"></div>
+                <div class="focus-card-title">VOLETS ROULANTS</div>
+                <div class="focus-card-desc">Manuels ou motorisés. Confort, sécurité, économies.</div>
+            </div>
+        </div>
+        <div class="focus-card">
+            <div class="focus-card-img">
+                <span class="focus-card-cat">Intérieur</span>
+                <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=600&auto=format&fit=crop" alt="Rénovation Intérieure">
+            </div>
+            <div class="focus-card-body">
+                <div class="focus-card-line"></div>
+                <div class="focus-card-title">RÉNO INTÉRIEURE</div>
+                <div class="focus-card-desc">Placo, peinture, isolation. Un intérieur à votre image.</div>
+            </div>
+        </div>
+        <div class="focus-card">
+            <div class="focus-card-img">
+                <span class="focus-card-cat">Façade</span>
+                <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?q=80&w=600&auto=format&fit=crop" alt="Bardage Extérieur">
+            </div>
+            <div class="focus-card-body">
+                <div class="focus-card-line"></div>
+                <div class="focus-card-title">BARDAGE EXT.</div>
+                <div class="focus-card-desc">Embellissement de façade, protection durable.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="prestations-section" id="prestations">
+    <div class="prestations-inner">
+        <div class="prestations-header">
+            <div>
+                <div class="section-label" style="color:var(--orange)">Nos Prestations</div>
+                <h2 class="section-title" style="color:#fff">CE QU'ON <span class="accent">FAIT</span></h2>
+            </div>
+            <span class="prest-count" id="prest-count-label">9 SERVICES</span>
+        </div>
+        <div class="prestation-grid" id="prestation-grid-main">
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">01</span><img src="https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=700&auto=format&fit=crop" alt="Toiture" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Toiture</span><h3 class="prest-title">COUVERTURE TRADITIONNELLE</h3><p class="prest-text">Tuile, zinc, bac acier. Matériaux haut de gamme pour allier durabilité et esthétique.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Toiture" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">02</span><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=700&auto=format&fit=crop" alt="EPDM" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Étanchéité</span><h3 class="prest-title">TOITURE PLATE EPDM</h3><p class="prest-text">Résistante et durable — solution EPDM pour une protection optimale à long terme.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20EPDM" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">03</span><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=700&auto=format&fit=crop" alt="Velux" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Velux</span><h3 class="prest-title">FENÊTRES DE TOIT</h3><p class="prest-text">Plus de lumière, plus de confort. Pose parfaite de Velux pour vos combles.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Velux" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">04</span><img src="https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?q=80&w=700&auto=format&fit=crop" alt="Châssis PVC" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Menuiserie</span><h3 class="prest-title">CHÂSSIS PVC &amp; ALU</h3><p class="prest-text">Fenêtres et portes de haute performance thermique et phonique.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Chassis" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">05</span><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=700&auto=format&fit=crop" alt="Volets" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Domotique</span><h3 class="prest-title">VOLETS ROULANTS</h3><p class="prest-text">Manuels ou motorisés — confort quotidien et sécurité du bâtiment.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Volets" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">06</span><img src="https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3?q=80&w=700&auto=format&fit=crop" alt="Isolation" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Isolation</span><h3 class="prest-title">ISOLATION THERMIQUE</h3><p class="prest-text">Combles, murs, sols — réduisez drastiquement vos déperditions d'énergie.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Isolation" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">07</span><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=700&auto=format&fit=crop" alt="Placo" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Aménagement</span><h3 class="prest-title">PLACO &amp; CLOISONNEMENT</h3><p class="prest-text">Doublage, séparations de pièces, faux plafonds — finitions soignées.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Placo" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">08</span><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=700&auto=format&fit=crop" alt="Carrelage" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Revêtements</span><h3 class="prest-title">CARRELAGE SOL &amp; MUR</h3><p class="prest-text">Faïences, crédences, carrelages pour vos pièces d'eau et séjours.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Carrelage" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+            <div class="prest-card"><div class="prest-img-box"><span class="prest-num">09</span><img src="https://images.unsplash.com/photo-1542614471-001ccf2b449c?q=80&w=700&auto=format&fit=crop" alt="Bardage" loading="lazy"></div><div class="prest-body"><span class="prest-tag">Façade</span><h3 class="prest-title">BARDAGE EXTÉRIEUR</h3><p class="prest-text">Bois ou composite — modernisez l'aspect extérieur tout en isolant.</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Bardage" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>
+        </div>
+    </div>
+</section>
+
+<div class="pictos-section">
+    <div class="pictos-inner">
+        <div class="section-label">Tous nos services</div>
+        <h2 class="section-title">NOS <span class="accent">PRESTATIONS</span></h2>
+        <div class="pictos-grid">
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><div class="picto-label">Toiture</div><div class="picto-sub">Tuile, Zinc, Bac acier</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M3 9v11h7v-7h4v7h7V9L12 3z"/></svg></div><div class="picto-label">Menuiserie PVC-ALU</div><div class="picto-sub">Portes &amp; Fenêtres</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M20 3H4v18h16V3zm-2 16H6V5h12v14zM8 11h8v2H8zm0-3h8v2H8zm0 6h5v2H8z"/></svg></div><div class="picto-label">Volets Roulants</div><div class="picto-sub">Manuels ou motorisés</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></div><div class="picto-label">Isolation</div><div class="picto-sub">Combles, Murs, Sols</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><div class="picto-label">Placo &amp; Aménag.</div><div class="picto-sub">Doublage, Cloisons</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div><div class="picto-label">Carrelage</div><div class="picto-sub">Sol &amp; Mur</div></div>
+            <div class="picto-card"><div class="picto-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></div><div class="picto-label">Bardage</div><div class="picto-sub">Embellissement ext.</div></div>
+        </div>
+    </div>
+</div>
+
+<section class="why-section">
+    <div class="why-inner">
+        <div class="why-header">
+            <div class="why-title"><span>POURQUOI CHOISIR</span>FRED RÉNOVATION ?</div>
+            <div><div class="why-phone-num">07 82 25 33 09</div><div class="why-phone-note">&#128222; Devis gratuit — Intervention rapide</div></div>
+        </div>
+        <div class="why-grid">
+            <div class="why-item"><div class="why-icon">&#9889;</div><div class="why-num" id="why-num-1">15+</div><div class="why-label">Années d'expérience</div><div class="why-desc">Savoir-faire éprouvé sur des centaines de chantiers</div></div>
+            <div class="why-item"><div class="why-icon">&#127919;</div><div class="why-num">100%</div><div class="why-label">Satisfaction client</div><div class="why-desc">Chaque projet livré dans les délais et selon vos attentes</div></div>
+            <div class="why-item"><div class="why-icon">&#128182;</div><div class="why-num">48h</div><div class="why-label">Délai de réponse</div><div class="why-desc">Devis gratuit et personnalisé en moins de deux jours</div></div>
+            <div class="why-item"><div class="why-icon">&#128737;&#65039;</div><div class="why-num">&#8734;</div><div class="why-label">Garantie qualité</div><div class="why-desc">Matériaux certifiés et pose assurée par nos artisans</div></div>
+        </div>
+    </div>
+</section>
+
+<div class="cta-band">
+    <div class="cta-band-inner">
+        <div>
+            <div class="cta-band-title">PRÊT À <span>DÉMARRER</span><br>VOTRE PROJET ?</div>
+            <div class="cta-band-sub">Votre artisan local — Belgique — BE 0832502696</div>
+        </div>
+        <a class="cta-band-btn" href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Demande%20de%20devis%20Fred%20Renovation" target="_blank">&#128233; DEVIS GRATUIT</a>
+    </div>
+</div>
+
+
+<!-- DEVIS -->
+<section id="devis" style="background:#fff;padding:70px 40px;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div class="section-label">Demande de devis</div>
+    <h2 class="section-title">VOTRE <span class="accent">DEVIS GRATUIT</span></h2>
+    <p class="section-desc" style="margin-bottom:30px;">Remplissez le formulaire, Fred vous répond sous 48h.</p>
+    <div style="background:var(--fond);border-radius:10px;padding:36px;border:2px solid #d8dff0;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div><label style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:5px;">Prénom & Nom</label>
+        <input id="dv-nom" type="text" placeholder="Jean Dupont" style="width:100%;padding:11px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:14px;outline:none;font-family:inherit;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#d8dff0'"/></div>
+        <div><label style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:5px;">Téléphone</label>
+        <input id="dv-tel" type="tel" placeholder="07 00 00 00 00" style="width:100%;padding:11px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:14px;outline:none;font-family:inherit;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#d8dff0'"/></div>
+      </div>
+      <div style="margin-bottom:16px;"><label style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:5px;">Email</label>
+      <input id="dv-email" type="email" placeholder="votre@email.com" style="width:100%;padding:11px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:14px;outline:none;font-family:inherit;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#d8dff0'"/></div>
+      <div style="margin-bottom:16px;"><label style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:5px;">Type de travaux</label>
+      <select id="dv-type" style="width:100%;padding:11px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:14px;outline:none;font-family:inherit;background:#fff;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#d8dff0'">
+        <option value="">-- Choisir --</option>
+        <option>Toiture / Couverture</option>
+        <option>Toiture plate EPDM</option>
+        <option>Velux / Fenêtres de toit</option>
+        <option>Châssis PVC & ALU</option>
+        <option>Volets roulants</option>
+        <option>Isolation thermique</option>
+        <option>Placo & Cloisonnement</option>
+        <option>Carrelage</option>
+        <option>Bardage extérieur</option>
+        <option>Autre</option>
+      </select></div>
+      <div style="margin-bottom:24px;"><label style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:5px;">Votre message</label>
+      <textarea id="dv-msg" rows="4" placeholder="Décrivez votre projet..." style="width:100%;padding:11px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:14px;outline:none;font-family:inherit;resize:vertical;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='#d8dff0'"></textarea></div>
+      <button onclick="sendDevis()" style="width:100%;padding:15px;background:var(--orange);color:#fff;border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--orange-dark)'" onmouseout="this.style.background='var(--orange)'">&#9993; Envoyer ma demande</button>
+      <div id="dv-confirm" style="display:none;margin-top:16px;background:#f0fff4;border:2px solid #4ade80;border-radius:6px;padding:14px;text-align:center;font-weight:600;color:#166534;">✅ Demande envoyée ! Fred vous contacte sous 48h.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--fond);padding:70px 40px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-label">Nous contacter</div>
+    <h2 class="section-title">CONTACT & <span class="accent">COORDONNÉES</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;">
+      <div style="background:#fff;border-radius:10px;padding:32px;border:2px solid #d8dff0;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--navy);text-transform:uppercase;margin-bottom:24px;">&#128222; Informations</div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:44px;height:44px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">&#128222;</div>
+            <div><div style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;">Téléphone</div><a id="page-phone-link" href="tel:0782253309" style="font-size:18px;font-weight:700;color:var(--navy);text-decoration:none;">07 82 25 33 09</a></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:44px;height:44px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">&#128231;</div>
+            <div><div style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;">Email</div><a id="page-email-link" href="mailto:contact.fredrenovation59@gmail.com" style="font-size:14px;font-weight:600;color:var(--orange);text-decoration:none;word-break:break-all;">contact.fredrenovation59@gmail.com</a></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:44px;height:44px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">&#127759;</div>
+            <div><div style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;">Zone d'intervention</div><div id="page-city" style="font-size:15px;font-weight:600;color:var(--navy);">Belgique</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:44px;height:44px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">&#127968;</div>
+            <div><div style="font-size:11px;font-weight:700;color:var(--texte-doux);text-transform:uppercase;letter-spacing:0.1em;">N° BCE</div><div id="page-tva" style="font-size:15px;font-weight:600;color:var(--navy);">BE 0832502696</div></div>
+          </div>
+        </div>
+        <a href="tel:0782253309" style="display:block;margin-top:28px;background:var(--orange);color:#fff;text-align:center;padding:14px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;text-decoration:none;letter-spacing:0.06em;">&#128222; Appeler maintenant</a>
+      </div>
+      <div style="background:var(--navy);border-radius:10px;padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-size:52px;margin-bottom:16px;">&#128337;</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:10px;">Horaires</div>
+        <div style="color:rgba(255,255,255,0.6);font-size:14px;line-height:2;">
+          Lundi — Vendredi<br><strong style="color:#fff;font-size:17px;">8h00 – 18h00</strong><br>Samedi<br><strong style="color:#fff;font-size:17px;">9h00 – 14h00</strong><br><br><span style="color:var(--orange);font-weight:700;">Devis gratuit sous 48h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="avis" style="background:#fff;padding:70px 40px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Avis clients</div>
+    <h2 class="section-title">CE QUE DISENT <span class="accent">NOS CLIENTS</span></h2>
+    <p class="section-desc">Des témoignages authentiques de clients satisfaits.</p>
+    <div id="reviews-display" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:10px;"></div>
+    <div id="reviews-empty" style="display:none;text-align:center;padding:40px;color:var(--texte-doux);font-size:15px;">Aucun avis pour le moment. Revenez bientôt !</div>
+  </div>
+</section>
+
+<section id="apropos" style="background:var(--navy);padding:70px 40px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-label" style="color:var(--orange);">À propos</div>
+    <h2 class="section-title" style="color:#fff;">QUI EST <span class="accent">FRED ?</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:center;">
+      <div>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAGPAZADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxPSZNmn24A52DNX1mcMCuR34rM0oYsYCOcoKug89a647HI3qyw8izymW6kYj1JyR7VXnnFw4WKMxoOB6n607O3kjgVYhtpL248uBGZmHRRk0MnYrC3VfvHOfTtWo4gXTraSKYvMxbfF/dA6H8anh8P3aaQ2qy2UhgSTynZjgKx/nWWkDKTGVRt0m4PyMD0qHLqLkbJvP2KMxnB7fSnRXpjAKbCF5ycn8cV2tgy6lcWFuJrZYUiKEjADcdh61l+C305fFotdUijmhfdsV/uO+eA2OgrmliNLuJaovozDl1e5uogkv7xByBj+ta+m6h9m0g3UN5HDeKzR+V5fyhOx+vvUHipzBrlxaC3Wyjgf5bcHiMH3PUVBDdzaNLFPNbM8UwKhSvB/OtKdWDV0YThLXU2R4ivgsdqwjeVsyb8hSR+NRy+LNUls57U6leRR4BEZb5Tg10VvFceJGS8OjbzGiARsv8JOO9HihPD8theW0NpDHfwMAEjGSp/DtXQqkJIzVKSepzmh+NtW0adbixu9kqnerOu8AkY5Br0C58UX2ta/o91N4gtGurVDMjC2QEsBjBPTHNea2WnTQaa+pRMgT7QIsOvfGc/SrUGoQNMVNlbOxbbnYM81i5wTOrkkdZr95deLGi1K91S2N08wtjJBCojK59jnIrevPidr/hq7bSk1PS71BGoR5o2DHjvg1ieHfEuieF3jvLnQLW/S7hIMRUDyircmul07wNod34n/4SXTobC+0K4tTKIDhvKmOPkYdq5q+IjTi5PY2o4edSaitznovid4n8475dEIYFvmY8frVCTxnrWpF5N+m4IIkCuQCM/WvRf+Ed8Pyv/pnhWy3qhbEcXBPpXIa94a0WxBu18P2iRuSNizEYz9K8+jWoTldRPXrYbERjrM4PV4p9TkuXkltE8mIzYjbIOOMCvSPhMgi8CanKAw8y4DfN/uivM7uxs7a4aMRRlmPSNido9DXrHw5ZF8EXokIK/aSBj6dK9uFraHjVOazuzL8KaWb74l2xhUSojs86McbSB1H+FdN8SEuP7G1OBI1ijkut8hYjJTpmuV8Lw3aeOrm6tXWJGbypZy2HiB7oO/1rpvippNzNay3Ec0khsgoCg8zIfvSH15ryp39sd1H+DZHk90w1F33v5NyFVIyoIywGOR6msrw/pd/feIo9NnUrJK2JFlGCAO9dh4C0j7bqBuriVfKikyrtnOevNa3j640aPxHp+t22qWwuoP3Usa5Bf0JoliE5umJUtE2eXeJtOGn6rMkEsLIrMp2yqWyD3A6Vd8IWhGv6Y5jc4kBbb6HtVfxZdRPrYlikjlXJyVwV69m7/wBKseHvEyaYsS7XJDlt3v2r0oO8EcM7KZ2fibUns7i4kiJWKJhG/H3ZOz49MVznh67N1dyNJKsYi8yRSuABnrj8aclzPrOoXUnkT3MknyKFH3V75FXbPwvfW7NOsL2Vu/BEiZ2qOxJHGT6V50uWKsdHvPYhkvRNK8MasJghOVbJc4/x9K2LXRr5LFV3xwqy4mLnYQ3sD1HvVrRtHttOm+0hxC7AbpZwckD+6McfWtw6rFCpEFtbXWermdXP61y1JvamjRLuZkmhyXFgbcEtE5GZY1Y4A64/xrnT4YbT7+3nnLXOlmYb9o5UZ6ZrpJ/G9nb4SKNVuQQihD1Y9FK9x71Y+JtlcaDpmnXMlkALpQ88ce4Ij9QQO1dOGjWTvLYzxEocum56PpGpeFrxEhgsIkMagBfIYBR9TW1/Y+jRSpei2jSReQykrt/CvINO8XQWlvCiTPKPlY4+ZSvpg/yqvr/xB1GX7Va2lwC1y42FTg26ryc54GelerGtHoeX7Gb3PYb7xBb2xCmSLAyWy33QBk1xGvePJblNlgGlllA2KgOIwfX3rzDS7uK5mvrrVNUe4u4cLDb7iBKSRgk9Mc122i+LZLSRI7S0je1hGSFA2tJ2AOOlZVa7W5tTw6sWk8PeL9QZUa4s7CJwGHmybiPU4FU7vwNdwX0dxceKLSTnbtjLAnnpmqHmeI9UmlvLyQ28shZN+c4B/wDrVKfCdw1qDFNcR4+9IhyW/rXOsTG5ssP2Nl9AsrO+3XXiqFXYAIu4GRG9x3rq/DnheezTM2pNcI3IBbII9R3ry+LwHNDdjUIXj1B0QyLbwMBIpHQkNya19G8UzaSlvbwTLbzAF7hLsMZg3Uj6YrupVotXRxVaMkz2NY1tY9gOT6elY+t66mlW7Tyf6lRmQg8oPX3FcjcePRqSvaadepNeBcjA6EjpmuC8Ra/qc6C3m1O3a+Y7VEJyg5/i7CqdexMKDZ6nbeMbe5bNvOhRhuVnbAPrzVy28Q280ZRniJPRVkBNfP8ANYWsCC0m8SOsjfMsYjYKrfXsPfpVW80u+06UXFldm8RcMTG53Lz3Hb8Kz53vc6Pq6PWvE3ieSO4todMtLi6nLFZEkbCA9O1VJNJ8WyIL/wDsO3G6Mqxs5cyBc9xnmuU0rxvcWNvFK4WRZLgLMsoJ/H613Ok+I44DZXFnLJNhz58DN86AtwR7VPOOVGyLvh3xmunzm1vGuBMojBWRcYI4NdqdftLlHaGdWIyCp5zXIeI5bHxnDcWccbxakrN9nkhXEjFT91v/AK9cL4d8Qy6PcXEGptILu3JVgRjPpuNKVXlQqdG7HXTjTvEt1Jn5EdnIJ4z0NXW0qK3Oh6pF8+24eN3J+9u5GPaua1y9+3yz3Rkgjf7yxueW+npWvp1+97oFsBcAwWj+aFVgG3Hv/TmuCrJ8jT6nfGK0sePeHvDs2o6RDNaygpFbCe5lJwkC88E/3uOlXZPC9/H5Y8iQtcR+dFF/GY/77f3RW34F1CO78J2KyWgFjYPFELVOl/eOeGlPdV4OPaunhgbVtQv7BbuQQpN5ep3yD95dOBnyY/7sYFevDY5G9TzFNNuG+ZFaWIdZQMKT6CpLQz21zGUuHsweTNtJwP617fBpVpFBHa29rFHFDlQmMqg9gep/yap6p4X0p42/0YmQjoh5NOUW0Vzo8sttOg1a7ljk8QMIfvfvsrvPsBVOfTorKTzZvM+yRvtDR5YSHtg9AfrXfz/DWN23wTIxYBmEi8AntWVe+DdXsopLWOJpLVyGMaHcufUVhyMFKJHFL4ftPDdir2zXF+7yO+0lSEPTn2qrokR/tB5lkijQR+fHEyh8gHnJ9fY1XudNNrZW0BgmSSPO9m9c9B6Ck0qf+zb826FQLs+XJuPUHsM965qsfdaNU77F2HWrHS7rV717Nb43kHl2/nruCHOc8+ntVK48a63dWa6fcSRkxzrNCyqAYjxwvpxV6K2fTEvdNJS4u9/+hkIJGUYOVK+lcpcR3VuFa5t3hd5BlmQhQc9Pr7Vz04xbCptoem/FLxbfaN4mv9PWMGG8sbYsFYphtg5BH61xPgW5htNXnkuZBtkt3TJGTnNdX8YrC71f4iQadaQ+dNPZWojUcAkx+v4Vw2gwvb3txDMmyWLcjKexFdVKnFqxjObUzqPEGrqvhmKGzY8XJYgDA6Ve8NWOmeKrf7TbMI9QRf3luxxvx3FcvqsqposeQQGlOD68Vl6K11Y3K3dvOYWjIbeD09qWIo2XulxqXep1d5BLZ3EsJD/uxht642knoa9R+GVwbbw1cXBtRcfa5cKEXBKqO9c6VtfF+kx3pieK5ZBvDf8ALXHcY6mu28J21po3he0sJmkd0JYuuVKk+/rXi4upzR5WezgIe9zEWu69qUCxypBLEowwTG3H19a5e+ZrlWnnySQS3ckd+K6nXtajmuUjd0MUGCuQzE/Wud1jV7ZYCIreUh8jKYAFLCQszrxD0ep5nfyZummWIpGSQvGM16x8OGU+A53KZ3Xjdq8s1K6ts+WPMJU8gjGK9W+H+B8O1KjbvupD+tfSwVkfO1nozJ8HWQf4j6jd3aM6WalhAqkHYwAU5781d8f6hL4eMllDNd75cwyGV8oEPPy/nWf4SvrrUvF+sW9zDLdW8b+UCHKlUHO3I7VW+IuraVrt5EIJxGdOLRMuWyFxwSe5rzrfv7nZT92gmXfh+z6To01wt1CszOWCOR8y9sZriPHfiaTV78CPUkdI8h4Y4wQv44A/KobnUUXSFtkWefcCdokwq/8A1q5UfKPNKjgn5QuFI+veilh1zubMalZtJGzM9o1olqRvRYRNDwPlc/eUn36iqulwXbCZ7SASOQCMqTt/DvWazmN15O0jco9Ku6deXNpGzMFMZ5ztP8wRXWo22MHruXNJ17VND1Ayyxyo7kb9wINeqWXjeCfTFa6mjBC5AyWD+2PWuOt9MmsNNGt3q+UjL8pn3EN9ATzWVrmvTR3kUU1rZyKIg8bCMbl3dxjoa5qmHU3qi6dXkW5q6x4x1CTcBqUZh5IjjDq4HpzxmuYudfnnYhWkcHqJDk49c1HJMb797LKFZeeec+9U0hM0xVWBLHg84xW1KjGKM51G2df4OddQ1WDUHj2WelDAnbBKk8856nNbPiLxTqnimKMzXsgs3cj94hUlB3A7A1zjpBJoX2L7bLbwxFiLRIyWlPBy7gYI7gdq09TvjZCyuo98tvbOEjklYBZkUAsuP61rJX2I03Mx9R+yxTtGkm6KYHaeiDt/+qqEetySJJa7YWNw+9y5wD7GrklhfeM9aub2ys7i0tLqQufLQtEnsOnNehfDb4Q2tzLJPrFr5qq3yCY4I99o/wAaUaa6CnUsjzrSvD+s6kRBptrNOpY5WEZA/GvZPBngO4s7UN5E0c5ADW9xIGCHvgEV6ZY6XaWEEcFpbxQJGML5aBfx4qy0CyMjScsnRu9b+wT3Ob27Wxhw+F7Z0VmyCRtZfRh3qb/hGLSWPy5vvKMK8Q2mtnHp3oxzQsLT6oPrMjjLvwrf2MyNp0imJ2AeR+WX8PSsrxR8O5LyFrq51e3V40L/AOrOAAOua9JOfWq91ZRXURRlBB5YN0b60lQjHYHiJN6nzVcQaw1vDaxk29vIxAVQVebHfHUn+lS2VnLDO9uumRC6EWA90NiR+pwe/wBa+h7TQLOG8N9NHHPddFkcfcHYKO1Y/jSy0XV7WaK/gD3RGI3QBXB+vf8AGonR6m0MSr2PErua10qxikuotHurkkgyIHduP4SelUn1XRb0lja3GnlEwXibIz64q1rfhB9KPkSGS7VlBKJ1iOeOmc/hWRIljNHDGukG3did7iYlsD2NZcrN1K5bv9Nns2+0ySwTwSKGWZB8r85Gfeq9tr+pWN7b3MXytGu5TG+QVz3HrVd9PuILWeW3lXYj4EWGw3TOB61nWt8+91UKm7jp0pF3T0PZfAXiW11CWW9j82C7zumJbhj/AIGj4jabDFbw+KECx/bVzPEBksw4GR715not9NYXEMqMHIPKH7vHTj616b4S1Cz1m2l03WroXF5eQ48zHyw4ycAdsUm7LUz5HF3PNtG05NTvxHPLkzFjtAyM4yOe1ddq2i2Ol2UNxp6SRR3cG2VPLJ5U8tn61mvpc+n3s9hb26JqbzBIl5XYRyxyOi4x+ddB4eu7jWfDt/YRRvI8ErAFDkKCefqM1wYib36HVRS6nC/C7SXfwnawRXEEksl1BqGwN9yMZDA+h4rf0WGSwn1VLgqjSXsk0YB/gYcZ/LpWV+z/AAo+kXwdVOQnUf7NWLWEvrGtJknF6Op6DbXvxtZHBN2djqba4xHw+Opz155qQSvFsYHdxnke3/1qxvsZDPtldQp6A/Wlj+3wkeU+/v8AMKZJ0sd8p+RlC49qkaeNxtJAHfFc1HqF6HYzWnmKvUr2qRNatGkAkDxZPIZe31pBc0dQgF6fsltaR3FwRnlchB/eb0+lamnfB7R5NL2XyTi6k+cPG3Kn6dhVr4camP7V1cxxwN5si7d+MyDHUV6CixS7mYPblVOB1BNebiJdDsow0uzxu8+Ees6VetqFhJ/aBKlUPG6M9iM15X4utfEEFzMmu2txMVAZXYFMHPXjjPvX1i1ncTkXAkFwFPAiOG+mKp6jDZ6hbNFqFrFNESYykig49gTzmuaElF3sdDpJo+ffjBc3EXjex2TyxhtLtXDRttYN5fXNcNoGZtTuCzMxEZyWPNe++N/hVF4q1WSRbo20trBHHGG5JGPlAPpj1rymTwHqfgyW5lurd3hmG1J8HCt6Z7114ed2clek0+Yx9ZaGfSLS0f5QszMW6E1kwRL58cAYlZGAGD0yal8QsFgtyScFjxUOlX6Wmow3WxwkZBAzyee1dNZX2MYOx6Tb3cWgxxRxySXFi87QoxOChAHQ9RXscMNv/ZUXzMqMiv1JySO9eN+HItN1/SLoX+oCKVLwzxwy5LFSOor1CXUrZbNIHvBbhYkTZuwXGOP5V87jKetj6LAPRtkE2m23kNNkWsknHnSKdp5471yGuolrDKbi7M0oyN6AED8a2odSa8uJ4IYhd20EQbbcfd54yDXF6hfPdxamEcQJaOFkiiT5P9nHeqwifNY1xDXKcZdohuZNjMwOTknNey+AUZPh1bHIANw5JJ6c14rGxdnkPQkivYvCtpBdfDHTzcA7hLI6gPtJOf1r6FbI+brSsanhiL+wReanc6Zeo15cm3SeNA456OB6VxvxTh0gyJDpMM7TpM7XDkMAxx3z1Nel+C9atIvC6PdEva2TvFJG53EuemM9eteT+MIdUtNT1DWIpxHbtceUkacqCeuM8ZxXlU2/bM9CWlJI4n7fcYghCBFjYkPjjnrmq95MVjNsEwnmEn6nqfatCeIF44obiGZthkYY5z6H1rNFrOsEg27RJyD6Cu2OhyWZWkTzXQfc28EngGun0C0v10jVvsNhDc26KnmCcYZGPQrk81mx2W0RmSJSyYkaVn+96DHaugi8QNFDNaLcIYpZBIybSDyOgOPx61qmiZJnc+MvDF3H8N7HUPLETRwK7pKi4LduBXkviV7KXW38hCY1WNBsTZuO0fw+ue9e06t8SfDXijwBP4fYTw3gtljRX4BZSOQfwryOW3fXPFUrB0tFEnmeb3ARf16UNdjFRZhz201mzRSArjAOe1bnhXSWvbhLydEWzVvLkcg/LkdeK6Cy8I3XjGGG2ijkkv7mQtll2qI85MpbuG6Adq7PRfC+m6XotxpU8Vn9qgnDTu7ks4Uj92B05zzT5SHKxx2l+HrrV45J4lK6aplgWSPCmUbc78OegxjIqTSfCc/itltIJGn02EfeRcsGIGVUDj8a7C38GS6w13pTwaalj9oM63FqzSrGrf8ALJRnH1r0XQ/DUOnWn2eMzrEoAVVURDA+hq4xMZTe5i+BfhyPD1kjTLOW6BJHOFHpgn+ldzBbx28eyONUHoBSRweWuMSH/ecmpcYA5/CrSMm2wXhQPSlpAaWrRIUUUUAFLtBHIz7UqgYpaAIp3EEJYA8dAoyc1wur2N/qN4FW3LPJkLKxz5Q9cDoa7wjcMEZpI41TPygZpNDWhg6B4Pt9MtVW4HnTZJZ3G481S8W/DXSfEaNJbwwWd4VKq6jCt7H0rriRnJ61EswN15RYHgYHvUNLYuFRo+f7jRNR8I6pc2up6aZrXcssQH8ZBGQPWsvXfDdhrEMGoaHC8csp2yWgOfKck4H419E+IotOltNmoo7DOIzGMup9V9K8hk8KPoetvqFmZ/sZmDOzArwvI3eh7D61yzXKehTaaueatZzWKtG0iNNDLsZMDJ4569RWrpd1Lb2iMiCOSzYyElud55A+n1rtvF2iaHrLyXWwRyiNZXiXAeNnzgZ6dMcda4efSbvSIXju0OJFxGo4dznqfwrnlNbHRy3R0N3qE02l2usW8jSTSRmG9fblzk5wPQds1j6ZqEmma28mXWGcYZI+Plx0zWxpNxPdwXVpcXEcTPAsMVvgAA9eT61kXYEV3B5iSLDF8p2tkqPXHoP0rGSTVi1GzTRH8AHC6ddg/wB2I/8Ajpq/aMsfiDxAOxul/D5ayvgE+LW7HX93Ef8Ax01pRHPiLxCPS4Rv/HK9qOx58/iN2SMRs23GCAeT9amSfdxjIWPaePSoIpUnckjkDnmpI2IlZUwFYNkfjTuTcQIAWAY4YdPWp7K1gklUOiuOMgrUTbt4BwQQcVPZNtuVXPcUAS+DdFsNR8S6rbXaMyIRsZXKlPpiu2bQta0qEtpWvSPCOlvfDeuPQN1FcP4YuvsnivUjnAZ1/lXrIkWXTkI5O3IArz8U7M78O00c0nia50wB9W0S4gVWw1zZnzE+uByKntdZsNagAsr6OdlLfITh8Z7g85rbiRfs4G05Y8k1zOp6Bp+pSXMstsEuFkYLPCdkgx7jrXFozrSsa9wZY9VuNsbNmGAbcf7Nch8V7oP4QvInKB45UBXOcc1uR2WraPqjDTZ1vke3hkljvJCZGOOzfhXJ/E68sr7wvetJFJZ6gJFMlvKPmIz2PQ/Wt6HxHNVfunkg8HT+JPDtzf27fvLJ8LEASXJGeMVyaQSWkrQ3cTwyDj94MYr3j4KXNvYWmqPKjAmRQJAM9R0rpfE3w50TxmhdVRZW6Sgcj3wK6Z1bN3OeFG6R5P4NsEnusm3S5DW4SMFsBZT0J9QPSugvrq4trOZnnnmnyLaPKYVW6Hn09KRvBl14J1uG2lvCts5GyWMZB9z6fjW9LYwI9szti1aF2eCPDs5B+/zxzXnYr4kevgr8jTZz32FdMgRP7Rbc23zQzYyg56+lY194msFvpo4ISsUwYT+RllmY8An6Vp67DZ6pq9tY2sVy9pCgmlV8BmJ9x29qz9etUhSZ7aWG0jIAERKsfyxToxV0yq0nZo4Qh4nZS2E3kqD2H0r1nStFn1D4f+H5oip8rztwZyvDE4NeQ3iubgnzS+Dz0r3rwoRH8OtHU8/umOD35r1k7HiVUmzVutR07whJpWmTR20GmX8KsGZAdkxGPMJ9O1cd8TdUa+1KLSbZcWlqN2yBd25u7H1NavjywkOjRLazxTRSoARMC0iyf7B/hA9OlcNv/s+FWadJrlDlzv8Amb2FebTiuds9OWsUmZrabFARN8hYLyudrBehJqxDaW7ZiUhfKG3Hb/OKzp3uL+7Zg7pG3OQMlT7+1blv4XvxH528jzD6citZ1UiqdBy1SM9WRZFhaBW3M6gnp8tU7o2kMCSCFtzEAEHp61vPolzG5G0hQfMBx19axtTs3WEgDK7g2PelCopOwVKEorVFB7cTqSpycbl9KzbXUfLkH2glx098exrVtm2WxV/vYwB7elUpdDml3SKuegrshbY4JwdtD6E8Ca/pNzoD6jp87xXUyraIiDIt0UcEj8ya07TSV1S4itoiZraMOJmNuC2G6gt/ebr7CvnXwhrF94c8QQSRTC3zIqyBl3KR/tDuK+rNB1nSpNPiWK7t95XfJ82NzHq3PrVnDUi1sXLHTbaxt0toLcW8Ea7VRXzge9TrDGudsa+2aSO6gn3eTcQOB12uCR9akx6MMfXrVowakxO3SikANL+FO5FmGKWgZ9KKdwsGKMUZ9qUHrxRcdhRwKWk3UA5ouKwtJml+vTvUbOqhixwQDxn9aTlZCSu7DJ5xBbvOMFVXNZtndGXWd22MKzYBJ5PHYU2W+87QhLGC7o5UqvOado1hGbhNQkuEA6qvr6n61lz3ZuoaGpPAtxqEMcke+PY3Xpmo0023uPtAnCN5/wAskbNlSB04qtrdtem+hubeWQbORGgyGHvWYNbu7SbUbpLRZIoTgo/+sjJ7kD+Gs5zUdzWnTbWhw/jLwudG13zrdJriyZ0muNwBZQOw7kYxzVbVYIPEt1NqMaFJowTHbyAru44Y474re1a/FysVxMUuJzvfyWQnB7Y9RWDZ3c0F6ZLa0aFDkyxN8wx3wOo/GvJqSvI9ejC0dTkksVTLxiVmU/MiKBubqSeuPYU2dnuZDLKYrcT/ADiRRhSy8dO3uK7TWPDz6qGv9MMlnE8oilEeAX46kVga7pV3pujSWl/taCyuAysBlijd/wA6yVZJ2N/Y3XMjm/gRbzQ20sjRkRywRMCRw3BrTEEo8Ta6QgCSTR4PqdlWPhA4/wCEW0xeAfsqH9TWrdjbqMpwOuT+VfTR2R4E5XkyjEZELYBB6GrUAdZecgEc/nU0BAZ2PTcasxNuK8Zq9ARUOPMPXjOAafaH/TFJzzjitBQMn5VJyajQBZU4A5qWhmXav5fiDUWHBDqR+VepeH9RN9YRgsNwGMivMCf+JteAD+MdueldR4QvTFcrbklQ/SubFRTjdG+Hl71ju1dltWYfeDgY/Ks0ZY3RKdJHPNaed1ox6nvWPL57QagkPD+Y+AvU/T3NeQnqep0LzYOpqw4Jsoj/ADrkfiPHaPoks+oK0lihIcIMuGP3SPbNdRZzPcyW8ssL27tYJmOTlh8xrlPi5x4MvSMDEyflmunD/EclT4TlfhBdXljp+qPFZpe2xmVZEJw+McY9/avSI9e0yWHyUl+wXEQOyKdDGQfTnrXnfwfLHRtXCAkrcxNn04r1qW0ivo8XMMcwbpuUH+dXX+IdH4TyaYzXmoE3n+k+ZIQ3f14pX8H2MtxHPaJd20Ys/MEkMpXcxPYHj8KW803+yPEbPbGVFRy4jU8Ywa1hMXvMwxidYbOMbEG0oS2e/B/GuHGz95WPTwEFyXZ542mXkOt34stVk86FFH+lr1BGcZFZmrXl1bq6XtvDM5UgGKXp74NdMuoW58S65LPuIkKoCygbePbiuU8ShImWVbgusnA7jHtXRQaujLEPR2Oa5OWKha9v01jF8NtLdASVtdwA65ya8SGN5yGNe1aXOj+END08xuTLaK3ynBHJ7+leny3PHk7bk2ratNfaKk+p2saNLH5MH2fjaQON/vXn9xoyXk6rgx7V3EdiP8a6Hxbq6Q6vplkkqtB5pLyL90dsfWtvS/C88haeNQIgMn5twJP8WO1eVVfstWetTippIyPBXhFLxpXZCyZHB4/M/wBK7R/DQCgBQFXoCeP/ANXtWtoOmxaXpiRjhm5YmtaOKOSMnOR6V89icVJz90+goJU4JWObfQ4mtfKkjUc5JX+npXPXngyC7d3VsR9MAdDXZ3rpCQuDtxk1kSMy277T80r5X6elPDYmpzWOp4eFSN2jzbUPBv2aZgnJU5HpWcYTbSNC3GK9I1mJnuvLwctEMfWvP9XieG8dHzuGK+jwldy3PAx2FjT1RlatYRy+VdICCCBkV3+nM0mlWxZWlzGC6npXLWUQnQxMAeOhrptL8OeIZViutPjlEMqsVbPysEXn8K9CT0PDslIkihnRxLaKYSeg3cH61q6f4w1rQGVXYyQdfLYAp+Bq9beFtdg0mC9uoIC0i7wFkAOD2P4VQaC6u0CfZXIXnacEAVj7Sw/ZKWxv6f8AFEXTCOe2jjdjjO47f/rVvDxWFwZLNwCM5UgivOtQ0OdEAa3bntgCl0Nr7TJmguUk8kDo7AhKv2yMXQ1sz0qPxXYvwWEZP98EVZi1qGdd0csTDOODXCPfWFxL5X70/wC0q8VBNLawblSd1IPyjBx+dVGumyJYVnoz6mFU4QFvemf2o+OEUV51H4juIlDJdEqOzDP5Vo23jaEDZNGu49NpxmtfaRMvq8jszfyvzwKUX0i9SK5628UWM7BDuQnj1yavzajZW8vkzXEUbnB2sfWmpRYnh5o0v7TkIPAI9O9Zesa1HFltyHMZVip7VMrwyBvJmSTapb5TniuDeM6lN9lhlRJHkbBY4BANcuLrKCsjpw2FcpXZ0nh++P8AZWooWbcsgVN/AUHuPWrFhLcvN5gt0OmxnB2nnd6msPQYhZazIl5cRrCyYcs+QSOgFaOiy3upyqlsvmWqtmR1GABnnI96zo4iD3KqYdpnVXl/NeabKtqQkzLtV/7tcKPM0u5aSe9bJOZHzu3kdjXWa1nTLW5urSVZklQCIqMAHvzXEW7NrGmPbXOzekrfOThj6GscTUTdkdOGpNLUTVNS+2Xc92zbY1w8bj5cE9elZelX0Mep/aRbpI27I3knePrmk1SAiKO3gk+QjnHcDtiub1RwDGttvLZ+Yr2X0NebFtyPRkrRsd7rGoN5jXFvIXjZxugB+RB6g1g69DLfx3V6Haa3mtngaL+LenKnHpTdNuppNiKy+ZEuQD/EO4/Gt7SYhaC6miXzIptk0APOwfdeM/nXDUl7ObbOujaUVE86+Dc5Ol20RcHbZxEAdsk1uX07DW7pP4dqnFcr8Gbr5Ug2KNthA24dTya6bU8jVrh15yFFfcR2PkpLVk6TbSY/fJq3Ax3Ic8Y/KslGzJu746flWnbMSiMQOOP0pkotpIfMx3OaYrlplHqRQkmWz6E/ypm4Jc8dFoGQE/8AE4vP98fyrZ0IFtVtlHXdiuT0XVxq2qX5KhSGGMZ7cV2vhOJW1mPJOQC1YVmuRmtJe+j0KBSI5FcfMD26VQtuLq7cDOZSMfhWijEJKWx8z9BWNd3K26ajIZFQJNuz04wOK8S3Y9Z2sX3wdQhxzmxUfkxFch8XAB4M1EekkY/Wpta8ZQadc2c1uY3iNuqm4PMZG49CO9Y3xE8QafrPgjUjZzee2+MsVUgA59TXZQjaSOWb92xR+Cao+k60uPmM8Qye3FeovewwukTSxAY/vDg+hrwLwH4ih0uzvtPmfYbyRXUiMscgeoNXo/EBhiL2kVxLI7sMzsQF6/MO/bvV1o3ZFKSsdX4tvbA6xLNa3MbmOFg5U/KGx0z61z8GvuZ70IzorJGC8bgZwO/rXK3evm4si/yrduxDtjJk9Tk96xm1CW3eTnDuo6GsqlBTdzppYj2asjXFxJLf3cxdXZ3yQvBIxWTrTedCqRp8sZ5z2qvDckPJK5O8jjHepo5IXHnSj5mG3aelaQp8pjOs5JmQoBDEHPHavctKsIl0DQL3BM0dmqe2DzXjstpFsZ4yo/2RXt+mgDwzpEJ7W6A+4xXbCRx1Dyvxa0Ut2zrGkMyTPIdrfKBn0/WvbfBeqNP4f02cxKEuYBwR1YdSa8Ev4H1DxBNbxR+ZJJMY0APLMTxXuHgK0vdO0CHSNVtjb3UIIi5DcHryO9ePmTSVme1lkW7s2tQkCFnGFHT2qO0nZmCnjvUd4xLFCcjHHsKznYMvlSOyRkYOxiG496+VavLQ+shTTpm3LAJFLv68E9qyphBHOkBkH7w8D+6fauQ8X3I0pHuYb2eCNl2mOSYsCf8AZ96xfDtxdeINZt7eDUJBISX+Y56c16lLDqMeZnP7VxfKdzeXkK2xuH4miZon/wBk9j+IrzDW9SilunnmlXPT8K1viNp+qaJLM6Xe6G4IZtp7j/8AXXl7yTTud4dl9K9rB0kldHiZjiJS92x2Om6vBLOAjnk8e9d54a8f61p80GhW1yogkBFvtQMUOct17YzXkdrIsageU6Z5VvSujtrx7O/07UlIDQSrIfQp/F+VdkldHkJXZ67e6/ql7aQW11LJM8TyKWktVKlf4TVCz1G8s4bmNVtc3ESAb7bblie/Paq2leJ5tSeSCG9MboGUeZgAg/dI+lact9qEdyqSXlo0h2FQ7AZH8XPpWOwKz3IL3V5by1t4Li1gAhcszRoQcKe3P8624vEOmJcSyxyTwv5alUkXcCxHA5FZUN5qNxu8g2VzhGBMZB5B4NSmW9aVw2nxYLf3BwNvP5Gi3NqWmkTz6pFJfX97banaokkO0RSQHOAMEjsDXNw2s1lHPqFveJIonWJLWZcs2Rkt7VsGWcogl0pcBQTgY7/161E7qdrnTnOGcZHTpkH+lOKaZM3c1rW4aAW63FhpN35yBgsB+YE9qvahoun3ELwvosfmuuVMWRsY9ia5eN7Np1VYngn3KRjlk7ggD0r0TwyLjz9QkuL5brLIVkjPTjoR2NcGKqypyujppfCcRrfgnVbuK0tILC1jMKbTIv3m9DWFr3hz+wBbreRXMzkgumDk/jnpXuQuB8v73g55YdMe9c74kWxnWC9lmtp8HCoy+YHGeeRWccbPaxm4X1bPOLi0vvD/ANnukgkt4pV+WPdnI9KxYtT3STGMHzy2FY9FJ713/jZ4J7qB7S1ZbVIwu4Lhc9cflXnUEKxzS3EW0jzOnYVNeo2rM6KESXU7nyrf94uZMZZk4DH+lO8K64NOjEcckqs/ysA55zx09eaq3cbMX3YdX7DqtVNJENnq4WbDKo4Y/pV4aYq8ex6Zql42mxwWKoy+QnzGQ7t3fB7d652e7F9v+y3QUM28gjGOxFVNT1VbeBzbqXM4zMzckY9K519ZZZlnjI2BgCB/Fz3pVuaT0CjJJWZr6lqpW5MIQl0XaCB29aqT2MJsvtQfaG7DuaS7vf377vmWY8E9RimahexwC0svLDK4O4ehPpWcU1oW3ch09mgCSyNIkYDNuPeuy8D30z2l2HhkMcmTB5owpbowz+VYGkPDcTSIII5Io08t0ccEEVoz6yx0VtBj2pEAfL29Q3bJrR4J1I3ZpTq8juzhPhHZtaW1tdyrsS5sYRGSfvYLZrqbzH2+4zggqMGovAej2P8AwrPw5qBh/wBJaEIXyemT2rdutDsJdIt7h4iZmd0ZgSMgDivpIvRHzct2c5EwLD6/4VpRNtjGf88VYOgWKyuojIUZx85qaLw/YEqzxygH0kPrTuTrcqxPyT70snMznsRWpD4d0tz9+7j5x8snWsQS6NPrtxo9vNfieKJnWQuNrEDJFTKeljTkOS0e6TQ9UjlmlHl3SsX77Bn/AOtXq/gCeG71RbiFlkhKEq/rXimoYchgdxVGWu3+EV/qM1+um2M1tFJHEz5njLAjPTA71x1JXi4m9LSZ6l4h8aWfhy+NtcR7jId2AeSvcj3FcT8RPEf2vR7j7DK4tpJFkDEBTID/AA47H+dZfjTStbVFuZhaTXDS7FmVD8sfcdcD3rkr3UJLyKbdbou8KuySQvIu0dR22muaEEjoqTdrFbSdbNhZXFm8STR3QChnyWi5/hGcCrlrqjQ6HqukJO8qTKjjd2Ibng9a51usRAz81TvOkt8RGuNqYc1101qcvM2rD9NG+WHBO5WzgNt6d81Z167mhuFhMksTRDqwILKfal0prF0WO52xlRIwlYcbsfKPepvEF1bajHBJdKv21cIzK33hjg06qtIVL4TAUtKvmMxyD0BqGYsDuOT7k1EZmj3RAgKpIz/epsQMikNMqe2OooSKaZKl2B8wycGrMd8rxgFGI9c1TskUpIjBGYH73r9KurZwPJ8rCNFXv60MSTKxuH+0YXdtJxkele8RzCPSdJjj5xap1HtXgqSNAJEkYZXjGOa+gBEh0nTG7i2X/wBBq4RImea+Exajxetw8hWdrqRFQDhdwIDD3zXqPhif7BoNtPe3bp5LMsplO4sdxHNeFm8aw1ia9gb54p2I9+a9puCdT0Ro7WPImZZ2AP8AA43E/qa8DNE+ZPofWZPJOi4GwZGea5JkVvm+Uj+6RkfpWVfxXMgZFLIjIpMiLlh64rRlCQ3piTlWgRkOOuOP5VpW0YMS5OW7g14H2j3Yz5Y3PPfEHhiy1GOOW2t7y+uR0MrEAfgflrR8D+C/7Ake9nMaXbg4jjOQg+p71veIL+DSbUzSYx2HrXNeB9YbWL7U9TvJGWO3CohAJUZzn8egr0rzdJmc1B+91JviXYPdaakqruRfvCvJm06JJdgl2t3xXtXiLWdPuPD91cRS+YIvlZWUqefY14pf3lldsTEkm7s6nABr2ctf7uzPAzJLnTJ1005AZi4zViaI/Z4oV4JJH0GKzrPUnixHLzk8Mat3NyZogikBieD6V6B5Mmm9Cw9jqU9rHNHMIU2AD1JHvVvwhdzy3U1rqi+dJGMDnlVPUj1onkNraRwi9PEYXZtztbuap3d3HpjR6nxNMkZQnGM56H8Kl03P3UTUgo+8jZm1uXTLeTV9PktWCM1vHCg+YDuzClsPHuuJG7S3Am2SbiSoBAYYHSqfgaKG4huZtQRUikcqHc/Lkjk1taBocNpcTRMILya4dYoY1H3l9fatHhnCLb6GEKik9NyVvEnirVbG7vNI8iCDTo0M7XBB3k9lrZ8KeJLrX9INzLMsE1sXS6UkYB7Ee1QaJ4K1zSPD2rQ23lXUuolmWB8BIhgg9e4FeWak17p+gXenWxb/AFxa4k3YO0fw8dq5KFVVG0dmJw/s0mdkLq7vPiCklndqs4dSJFcBcAcj/wCtXs3gPWAt5fx3UsfmzN52MY9unrxXx39tlkKgSygoRtKnBHuMV7t8LfFE0Ohhb6CQ6k8oWOcbt0i/XocVnjaOzYsLN1ZciR3fi34paFrHhbxFplrfNZ6nbwuBFIu12x/d9a8z8B6vdT6XFosOvy6XFeNJLJOEy0aqvChj03Hk/SuY1i3u7rxy0rQyIxmbzxJ2X3+tdJqel22hQrazLJ50QWZIofuMjdyf6URpx5FY2VNqTv0KsXjm5isf7Hu7gSLFcEpfKTvnXP8AF2NakMqPp09xEQwVsheo56muR1Q2d8QiRhFI4+tX/Dd19i0S4gM6Alyq7uhPpUYnD3jzImnU5ZWZfnuD9oDgkrIduD2OKa0glusIcbVxn/a9apXl0YraFinzjksO9UrPWQYgjrubfgY6j3rGnRa1HOom7HXNeCHSWiu8NKcmM9sema4szxQSEqxz169DXqEPg6G48Ppq2swXE87p/oljC+3eezMRXL6n8P3h3zttighUGRgSfLJ7f7WPataajfUzm30MOwstW1iTz7JGkVerOcD8K3pNPuCImn2CeMjKg8D6VuWl3oWn+H7ZLfV2lmiXbJHJH5Rx6gd6wNRvred0eKUHfyhHeupUYy1FtG9yCyuriwW+idvLndgQ34VVi1SeLUBK88UsaLk7VPJrT1CFpI4tUVwP3YiY46EVlaBq32HWFnmQ3Co2QhAP4e9axTimkVGonFXZ2PgO3j/4VJ4ZBPJt1kH13Gun0u1tb7RVinnZNkrkY968/wDh87yeAtDjeR2T7Ivyk8Dk10KSfZ02RuyLnIAPevQjh24o8SWISk0dQPDtozFkvpOc5GBUw8MxlV2XT8DH3K5IXNyvK3Mo/wCBVINW1FB8t5MP+BUnhpdxrEK+xo3d1pem6/baLPqDx3Nx91jF8oJ7Zrz+aGLTPiGY/tSEbZUeXHGW4FVPG1zNHfQapNIzyQzJhyecYzVLxTcW95rKSW6hd9rHKCvUk5NefUbUmjqi7q5l3zGHzEJ+ZZWXPriun+FuuafoniI315O0afZ3QBVySTj8q5S8LS2r3EgG7zPoMkVc8EQxya+sMygpJG2Qev1qeXmVgT5XzHreofE7wdcaXJo11DclJsrGzJghvXPfmvG1aSbVQ0jMxycHseOuKr6v5UeuMCheJGfaCc9+9TWkzC/EYAG1VA49amNPlHKq5laWURiMY58z1qSyYPdXPvxVbUF8mcKT918iprWbffkqANw5FdFNbGLZbuL9E0dIFGySGYlWGO/NRIZZbP7VOpJmPHtjqag1CzktbH7Y3KSyEKuO4qeVn+wWVpHtDSZIJYAZPY0VfiLgrIzNShgdYbmOQCJ22kd0PvVeOdVZhuDBeAc4zW/q3hDVNJ0fT7++gVI74OYo92SAD94j0rn7qGOOVSqgbh0HY0WLs0MZnWTzFVsdK0rSR/I83YSFH3iQOaprMiRbO+eBUlvMSrxKC2en/wBegAuXEsrSYxnAxX0TPH5dhpqA8m3jH0+UV86PbzPGzopZQwBwM55r6RuI3AsA2wKsEeDn/YFa0jGZ873glS5u3Mb+WLh13Y75PT3r134Y+KbW6sINJupY47+3j2QljgTRD+En+8K8c1O6lN/fRiVvLNw52A/KTuPOKckmcHcMjkEcEfSuHFYVVlY9LB4x0HfofS+pqY5LY4QHPIBB2+gqXzxAhcsey4HrXk3wkvw3iOW0nd3WWBiNz55Xp1+teo3MYkt54nTadvyjuSB1FfL4nDOlUsfVYbEqtT5keefEfU7u8vorO3VlVgcsTwPU10Xh5ItB8L21lpssMzKd8rhtuWPPJqv4w0pLzwrbS2pbz0YAnHUnhv5UfDvwPY6ZaR6ozStqBLqWaUsNp9un412+0SpJGcLupqYviOy1PWEkdVumZsZaNGfHtjGMVwuqabc2rP8AabSSExjJHl4I+or2bxHe2+nwuv225weNpnYAfTFeca7PbO5AtwgwCxYktJ7kk5NejgpX0OLMKMbXucNHdpI46kDofWtG1J8xUfkDr6imTQJcsqIqpuPGB0qe0sZbi8USDAjcK30zjNeu1dHz+iZq30TW1tCrASPjlt3WsbXpX+xBFVmBwcLzjFdLdRKUCBDheBms2bTHmwqy7B7DNTSTTuXiLShZGNpevhLGWzk3srtuCk4H4V6N8NfEsmqavIJbeNYNLtZJjNu+bdjCr9c155qelQQ2rzxKfORhuK9MZ9K634SWUOoR6pZSNhS0NzKrcb4kJLDNRjJylB+YYSmo1NVsepT+ILaS30i6drlNOEIlZo0JLy91IHXHevM/iFotrKG1zTfL/s+8LK6Lx5MncH8ateJbvxJ4MWK0W+kbRHd5LZ4gCyhxyAa8/vNdv302bTLW5llhu3AaHbkk9sD1Nc1LC8lpI2ljFO8GtehgaTp82o6jbWNspkmnlWJFXqST/wDrr17xDfaVpkAsdNeW1OmEQq0D4LMB8x+ua4i2uB8OpGJhV/EC7ZMnkWq44H1NdfofhppvBia7css09xMWw45JY80sT78j6HhqeFoVJfWO1yjoF3PqPiq2+2Ot5JcROWLgZChchiR3qSfV7671S7vb+4trdZVVIk35CqvHbpmrWo6PF4StZn3ML25Qjf8A88wegWlaDQ7KxWDy4J5PLDybxuZiRyacKfK0jgzHFQrVZSpKyMm5iOIFR0mjGW3x5wMn3FVL52jsXtkVJdsnmKMdCe+a09MSCR5bDTmI8/5owTkL61ry+AVubEo0zrd4OZByp/DrXdBaWPFm3I4drzW5ERRbqUUcCui8IaFLrXiDT7KS3ZEmlXew7Acn9BXJataXeg3z2d3LIjpyCDkEV33wKM1546gLSO6Q28kn49P61zYy0absTQi3LU+hLzTYpmGx1RECqmBjao7CuQ8barEmmSadpFp9ovZhsQkfLF/te9XPFOpXNxetp8QmFtAEMixHDzAnB59BVfRvDtvpE0l5FM05JIQyDJUZ6Z7183Gs07nvUsL7up5Hq/w+/syCBtYZpJZsdWwQT1IrCtdJktZ/sQLO8cm1CxyQpPFdx4x0291/xlawNdlvNcRqD91B64HpXGeILa+0XUr2wuJVa6Ryv2iM43ehHpX0OGqc0Vc87F0eRuyO/jsltrBbSXEmAdxI45rL/sm0t33RxhWrG8KeKYRp8djqV9m6jYqZJTww7DNdHIyMN6srKe6nINd6PEqcxk/Dw/8AFDaGP+nRf5muhbpXM/D5/wDiiNEH/Tqv8zXRFyRivRp/Cjhq/EyTccCopJMEmmtLjjNRSOTnNU2SjlvHzqdOCkjd5ynHcjaa5qS63XlkwbkRRxn8ua3/AB3A08cEi4BUnNcnZ4E8ErHgSAGvGrQ99np0n7qNG+dY9HvADkxupHPXmn6bqH2HVLO7TbzGVJJ6ZFV9RUKZ7dW+8SeD+NUIlK2cIU5cnj256VCVjfcW7uWW7Jkwzhm5+prR09g94X/vBFH1zWPq0E1pN+9I+foc5x7VvaTbb0t5ACSsZnY+i9M1QFXVkLSZH3gc1XsCW1CMngtk1a1i9hMixYIlUZ6cMKbHGDd6cAMMUYn+dXBbGM99CTWJ2/s6OFpPkEuVXHA9arXvkyTFIeVCAAe/tU2qYaGFsqNrN1NZ/wBojiLgSBZEwwLHHHtTqJXLi1YlvNXumWOKW5nmijQeUjOSsWeqjPSs2S4V5AxXOc96Rp0aV9q4jzwPWnyqvkZAAAPHFRHc1bH2VpJqV6IItoJ55P3fc11+m+FdOshm8vXmbriNdoriLWeWObfC+GPccVYk1nVEJAvZ8jtkGtLCPS7RNMsQFgijwe5Gf51oXOsyMFzK5wODmvIhr2sIAft0gI9QKnXxJrDJk6gxJ9VBoSsKyO5u9L0m+yZIIkZjklflOfWsi58K20Tk214NvZX5H51zf/CQ6v3ulP8AwAU9fEOqspVp4wDxzGKGB0WkrN4a1qyu2icyxvv+VuHTHI/KvfjHHq2j22o2M/7mWAPGSMnBH8+P0r500nVJZ/tE144Z4rYpGOnzE4yK9f8Agvq0l74Le1Dl3s5miOT/AAtyv6E14mYxS949rLJSS5bm5oWkzTRNDcuGgAIIf+In+lSpZDTViWIlG2EspGNwzWpYwrp5keaT7Q87ALtXAUVo3Wlw6mQ0hI4yCD1B615E1zLQ9SNZwleR534k8PRaksl4twSApwg4x68VwWraPO+0SKUa3TksevfH5GvXdZ0aS2jkZWzEzAjIxuGOc1weoJBPeXOJTLEdzx5HJ/hP5/0r1cDGxyY+pGS0OD0jSprq73DJAOcAfrWqymbTLxrLalzKxiDvwFHcg/nVt/8AiXw+Ra8O45bso/xrntSv5bJ/s8OVj25BP8Wa92DR8/Ipjw5rDsM34bAxzMeaiuvD+s2MZmjuWLDtG5J/WpItVuhysmPcCn2urzi5HnyFlPr2rS/Yyb1JtPkM1lul53Rkt7kV3XwY0KaW4v7q8kRHmtJIreORsZBHpXnmi3IjlBOCEkPH416n4P1d77xFYSFUQPLt2oegIxXNVf7uTOqmuaaRuR6RBrutw6FfXNvPYWcQlxCNzbh1GT2ry3xJpRPiXULnTFaNLeUuHxs8vHoR3r0HwbJJb+L/ABMu4sLaKQL+BrmrSOW402eSUgm53u5/OuXBznUk0zoxtGnRipROLk0ubxJqUKKhuLq6A2PK2S5z3Neu6JD/AMUvYaJqsPkyRMcRIRuV0Oct/smvO9As2W/0542x5cDPuHb5uK6zxbrU1nqmmXNvjzhb/vD/AH8+taVo2kkPCtOEpdRvjCxivmt5bi4byyeW3cL7Csa8t7aOCWRVSXcu0ERZ/WrsOrWuoaVdW2ox+Tvl3BV5Y5rN1nTmsreKG2eXDADAbt7+9Ob95FLWLQ/QZooNRgkNuHONvy8Y/Gu6nvQtu0zKNx6fMrf/AF64DT9em0KBlgtoXJ6ls7vzqSfXYb2e3ulsSk6Nl/n+U/411wehyrR6jPiZZi70621JeTC3ltx1U9CfxrpP2bZLcalq2cfavKULnrszziuU1rUtQ1yynsvljThhGijBGe9YuhXms+EdUi1OwcxTwnvwrr3BrmxdL21N2IhNU6up7t4juZYviLpKjPlTrMj46EEcE/jW+ZfI05LUE7kGMt1/GuW8EfavF8lv4l1dPs0+/wAm2jXhZABksBV/xZf3Gn3UTRRl/NkEZQdTu4BH0r5OtFxlZdD6rCuM7X6GP4k01r65ih06x+134Qk/vCm0txnI7VC/hXQvAtg2oeKCNZ1m6H7q2X7sY9B9B/Ea7TVwuheGnmiuI4bjGZZhjOccLjvXzhrni7UtUurk3Nw8koJTzWPOPb0Fe/gqM6kVY8jMMXBSd0exwatp1kdNh0PQtImhv4XmhiuUVZXdDho92MZ9M1xp8SQ6zr18LY3MA2Am1uI1U27g/Mg29QPWvMJb25kjiiNxKUhYtGN5+Qnrt9K0vCl60PiGNmZj5iFSTySfc17FPDOG7PFxOLVSPKlY7T4fnHgvRef+XVf5muhZ8Vy/gOVU8G6NuIA+yrjH1NbxuIz/AB/pXfTfuo8yqryZI785prv8uTUTSL2JNNkf5Dmqb0IStuYHi5t1ugzjmuEV2Fs+D92XrXRaxq51GZ0XAVMhce1c5b/O88BI5+ce5rypu8md1PSJdkvUuZAUXoBk+px1p1pEJi3zlVQblwO+aqQMwRQYwVBw3bPvWhpw2Lc+nAH0rNo6ER6rBFfWUknmt9oTBjTHD5/lWnZ3jW1w9uuNps0ib25zWFdMXnt1ydpkCke2a0bWYTX93JjAyEH0pqLG0UtUYyamSo/hC/rWrboi+I7RJGCqkDdfXbWPOSdTlHXDKKm+0GbXWcnIQECtYrYyloW9V8tbFZGxgOSOelZdzeWlyk58sMzogTjGwirWqbpNGE0gKNuPHtWZbrAFIAyXQZ5omtbiSuLp7hHYuoYqPlWn3EqknpgioUISQHp2qGdg7/Kc4qbGyQRsI5crzmpZGYkkHJPaoEj6N2BqXBPSqBsaUDIG2nJ96b5fodoqUFgApOB2zSY/hBGR1JobQlqMCEg4P3akExc9AK1PD/hfWvE9z9m0bTbi9cnBaNfkH1boK9p8EfszrGwvPFt7HIqjcLG1bj6M/wDhWcppGqi2eS+HbC+1OCSz06wa8nYEMAm7aBznPavYPhJ4X1PwvaXo1IRp9qkVkjR92MDnJ/GvWtN8FaBpujXFhpGm29jHcIUby15P1PeuUtZd0j2rJ5Vzat5c6MMY44I9j1FeBm1aTjZLQ9rK4xu77l/bsbOBtPB9x6Ul5POcBMY2YxnHNRFiuSzE81Ab+MhkkPsMcV4FOq7nsOipHE654hubYNbSyzXA24MTHCAd65W+u7aQidGlWXYRtB4H0rpvFtkZXeVYwMdCK4y+h8pMlstjAAr6bBSurnjYyDUrEBuJJ3DO2fQCpprwQyW6yxpNCxVWjcZUjOPwNQQRFfv8nHGKljsJNX1Kxs4h0kEj+gQHJzXs0VzTSR49eyi2zX1DwJBbyZsb1QrDIjlj+79SKwNS8JahbDc0KXCjktAdxH4da9Fuv3kqKeMcH6VnvIzkMDtYdx1Fe9LAxa0PFjiJXPI7QqjsF+Vic88c12/gx4kubW4kEm0SfNsPOexHvmuimhtbwYu7K0mbpvMQz+dR2ejaZZypJHbsmGDYicjoc1x1Mtetnc7YY5K1y18Ho7m51XU0abZJOJmYSjJOG6GufuLiX+z7mJGRWJdVA7cmuw0KKDS9Ym1S0kZWmEpMUnA3OPX61xt5ZXFg/k3SbGPfsfcGuKGCnRm21obV8WqsEitoatZ3saYDRC2ERY9d2c5qfWr9dQ1KPCAfZoxGPQkd6bBEIn3A8AE1j21x9ovJ2ToD3qcRFaF4acuVssTLvPmfxBt31rbn1m0ktY3YZkAGRjvWP5bFGPFUlAaRkIHy9PesJQuzphWcSW/u0uDlF/OqJu2hnjPbIyKtSRKqc8Vj3sv+kbAc8CtVFJWM3K7uzqtPYJfZkGFkXGf1r0bw34Jsp7RNU1q1NzuO+C1JwpXsWP8ASvOdLia/1DSYRnEsiKffn/CvffMjlJgAAVBhVHQDHFeNmeNlSShE9PCYKNSXPI5DWtbhg1mzkWOSza34iQODEB6Y7D3rdtcX7prl9CsIhQ+VGTkf72aiuvDdpq9/D9oiLCJtxz0b2rL+IuvLp9rHYQttz97b0A9K8yjKNayS1PSq2pXa2OQ+Imr3OrJdxWchyiElQeG7nA9cV4xvYnee/XNemy290YfMIeMyjzIJD3YdP8K57xT4debTofEllAFgm+S6RBxHIOpHsa+twcVBWPksZJyndnIuT7nJxgVraBpl9LfxTJFhUYEs3GKzY+NnXkg4Nd3plzFDZp5s8URc8FjjNdVSpZ2OaNNSXMWfAQ/4o/SP+vVf5mt/I9q5rwVMI/B2jguoJtl4/E1rG8G7aCCetXCaUUYVE1J6FtvvYqlqN5HZ27vI2DjgDrWNqutzIfMspGUKCHAwctnp7Vy1zrN9feaZWUEkHp/Ks6ldWsio02yMS5vJ5N7sGycsOcGoZI2iC3UJ+cHDCoo5HDl2zgjHSnRXPlSMhwVc4NcS1dzsVOyGS7jIV5BcjHuas2xntxJBLgE4PB7Vb06CA3ayyMNsPzAHvWe7GS6nuEBGWxj8apq7NEiaRxFcHJGRyuadZSN5c8iNld/JqtcANMN5wrqBn0rTs7SPT9PZpmAD85PR/pVJDIYDH9veWQEAkGq9u6jUHfPLkkA+lRrcLkHJwOwqS22PO9xwHOAFA4FNGMyz4gmb+zET+8cVhW7BDgtg44FbWsIZbWFepD5NUxYoAHZRgdeaJyFFalXfnAYcUM6BiQOoqVrcHAjGSecU0WsoXc0TBQcE4qOZGow4Cfe5x0qVE811ji3yOxACIu5mPsK6XwL8NNa8e6kLfTYvKtkP7+6mH7tB7ep9q+nvAnwp8O+AoQ9rALm/24e8mXc5/wB0dFH0rN1TWEGzwjwJ8B/EPiW9t7jWLSXS9J+9I0rBZZF9AvUZ9TXrGm/BbwFotz5o0ea6kU5AuZjIo/Dp+dekzT8kDOT1qoUBY57iueVQ64UURWaWunWq21haQWUZ/hhQIo59BViK9EIJXAFKsAYgduxqX7Cj5GBgrtrKUrmjiixb3AbJACtnOAetU9U8PW2ozPexYjuWUKXA+/joG9ahNhcWp+QlgOh71ftrjdw/yv3rKcYzVpIlXjLmi9TkrjSb60Z1lgLR/wB5Rmuc160litmmhVtyDIGDnNeseZIpOdjr79aiaWF+Htxz6gV56y+CldHoQzOolZo+fY7m61rS5SW2Socbcc1b0n4czXmmzXl4k0szD9zDEMYPqTXtUljESWSGGME9kXn60r2ShNsrHDdADivQp4bk2ZlPGc3xLU8APgG9iJGoXtvZgfwA75CPoOB+Naenabb6XEYrGF3lYfPKwy7/AJdB7V6Rq2maPaM0s6hyT0znFZ7aovC2VrHbQIMs5UZ/CvosHOMFex4GLi5nHSWF83y/ZpWkYdMcgetVP7Ouk4a3kH/Aa6qO4nKTyhyXlP3jyRTbCKUTFmc8849a9P6w7HCsOjmU0y5dgfs8zAf7BqzFpN6x+Sxuc/7hrv7WUooJJ/CrQveGG7rzyawli5p6I1WFj1OBj0HVm+7p85/4BUd7pk/lNDqFjKU/21wR9D2r0mHUEQkMwPPes3xEVuYWkQ8fWiGKlN8sloKeGUVeLPFdd0mfRo5J42821YEB8cofRv8AGuVsk8uEvkM0jjkegr17CPvieNZEcFWVhww9DXnHi/w+dBuU+xBzbzFvJH9xv7v0HaufG4Xl9+OxphMRdcjKd1clUwoJrKa6McyynKk8VoOYnUbTlAOpqjdQxPExAG7qK8+x3C3V7I2FJJGKyp2Iuoj1zV/5Zo1YAbsYNVpLdmuY128jmqEzrfB90DqulLnBS7QFj2zXurI8LLIVKyoPLYHpkV876Nf/AGW6XavCkOSecEGvqaS0j8RabaX1rLGkc8Qk3d8187nNK7UkevgcWoaS2MO2vrhXZprdkVfQ5ryz4ha5ZanrKx2rN8gHmkcgnPSvX7zw1cTW8tqdWMPmKVLJFzzXmOpfBDWbLdJYXsN8mSwDHY5/DpXPlajCV5s0x9dVI2giLS9Utrm1S0u1EkSgBT6D/Go7e0XRY309x9psbl3bDdGU9vrWTLpWqaDKE1C0mtmzj514P0PetiSQXsFqu75lya+xpuLSaPlqsWrpnmfjLwsvh2/Sa0YvYXJzET1Q91/CqGtZ/s61B4yxP6V3PxEeNfDNskg/e/aMp64xzXCa6T9nsYjwQpalUd5F0dIWINAu7ZdFsVdLossQBKy4HU9BWkL23DDBvlPtIDXEWG/7HAFZxlexq6sNzjIuJB/wI1kloaOOp0m6ybI829GTk8qeajEFjuIMtzz32D/GsEJdocmWXA75p0k84GRM+aLISTN4w2e3aLmZR7xVWfSrOU5F7KP+2VY/2u4/56v+dOS+ug3EuPyosh6m0bKMIVjvzn1MZqNdNRUKjUFweuYz1qgdWuNu3zGwfpTFv7lCcT/mBT5UF2abaZFLAqNfw5Xo20g1Nb2UcURAvoi+MckkVmx3E8qBnlGaHeZOd4PpQCbLf9luSNs1rx/tnmnx2F2JlxNaiMdQrVQjvZl5Aj/KnPqVwMZSP8qLiauas1rJL8geHGeocVMNGiZBvulz3Gawk1OdTkRxfrVgatIAD5Kk9+DQ1F7jSZtjTtoAhe3TsGPJ/wDrV2Xwy+Fk3jbWBPcXEqaZbf8AHxIvWQ9kB/nXmcOrmWZEMCjcQOPevtvwpoln4e8M2VjZW6QxxRKxCjBZiOSfUk1zV5KK0NoRuWNJ0iw0W0jsdNtkggiGAqDA+p9T71ZlQjNPjlUShM5dhnHoKqahe+XcCAHnFcLbOuOjsQSDDfN36Go5InVuuRjtViIeZGy9StSoPMix3HFK5uUWlaNhzxjI+tTR3TZ5Ip7wL8vyjOefaoJItpz6Hj3oA0I51cYzSSIvLKPmqgpKnI45qzFNuxk5oaJ5SVpML74qo5yc4IqaQZHAwfSqxPzdaEOxFI8n/PRqrSzScnJyepJzVphnjvVaZcEiuqGqM6hlXFktxJulySeSfeqU1osalAOCOfrW4VBHPA75rNu2DSYUL6ZNd1KWljimr7maLZUiWNR7ZPf3p8MaRwZGcu+3/GpXUhx69/rVeWTY4VTwFJH1NdsdUczSRN9p8uAuQAobYtVTqAJIDD7pqlqF9mygiT5fmOSO5rNa4KAc84IzXTToX3OWpXsX5taZXYBsUttrLXbrbOQFlOM+lYhPYnNCnY4IODmuj6ukjFYiT0ZPcI0N08UikFGINZniuxj1TQ5DIu42xEqg+g4P6Vp30hlmE7cljz71JHCpjZJQGjlBVgfQ8VVSN6bixQlyzUkeSsybQNyjAxtA4A9qie2lKk/Z5cY67TivQbjT7KyTyEjtovL4O7IxWTeNGEbZdxMSMAI5/ka+ale57cXdHAWpZWkjKscNV/TtLvdTluJII3by42PHOwDqx9hVu8tmtXSeLA35Dk9MY5Ymi3klup3jR5IlSIjKnBwccH60RbvYbVlcp3Vtc+Etj3zQ3Ml0pwqHovrX0d8H9Zh1XwVFaRbnNqo9shuRz69a+cPiDc/ab2wYPlTBjYOqV7B+zFdedpetWrsSsbxMAewwf61w5pFezuXQdz1spdDJht4YgerO+402WEWtu9zqGoLHGoyzj5Qo+tLfTvGGSzt42n7tIcJGPVv8BXK+JdCsrmxk1HxPrVyllEuQpOxM+yjn6V4lCClI7JSsjhPiH4ttdYuzFDIq6faDO8nLSe5+vaqGlQM9p9olXy5HGQnovarGmeELHVdTsNZuoJrXRbiaSGzt5BiRwBxM3tnoKv3Wny6TdXNlOfnifafavqcLJJJHjYlNu5wnxWVwdMQA7Qjn/gWQK43xE8DfYSsh80W+JE7I2f1rvviUPOtdPz13nB9q5S4soZr2HzI0YblBJHUVvPcVGL5TgNN5tIf92taBGZQQwGfWqGnKEsLZgMkxjr0q0k2Bx+lZrY6Oo6aSVAV4K560wszpjAH0pQ7uxwMAdzTsELypoBkUUZZuADj1qaWEFM8DHeo45ArnPFTNukUhBnNArXKB4608DewKjoOae0DqxDHFTLD5eec/WqERplVwRUyeZgYx1pAAeq08MIsHuTQBHIWB7CgsGUZHSiVgfzzVu2slni3FwnHFAFEA54qwk0qfJ/D70r23lzeXv3bsc1M9oFySxpDsSaNCLrWbCLbu33Ma7R3+YV94xIixlQOBwK+QPgl4fj1r4iaYHTfDalrt/wDgA4/Uivr15NvB781wYlm9NEcFv5E0kjHlun0rnLqfdrUwyTyMewrqc7h+FcXMWHiiaI8gjNc0dTeG+p1domI2J7jNNiwKmiHlwZPpTI0wOamxSerBlGM0xo809+EPtTN+Vz0zTuWmV5YDwVGRTIw6P0OPWrWRTcKPlPSquMcAGqCVAeRzzg1IP3Zzn5aY7fIT6k0JCIJsRJhgfmHBHpVJ8naD07e9aG5XADDJAxmqU0LNKMEADmumm7GcytOxGc9QMVnzBcDu3QmtG4jIP06+9U7iPCjpkE9+tdlNnJNFGVtu5PWqFzgjK53EEGr8obzDkYGKzbhimcjPFejSOOqY92xGF7KOB6VSZizc1buzmQmqhAzXqw2PNqbjSvNDLT8ZpWXKkDqRWjMR74MaseVXriiznD3DKWO08jNMt8vA65ycYqtvMcox2Oah7GiIfEaLA7gnmQBjx19a4W4ic3gkhA8pBvfPQ464rvfFeHt4ZuoZDk+4rldNt1aCYtwWBGMV4FaHvyPUpytFCJpo1aweUEERLvCE8EjoD7Vl2FutrG5b5pJDuYk8ml2SJaMkc0kRBKnYcbhUOl6Re3kk5S6iCxkH94cEg1hBWZrKXMjC8XSL9tijyOFwT6V6n+zTcT2+oagwISyaI+bI/AGCMYP415tqotP7Zl0/VMsY9oUxnrmuw0+//sSzvGjzDp9sjbLdGwjOw4B7n1/CufF0+eLijag+Xc+mLu4txGFNzHEzEbWOM/gO9cG2n2fj7WpLifUDc6VpkpH2XzAftkq/7I/hHp3NeP2Wv+K7/Rk8Qy6vcXNvZXQs44XwSrsh5+gBr0DwHqlpa6DJZiKK3+zfOsypgsSecn1rioYFwjzMueId7Gp4hubzxJqkZtLaSzsdPABabC7Bnk//AFqx9e1b+2tZuLyJSIGPy5HYDGfxqn4q8U3bs+63iuEBweTn6nHX8aybbxZZLO9vIrDB2+avKE16lCjbU4q1RS0M7x5YvdW9o4basKl2469K5a3BkuLaPk5cYrtfEd9BqjXFrA+fIh+Zh0bIzx+Vctpdq0mqRKDwib8+laVPiRtRa5DjNI0KW60SylW5hUPEG2swyOtWP+EZvjwkkLD1DCrnhzwkb7w9p9ytyiGWENhl6cmr/wDwh16nCXkOPqRUrYG9THGgXiphkVjnqO1K+iXKpkRkn0rWbwtqiY2XC/8AAZOtKmha4px5rD6yUAmc1Jot+HybfrUkGm38TZaA+wFdZFoetAAveIPZvmq3FptzFj7RcxSeyrinYdzgW0+73Fmt2688U12ZQN8bgnsRXoZjVedw/Ko2SEnOyMn/AHQaLAcBgDnlTmiaIBeXz3GK7toYHHzQxtj/AGRUL6fbNyYEGfagDhhbLIMmRR+NTK7xr5ZYDHoa65tJtW4MSY+lV30KxJ4iwfpSuFjmkl2upJyc1Ylui+0BRz1NbB0KHsgpkmiKvz5UAUpaalI9o/Zg0AeTq+uyKSSy2sTeo6tj9K9wnk3TADoK5L4R6KPDPw90uAqA0sRuH4xlmOf5Yrp4fmJY9Sc15GIleR10o9S5F0FctPbAeLy+DtaPd+NdVDwDnvWLJDu1uKb1+U1MZWGlds1pMFvL7AUjDbt/KnREM8x9Dim3DbEDelARYwnejUxFDrg9qkhX5CT3pIFwrEngGnYu5E6cqKiOcEMSG7VY3K0gwSQOvtTZSqck9KaRVyvvXtTTg+/vUbOGY46A0hfPPbFaRRLYpwM+9ISDnn9KYz7m3AdRindQOee2K1SsRchkUN37+lV5YcnkZ7mrz4ZSeMgf1qJhuJ4z2raMrESVzAuI/wB2y4HBzWRr91baVZfarhwqEYVe7H0FdNeQARHAy30riPGNlbXUjSX7kxQWm6KNeCz7ua9ClVaRxVYXOVuvGEUlycWziMDufnJ9PStGzvre+hE0DqR/EmeVrjr22ktT8wjTzfm2ZOVq/pW60QT4jU54fJBYDkr6fnXpUK0tjy6iR1QUn/61LuA69qI9rxRyJ9x1DKfalYAD3xXc5dTnUbkVm4UyLnoxApl1F5cgP97mo4CTcSKP88Vacie0ySCyn8azck0XazKGtpJcaIdhJ8h97Af3T1rCss+UB2PU5rqbUqd0b4MbjY+e4rmHtjYXMlq//LIkfUdv0rzcRC0uY7acrqxkXsJgllYcqaueG4Ai3LMMnjGfSq2sSEOqwp8565q9ohzasQ2DnDE/yNcEdzpexxuqWT3fj9oYxndIjHH+6K3/AIl28+i6jb6RIR5McSSkjI3Owzz9OlamlaNbDx7Y3s0qRrPsVt7Acg+/tV347WEqavJffI6TrkY54FclST9tY3XwXOO8M3c99JBoUM0o097lJpIVOC8h4yD7CvZ9W8O3mh2P2HTobUxdRIWw/ryDXiHgxzbSLOSy7ZUbK8EYI5r2rWPEkRdvPnjmiwCssZ6j3BrrdN6JHBKrdu5xlxqV7YavcXd1aL9pdCnzEKnIx0HWuc1OOODTgq4WQOpUj+9mtTVrv7ffyyxuZot3H93Ht6VlmBNR1mCGSRhBbYkc/wB49lNd8KaUTlcryNVorfTre6uZCEQrgdgBj/GsjwnqUOp3d1LHkEbVH09a1J4LfV9Jksbu48jfvKyN0DAnaD7Vx3hhrnQNea1bypVkwrshyp9wcVxyXvXO+LajZG74KhDeEdIJPW2Xj8TW0YE9T9KyvBAiPhDSNxOfsy8fia3AkGeGYfQ0orRFt6lbygOR+HFId+McD6VbMaDJDsfrURjJORyKLCTZB5Rf7zHp60jWcZ6jJqwEIz05pVj45NI0iUJLX+4DUBtHHWMj6VplV7ZJo6dRjPtSKMr7MR/A1JtK8YNbOIsfMGpjR2p5aJvrQ0Bl+Xu6KOfWkNkzDJKD6VpiG1IIVWJPQUGKFerbPZziiwXZli12n7w/KtXw34fOv65Y6WoLCaQBsD7qjlifwqBhaKMG6iX2LivU/gfoULT32vcSIv8Ao8LDkZ6sR/Ksa0lGJUE2enXSpZ2sdrEu1EUIo9ABxTrcZHFQXMvnTnHQHFXLZNq5xXjTd5Ho25YFhFIFZ8SZmJPWOTNaY6VSRfLlnJPBO6nExi9wsnDyTr33U67BISMdzVbSSZJppPVqfq+p2+mKHl3PI/yxxoMu59qsWzLBmjhXDNjFVpL9furG5J6dqr2aanfgyzRx2SHkKPmcj3qzdQOkQXeXcnrigtWKz3EjYzhQewqCR3kB3MT0zVgWwX5nBz6Go22p24qkyyuCwbApX+4MduKawycnio2kHT2zWq1JY4OWbGelPQljkfSq7EE/1qRXArUgsrlQwJHWkwRk8VEsqnrk+vFPV9wAPH9KdwZFcKGXHfrXE+KphZXMJcRyJLE6urLnK5B49D7121wp4x9K4rxmivc2e4A5EoGT7CuinJnJVaSZxesXdjfQTRSonnRBRHKw5Pt78VLd/wBleTPEhiWZkA2noCOPwNUdTeyJuoxADLu3Iu/5k9sd6p6hokstxbG0nE5uXJcdCjjnBr1qfMkeI5KbaOj0e4jk0yAM+1lGzDHB4NWpoyEJ6gjjHes7RrBJdHijuA3mNnc2eeT61LZrPYXL2EshkhcGSFyecdxXapu2pKVmQWTKZ5XGcbiKt2x+8h7ris/T2JhaQ8bmJ/Wr1tzOvPXiphqa1Nhq/I/PTrVLxJbCRLe/UFST5Ln/ANBP9K0px5dweOtOe2/tCzntCMmVfk9mHSor004jhKzRwusKFiRt2cD05qbRVlFozKQqu2RWfPfq+nGK6tJYbmGUxsc5yeeBV6y3xWyKhIBGa8iC1Z6M/hO58A6FpWu3t2ms2Ud8IYleLeOUOexrY1z4ReGtSheJ59UjAyyKs5ZY/bB7VieFtbt/DFn58itLPd8kL/CoPA+prr73xKv9g3d9bLKZFtyUQrglj0Ga5arjGV2OnCpJe6rnBw/CC306VrSDVZmiB6NEM/nVPxZp8Vulrp9rgtAhR2kXljW3L8RtOjkjtPLupb+VRuAXCoQOeT71zmu65bTWsFzcKbe4mzIkZJfK5wOR06V1UK8OrMK2EqJXsYUPm2ZzcWzgHoynIqzatDM+Yo2YsecjFYGta0b2dIoLmYQceYoPGf8ACr+iXttBcIDqGVz91uK7VXi3ZM4nh5p6otOqOjAZGXb+dFvGkbAg4x6CpVgMO6M9iTkd+aQRgNyw+lckmm9DvS0KPgmeJfCGkAqSRbLnA9zWz9oTGVT86x/BP/IoaQMD/j3H8zW4UXHOAaI7IqW7IzM5P31APoORTWdf+erU9jGBwOajPJ+6PzpiATEZw/6UhmftzQUH93NMfjgZH41JpF6Eiy5PKhfen74x9+XIqsHOe5+opS47gGmWWvOgAwJE/E0zKNz5in2BqszoTzwfambovUigCzLAtzE0Rm8sP/FG2G/OsmfwfFMxf+0Hz/00bdVvMR70xvKzwWH4VLBGZJ4Rm3LHBdRyu5CouOrHoK+q/CWgx+EPCVhpMYAkhiXzD6ueWP5mvGfhHoC654vilZd9vp6/aHHq3RR+fP4V7/d4kcKfxrzcVU6HRRjdlOCLDDIPNaK4SPJqrGMOFFW58LFtPfpXFbU6Kj2QySQqOKz9Rv4oInUSL5hHIp13MBD8z7SDXPa6I4EjujnLc/XApR3sVGCNpdQh0vT/ADlG+SYjyogfmdsdKs6XppiY3l3tlun6uew9B6Cuc+H/AJmrRT6ndR5zLttwf4VA5x+NdczSZ5XFW3Yya1sSO+D0xVeeYRRscmn5J69aicA8sMVHOXGCKm6WQFuo/WopO5bBAqxIyj7nWq0j8fczmqi9TRojl2/3qqSlA/yjgD+KpJWKkkDPf6VWmfcccflXRBkSQeYo6ZxnnNSKS2SOmeKgAyc88elSgZAJbHFbGZNvIBzj8KeGJbrnn+KogoHIJOOtG5gMYwaAGzzMJCMjjk4rkPF89nKkUdz5wEYcB4zg89f5V0t1KuxmDYznFc1rFypB3Rhu2SK7sPTucVdq2pwN5BYrnbdXcTON2SgZiDx9arxulo4nh1GGJwxGZImzuxg8+tal9Yx3eAqiJgeHXGRVKXRGkmWMXLeXsGTtAyff8K9dUnY8nlgbejAQ6dbRGRJdqYLLnB596j1uYW4hu+8T7SfYipIE8tURSSFGM+tVvES7tInz/DtP5GtbWiSkuYr2ZxZoa0LNwsqt6GsyF/3EQPHy1etm2kVMGaVFYvXq4mDDvS20mx1bGSKmmQSxI4JPy9hTYLcKM4Y/WtZkxRy/ivSrOK+gjFq3mXk4mSQS4BLcYAx2NUirxZjKjeh2nPtXU+L9JXU/DxkQMstm3mBh1C1wlrFPHFw8ko67n6149WPLN2O6EuaGpqSSs0i5wFACgDtXVXuo7rOO1A/dkAlc9cVwqtMGGQc559q3JrrAzu5xXj5hByaPdyiaUWSXk0cA3qqhwm0cdK43Xb7zXt0Q5SCLapPXJJJ/nWjqeoEBvmJPSuSu5i7leST/ACrOhC2ppiqieiG2+ZJCzE8mrTSeUwG7axYcmobdApJHQVY26bftFDFqm+4LDfFLCU2eoVv4q76S1PLrtJWOqkY/Lg9hz61CZOecE1LKsQVVDfdGOKrkITjJJ/nXScZW8EtF/wAIlpO6Rgfsy/zNbhMJH+s/Oue8GJnwnpRPH+jr1+prbEa4+8KcdkN7j2MYHDVHuVhgfrTjFno60zyGzncKYh4+YHGB+NN2ZPY/jTWtZH+6R+ApPsMuM5OfY0AOy542j6U0xtjiP8zTfJkXqWH40bZFGSTtHepNUIYJc/d/LmmvCx6jn3pJbuOEZZyPxqpNr0UY+6zc4qSiyY9nUU1sYzjiqR8QW2dxikFWLPWLK6uoIZHMKSSIrSMOFBPJNKWwklc+gPgv4cOk+G21CaPZPqD+Zz18sfdrsrhhuJBFTackEFhBDbFGhSNVjKHIZQOCKrXaBUeQZznivIrayO2jZE1soclqddyZxz0p9qhW3BIxkVRvnbcoXnmsmjRNOVzN1mdT5ary2efesnxcGfwyZo87on2/geK0LyCe4njAUgA96kurRZ9Gv7d+nlk4+nNKK1NHsanhTT49O0W2iQAYjBP1rTfBNQWLAWkWz7u0fyFTEbu5qnucy3uQyEDocVA/KnJFWJPkBPWqszkj0rHqbxIJuDtAOT3qtKGQ7cfhV5gllbNcTHJHQVm25uL4mRY8hj1NaxVh8yE8uRwzKcL6+tVmXdkLywPatK+VrOw2ZHmORn2p1rZiCEyzMMYyM9zWkWKT0MsIcCnKMg/kKc0okkO3nntTiuzB2nb710J6GaQhwIguMuTUEjHLAfmKnVWknjQDIOTmmugKlz6nH4VaE0Zl2xIKgcn1rktckLZQH7p61097IXLDt14rltVfeznuTmvXwcdTzcU9DHx3xShckU7rTwuK9pHkslg245FVvEQB0e6/3cfqKsKMYIrP8TXMdvodzJKSFBUEgeprKrJRTuVSV5WKtqpcDPTArTtYcmuZs/EenIoy8zHphYz/AFqy/jER5FtYFscbpXwPyFcLxVOPU7vqs5vY6+e4hstJluZSRHCNzcct7D3rlZ/FV/IGazhhgxypbLNj+VZF9rl9qhVbqZTCpyIUGEz6+9RRy7gyjALcD2rjr46U5e7sdEMHyR94mvdW1zU0EdzeOYiclFwoP4CooobrAXcFXGD60xVkGAzcc96sKpx99qjnlLViUEOiiIkC4yxOKtXICKSe9JpsO+5B2lgAc81HqqTv91dq/wB415+JleVj18FHlptnLavO+WYA4rHXLuWPetDU8p5mNzBTg1VijyBjpiqirIzqNuRYtrZ7suiA8IcEfSk0Tw69rdB7uJpSoyo5AB9TWzoMTKkj5wegA71pmeWNshl/Kuikupw1nqQOsuBiDH0qSwjWW5Czkxp1JAyfwqeG8uJGCBEOfUVqXWqLo+mNItssl1KRFAgHLSHp+FbswRxvg18eFtL/AOvcfzNbgYGuc8ISsPDGmAdoB/M1sLIScliPpTjsgluy4PXyyT9af5j45jIqkJgM/vD/AI0omB6OfzpiLnm+zCl3kjox/CqYmdTlJB/wKnreTZ5kx+FAEkhc/c2p7kGqU9hfTg7bmJR6HNXftzqMsVx9KT7Wz9MYPtSKUjDk0K/Y/wCvgI+tQvod6oABRueu/rXRNLGMZJPHajzox/GB9RUlp3OcGkXsfP2bcPwpv2W8QnNmxHoRmumSSM8FuKV3hUdGb6UPRDtqW/APjHxZpGrWWnWF3MLaWVUa3nG+NV7kZ6cV7vD4nWf5LlARnkp0+teNeA7cT61JP5ZAt4SdxPc8Cu880DGOK+RzTGypVuWJ9PluAhUo80kel2epW91EpjcHAwKS5CyNlhgZ4Irzl7141XazKACcg8isqLxxrdrclYrvzIc4xKoarw+MVRe8RUyqcHeGp6UxLzhYlAUZ+91NVdQnSzsbx+D+6bdjtxWBa+O5PL867sl+XktG/wDQ1zmr/E3T9ftW0nT7S7FzeyrCJJdoRctiu+m4zV4nHVpyp6SPW9Kz/Z8Bz1jU/wDjoq7njNUrBXS2ijkG140CsOgJA5q2D61m3qcqRFM+7iiKJcbz29ae0eWB4qnq1w6w+RDjef0pLcq99EZ128us3nkKR9nQ4PvWuIUs4QqgAAUzTbIWUA7uRyT60rqZGO5uKq415FaO1+0zebN8yjoKh1a5+VIEHU4q5K4gjKoCTWYsf+kmQ5yO55/StIMYsUEUCAHBYjk1XuJQxZeWwR3p97OkKld3zE56dKbYWvmB5pPXNdEVoIkskIaaYjHloVUe+KhvGEVvj+7gfpya0LVB9nPq77vwFZOq4baqnkZB9q1hqyGzIuyfs7HoSx474rldQxuYHnntXU6rIF2xoxUoCf8A61cfduGlcjoTkZr28HseVipFcDBp+fWmmngZr1UeW9xUJY4BAFc/8QpPJ8PGLPM06AfQcmumjQEc/nXKePomubVY+yIzr9cj/wCvXHjXamzowqvURxVocAe1aCSDGazbZyEqyJDkV89LVn0MC4HyafFKEkXIyM9KhhIOCT3pzEA9ce9QtGVJXVjRkG1shTzyM0qFz1BFJGS8MZ3H7vWpOmPnNdkX7tzz7e9Y09Ji2xSSZ5J/Os/XDJHExWTB+taVtlbZDwTjnFYXiKcKhBNeZfmqu57CtCkrFFoI08P73w0s5JyetZcUI2jjPHatHVAYrOxhPGIwxFVY2wMVtfoYOzVzX0qMfYjtYAhvxqRlkLng49hTdGci3fKjljitVWJH8OPY1103ZHBNXZmwaitrOwEYMgHVjilbVo/7Tiv54nlNupEUYYEIT1I96vyWkEx3PDGx9SKiOmWTdbeEn6U7slQRyHhJ93hzTlUHIhAOfqa21XAwcHvjNZ3g+AN4Y0ss+cwDA9OTW6LJe0q1rHZGUtyttBH3DQFGfuD8qnNuwziVfyppinH8Yx9KYiHegOOAfpTweMYBqdYUH3xkmplZEGNuaRaimUSY88IQfbNSZBGMtj6irnmKw5iA/Ck3wrx5K/8AfNIrlRU2x9y34CmuI+0h+hWrhZCMqgH4VGzJjG0Uh2Kqqw4BFOO9e4H0qbcMYCimFQcEjAzzik2VFXO5+H0BXS7u5I+eWTYPoore885GSMVneCYwnhtCOrSux/PH9KuP8rkDoK/P8f8AvK7bPv8ALqajRSI9TuzBCDjJweKzLOAPGrt1Y5puqTiaRYjye5FXoF8uNFHHSuimuWJp1KPie7+x6PK8eQx+QfUiuL8Kgt4j01Tk/wCkx9v9oV0Pji6ZbaKAHlm3flWX4Gj83xbpat937Sn869/BU7Ubs+VzWpetZH08flJX1Ymn4JOKHGSh7kmnDjJNYPc4VsMmkWCFpH7dKzbKE3LG5lOcngH0qTUpfNKwjoW5qxGmyJEXgCkXGNkPLZGBUJX5uf8A9VSDpUUz7ULenShFpWK08pZiiknA5NRuAkRY8YPXp2q1bxA5lkwR71i6teveSi1hBG5sEg8YraCE2QWivqN8zKD5YOBz1rcnKQkRAZ4BYD2qLStPWytUcjhQTz3qtPM00p2cA/xHrW0ZCTJoJiIwTtXqM1izSBpGPGGyCuOcetas8m2IKp+6pArHlQFPmOAQP1rpoowq6GNqUgDgAZ28ZPfPeuZvHHmscY5roL8797jpxtJ471zt1gyN65r38KrI8nEbkWeM1LGhfpkVCORgVYgzg8kfSvQRwMmP7tdxJ4Ga5bxKRNewRdB5RJB9Sa6SUNIvlgnnvXPeKIjFfJN2MY/SuPGK8dDfDNqZwGwxSun91iKlBzUmort1GQjGJAGHFNVelfPyPoYbE8TcAU8kEVGmBzQWHesmaI1tPBMIHXFWHjkZgNpCYyT3PtVXTJAoA3AVpGT5SCQfxrqg7o4pJKRdtyDajHGOMelc1q+J72OHrvcCt22mLEpwAeaxJFzrkG/orbv0rjjG1Q75u9FNC+JIQTAy/dA21kgBVJP0FdDqsQubYheo5rDMJKID/eGa0t7xkvgN3T7dEsYR827AZql8rB+UtTRcNGAox8vFONyz9+a6UtDk6igYHehpBGpcAE9OaazswGG59PWofMUkgsW2nB+tAGF4OiP/AAi2lsD1tx/M1sBDu5dh+NZXg2AP4V0ogcm3H8zWy1vjqp/A1rHZENK4eSx5DClMbj+MUwREH7z/AEpywuzfIH3etO4rIRY27uKkVMfxJ+NH2W4Hr+VH2abuT+VIdhx87+8CPSkIb+5+NL5Uo6ngU0rMD6ipGNKyH7qN+FRlG/iRxUri4bpxUZjlbiQt+BoAheWNTjdzSCZcHDA8elSNAAOF/SmrH5jhAvLEL0x1qKkrRbLpLmmonq3hi2+y+G7JCeWTf+fNR3bkB8BvwrThQRWscWMBFCgfQYrNvWOHA6gV+f1Jc1Vs/Q8NHlhY57BkuVBOeM1ubf3QcDtWGGK3Z6dMDFb1ud1oMkciu7sTe12cL4wn87VEi34EaDr70/wAobxbpvQ7ZFb9azfEkgn1u57hCFH5Vo/D+VLbxRZMV46Z/I19PTjaikfE4qfNWkfTp5YH0pzttWmodxDeozRMNy4rzGJFCEb5WZucHjNXOcU1I9op+PWiKNGyIgsfpTZITMwXdtAqwI85NJIwiVmOM4qoi5uiKGr3KW1r5Sglm44qnpOmAKs0oFSLbfbbnzHztByKvSyCMBEHHf2FapjsQXc3BjU5AGABVTZtRWwOeoAqeSMyEBR1OM+1R3LbQYk7dT61cQINm8hTz6kVnao8cWUCZOOT2rXKJB83I44+tcxrlwhcqG6+lduGi3I56zsc/q1w0jAZJHTr1FYsnLEirt3Md6Kg+Y5Uk1SYgcc+lfSUYWieHXldiAZ4qePkYzUCntUsYwa6EcxajAUZIzzWH4lUTFSBgKhUfWtpnwmM1n6jCLmJlPOBmsq0eaLNKUuWR53rCBHt2x/CQTVUHiresoTCp3Z8uQ9feqSZ2jNfOVEfQUHeKZMDxzQOaYDzTlYjrWB0I09PIGC3PNaIeJjzGayLRgJF/pWqtwMY8vJ+tb0tjjrbhcQJdwmK2Z45T3HGKgu41t9Yh3NwPlP5Vq6XIFMk5hOwDbnGcGs/VbVZJvtnmqqqRhjxzWM3+80OmnFuiSxwlUkkYZDcAdePWsidQJkTp84/nXQ2kPnxytsZcJwu7k1z7xSNOwZcEHjPWk9ZjS/d6mhLAVYjrg+tMCAc/vPzpQ20AzgoemSRzThNGhwfM9yBkV1I4+WwwrkEES9KjUeUoCb8D1FNMu6VyWdV6AYpjtnGC3PWlLyAp+C2A8KaVzj/AEcd/c1vbkZfvc/Wuf8ABqZ8K6V/17j+Zra8r2rWOxL3H7Yyepz65qURsBlZefY1D9nY9x+NIbd88cfjQ2BYJmUcM/501pHHLNjiotsi8ZP500hicnJ+tIBTdOThAT7mnAzOOSpqLLgY6ClVn6AgUBYlMU3otIEmPYU0vLt5Ix61CLti2EDOR/d6fiaTZViV1k9QKfp0LPqVqGJIaZB1/wBoU0NLjPlCptOmZdTtCyAAToTj/eFc+Jd6bt2NsOv3sT1lh98ejVnXibwwIA681rWyCaWRD/eNUdQh8qd0zgnn6CvgofFdn3lKaUuU5G7IS6Xsc1t2DZtgMAjFYGq5W5Uj1/EVu6ZhYkBHBFeklswfU82110XXLxSwB808elafgxBN4jskXksSPzGKzteEf9uXhK8+aeTXR/CiBJ/G1mhGcZbHsK+oj/CR8PWX72XqfR0SbFC+gFKxyakA7mmkc15ktwT1GfhR1OKD1pyA5zQmUyQ4UVRul85sHoeoq3M3QVWchcmhhTXUYQI1CrgDpUO0tx196XJlPHr2p8w8uBgAc1aNSsx2k9eOmDSLbsSGbncKIEMnJHA4qeQY6dBxiriJozr6XERb+6N1cTq8+2VmbHBIAArsNQG1CDnG3HTtXA6s3nXTEk8HOPSvYwMb6nn4puxlSEuxbBzmo25bpWg1vsiMpU4zxmqjjnpXvUtTx6q1IwtOGc0cU4HmtzIcyswzSeX/AKO+eo5qdCNlKVDKQR1FJq4luedeJLYRR3YC8rIGrAjbAxXZ+I7ffdTw/wDPWIAfXH+IriYjjCkcgYNfM4iNptH0GFfuomAOcmlwfWilFcj0O2JZtSd65yBmuiSxjaNSCfUgda5y3+8MmugactGsYBAK8sK2os5a6uyhp/inX/DstxCmkxXlu7ZXcO1J/wAJZ/aO5dejvdPjZshLS0VlX/gRyatv0x29KEwflJP1z0olC8rihNpWM3UPEGiNhIfEGpoem6W2wQPyrA1W60x491rr19NcnAChMKT79xXYS2tu2GZUJ9xmkjsbbOVhiH/ABRyFupdHMaRqFxYwmO80CK+3dWJyxH+NW21kIqQWGiX0K7ufMfKoK6VLVANoAUeopPsiD5VkOevNXFWM3LSxkL9qIyFHPqKf5V83KxqRWm1o3QSiozaTA/LPgexq7mfL3MbwXx4T0o5HFuO/ua2BJu+7z9O9Yfg3Y3hXSgEBP2YZ/M1tpbxAcrt9gaa2E9xTFJKOoX/ZH+NOEJjHr+NIbaEcqTn/AHjQIcch3HvupgKVz1VvzpCi4zhv++qCSpwZWJoH2iT5Yi31IFAAEB/jxSiJj0l/MU77Lcp9+VT7baCsuMF1/EUBche2MjDc+R+VH2dl4U8fSpMSrxuQ/nQDcf3UI+tJlXIJI588Nn8ar4njYMegIbg9MHNXnV++fzqFlJPykA4IyayqR5oteRdGfLNSPadGlWUxyjGJEDD8RUWupiVnxwVxVPwfOLjSbBwckRBD9Rwav62jlflYYPY18HKPLNo+2pO9RPyOE1HDyqFIYjr61oWLeWBnPTpVK6tibhM+nJFWrlhaWbTN0VCQT9K9GkuZJG9V8qbPPtYlabVbt1XOZW5FdT8IZRD44sCRjeHTJ/3TXLx3Vu7MxuEyTk/NW74LvYrPxXpUyOvyXKDr2Jx/Wvp7Wp2PhpSvNyPp4EFeKY7YFEf8X1P86a/NeU1qWlqRgMWz71ZQbRzUcY6U9zgZppWCTI3OSapzksQo5NWnzjPrUSDZksMk9KZrHRDFAhiJ4qBQ85YEillD3L7PujNWFVYUCnqaaHciJMa5xwOKgzuUEEnH6mprmTcu3cqexqlI64279+Oy+tWkMoakWk4TcRu5xXGTW5uNSaMEn5vmrur/AGQ20krAg9vrXFySC2Zpty73JPFevgnY4MSijq86xxrAvULzWTGCT1NW7hHlZpWBwT1oS2IQuBwOte5SlZHkVYtsrkUuMc0jcMaUGuo5ySOQ9DUynnAquobdwM1ZiHPrSuJo5XxNG0eoxuByEz+tcTqcP2e/fC4WT5x+Nd74pyL1WUclcCuU8QQk20cxX7hwT7H/AOvXz+LXvs9nCPRGQPvc04jv2pqEU7JbIHSvOaPUWxYg4Iro7dT5Kcc4rnLZSzqOvPSunV/LRQUJwOO1bUUc9bcgkyM/LTOvBHFWHmH9w0xSjfwn8a1sZETopA4NMxjOA1WyVA4z+FCuOCPTvSAmtV2RDOGJ557VJsTPO0/hUKzAUonLnpxTESiOMZ+VetN8i3b7xGfrSEBjzinKq4+4PrQBzHgqJf8AhEtJbBJNup/U1tNFzkZrB8G5XwlpJ8zbm3GM89zWyss/8JyvqVq47GdtRxjIP3sUFeeQfzpd8+Og/wC+aQvMDylNjFSJgcgk/WpsuDngH2quZpB1XFHmSMOCKQFgtnqpx9aiZUbqTUeXP8RpoBzyaAHl44888Dr7ULKTnCyY65201WgBHmgkg8elSNPbjozD8KBoY0qEdGB9ajJB5DfWpGmRlIDLmmBgwIJGKTBbnf8Aw8ud2mvFuy0ExIHoG5rqtRBk2EggEcntXBfD2YR3d/GDkNGrcH0NegTyboVHXjpXxWYQUa7R9lg5N04SOLu41juioORnGareJZPK0mQqc4XZg981a1mQR35XK884Ws3xTMF0z2Zlz7104NXnE2xkmqUjh/Jjzu2Rqe/y1d0mRk1K3lUgbJkP6iq+5CTzj2xVqxx9phJ6eYv8xX08l7p8UnqfV0Tcn3wfzFONQq2NpJ4KL/Kn5NeQ3qdUUTIBihzxTATimyP8poFy6jXO71NQuTnGDg9eaUtnNMOScgcUmzZIVGEafNge1QyNLM/OEjHHvT8N0J/SmvtRDnJPXNNDsV5vLQhVO7nuKrmfy14AVuvFJcTMGOFJPQjPWqpiml3HyyFPFaIGiOaaS5O08jGcVi3mnyLuIAbg4GK6KKxk+/gYxjHrUVzZEoMPGTz+FdlGrys56sLnI3to4gSMDcc5PtUMz+TBsRUJx0PWt6+tPLRS7DAOdo4/OsXUHAVmCIuT6cmvcw9TmPLrRsYLj593r1FTRx7+naonbJFKkjK3pXpo89xLiQD61OsYWoY7ksOmTT/NJ4xVGZzXitwJ42x0JH6Vzt/i5sJ4+fuZ/rXQ+KuVjPfzCM/hXPlW2MOWDDaQOteDi0udnrYf4UcwrA9KmHAqv/q5GQgfKSOKnRgTivNluetHYtWjESp256114njEag46VydoMSL9RXTAAdq1pbGFfcUzxn0/KmMyN0wT6Cg7e4H5UgjXqABWhjchlHnP5KblA5Yn+VOKKMfKM47mpsEY9ulKOBg8/hQMiCJjpShYR61P8vqP++aAy46KfbFAiNRCepqVFh/56EU9SuPuCobnHyqqgFsdOw70COY8FKn/AAimlHaSTbjn8TW8qSdlb8BWP4HEZ8JaRudQfsy8Z6cmugxEnPmD8KtbIz6kGJlBJRuPUUzz2PDAj8KsyzArxIMY6k1T855WCoC2f4j0/wDr02hj/NCtyDzUiyJj/UlvcGhIcjc0hb/PpUglCfKAcD2osMgZkzkIw+tNO3H3c5qZpdxwVH5UwqG6KDiiwFfoOFxTQgPerG0KPu4oAQdQp+tJodythexFRPIF4wWJ/hA61oYjJ/1aD6Uxo0U5UKDSGpdjV8Bs0euOrsAJrdhj0wQa9PtMSQkEdFzmvJ/D84s9ctZGIC7trY9G4r1myxsfYQRjHFfI5vTtiOY+qy6pzYZeRw3iJdl6WK4yetZ3iUCTSITjIDAmt/xHavNvYIcjgiue1EmXRJQwP7sZq8FL3onZjo3os5VY0Iz5Z/76qSCGLeu3IO4Y596rSSBlAXPTmpLeMmaL5z94cV9Q1c+ItrofUOi3pvtFs7gHczxANjsQMVoxPlRXA/DPWjPby6a7kHBliz+ort1Zlkwc4614tWDjKx6EX7peHSon5qRWyopjDvmhIIkRJHp+AqMuB359MUsrhTioSwbvzSaNUhzMcZx+tUbktI3ykj021d4BwTz6ioZCmf8AWkjHTFVFAyklqdxY59smplgj6bzwKcWt++8ketJvQDAQ4PzVsiRxt0wvIwR09KbdqpgMa7QMckf0pRMrEA8ADuKZMyvyjoDnPINbRM5NHP6pHGssokbKZGDj2rnr5owAMHB5HFdXqeHJxNAuOg2nNcbqEsfmbXuslflwqnFexhDy8QZpZScUoXbQ7R55LsPTbinJKinEcRHu1ewjzSeGPIyScVMjDJCoCo6n0quWaQ4wB9Km8sxxcN17CtVsZS0ZgeI1CxQAn7zMaxkwCD71teKAUjsz6s4/SsROoJ+teFi/4jPUofCjk7+LZqNwOg3k0Rrip9ZA/tScDoCP5U3y1wGrzKiuz1aexb05gLqMnoDXUO6gdCT71y9gB56AeorqXiA4Y1rR21MKy94rSuqruYjA5A7/AIVXiYlizfebrz0q4bVGJ4z7mm/ZFH8IrUzEQbu9TCJT3NM8jpgAfSl+ZP4jSC5J5Cf7VP8AsseOXIqLnGSTTWYgFskUCJRCqZwWINHkEnjke4qFJpHcKHwAMt/Sp45CG6k55p2A5vwOkZ8I6OSvP2Zeg9zW75cZ428e4rnPBXmN4S0gKRgW46/U1uhLjPG3H+9Vx2Je5P8AZ4v7q49xTPLgVvQDvUcgnTjH47qjJlPD9PaqAkYRpjYxJpu9icVGpCnkMT+FPEiejfnQBIBuHJNNdI1HzMQPUmkZyThQefepI4gMPKS47A9qQmQpD5vMYKr3J71MLMH/AJZ4/GrHmxA4bJNO3xdtw9qCHK5TazxwHAPpTRYuejKcVeEg7Z/IVG+H6l/wxSsJMis7MreQgkfNIn/oQr1q0dYZmjRcbuTXlcS7ZkYE/Kynn6ivTQWUbw2CRnIr5rOlaaZ9TkvvUminrQw7KeNwPNcZcBri3vLcSffQ4/Cuq1WQ3LZBOQpQfWsO40xRIrrgFkI44yO9cWElyyR6+Ig5U3E4QWEoO4KG98gVf0uzluNRtofs5JeQAc+1Jd2j287oGGAePcdq3fh/aSX3jDS4XYBDKS30ANfWcy5eY+GnBxnY0/Bl3LaazZsr7W89VAHucEV7jLMqkqib2znArwGcjStZmgiZt8ExUN7hv/rV7tpd2l9p9td9PNjDEY79/wBa4sXC9mdVJlmLzduXI57DtTS6qp4APqaV5AchWxx6U1Oc9+K5djdIrs4dzhlNKFGeCo/Ch1y33R+dNK+px9KC0x5jY8eYuPSmPAT/ABA/Q0yR3A4kYfUVGRMSWLqARjp1poTYgh2IxJIY9MntQYoQiFpQH7AnpUcgkX5QRwPSqzJM5HCtz1NaR1IbsTlEOf3+AD14qPZa4INy74/ujIH4nimusnmEBYxnjGOKieNlkHmbMAjqMit4ozkypfQWaKzFzg9d0qg/pXJamlpHIHSVTu7ZzXX6nbwyxMzkBV/hRQK4/VGtpWYwWwG0/e6fpXrYKR5+IM7cm7t+VHyFucg9gelKFJPv9BUhiXALcivZR5jHxKFwXAqdR5mW/hxgVCgT7p5X3q4hUIU4xjPStImVTY57xSgaGzTHO52/QVzN9eWelQC4uZMKSFUA8lj2rZ8fakmmLDcOpZUhYhf9on/61eLX+rXviO9jknkJUnEcYOFTnjFfP4yV5ux6uFXuo9B/sNtRu5JTdorSHOCh49qvp4NuJMKL2ED3jasKy1LUbZFC3bkrgZYA5rTHiXVV63S5HT90tfNVYYvm91ns07JFyHw0LWbdNeKxTqqxN/PpVhZfOkLRkmNeC394+3tVKLXNTuQUe7GHBG0RgZ46ZFX7C9W+gDGHyyqqQAeMEZFehgVVStVepy4l63FwBzuYfWlAJIG8fiKmDIv8FNLLg4UflXoPc5xmxlHDg/Soz5g6N+VP3AnpSbwDxSAZskI++aRVY8bjz7VL52OKcLheM4/KgCKFGiTnJY8k4p+4g5C4qXzA4yMGgKrHJJ+lNMR//9k=" alt="Fred" style="width:200px;height:200px;object-fit:cover;object-position:top;border-radius:50%;border:4px solid var(--orange);box-shadow:0 8px 32px rgba(0,0,0,0.4);margin-bottom:24px;display:block;">
+        <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:16px;">Artisan couvreur passionné avec plus de <strong style="color:#fff;">15 ans d'expérience</strong> dans la rénovation et la construction en Belgique.</p>
+        <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:16px;">Fred Rénovation, c'est l'engagement d'un artisan local qui privilégie la <strong style="color:#fff;">qualité du travail</strong> et la satisfaction du client avant tout.</p>
+        <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.8;">De la toiture au carrelage, chaque chantier est traité avec le même sérieux : <strong style="color:var(--orange);">votre maison, notre passion.</strong></p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:22px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--orange);">15+</div>
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em;">Ans d'expérience</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:22px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--orange);">9</div>
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em;">Services proposés</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:22px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--orange);">100%</div>
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em;">Satisfaction client</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:22px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--orange);">48h</div>
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em;">Délai de réponse</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function sendDevis(){
+  const nom=document.getElementById('dv-nom').value.trim();
+  const email=document.getElementById('dv-email').value.trim();
+  const tel=document.getElementById('dv-tel').value.trim();
+  const type=document.getElementById('dv-type').value;
+  const msg=document.getElementById('dv-msg').value.trim();
+  if(!nom||!email){alert('Merci de renseigner votre nom et email.');return;}
+  const subject=encodeURIComponent('Demande de devis — '+(type||'Fred Rénovation'));
+  const body=encodeURIComponent('Nom : '+nom+'\nTél : '+tel+'\nEmail : '+email+'\nTravaux : '+type+'\n\nMessage :\n'+msg);
+  window.open('https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su='+subject+'&body='+body,'_blank');
+  document.getElementById('dv-confirm').style.display='block';
+}
+</script>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">FRED <span>RÉNOVATION</span></div>
+            <div class="footer-sub">Artisan couvreur — Votre maison, notre passion</div>
+        </div>
+        <nav class="footer-links">
+            <a href="#">Accueil</a>
+            <a href="#">Prestations</a>
+            <a href="#">Contact</a>
+            <a href="#">À Propos</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Fred Rénovation</span>
+        <span class="footer-reg" id="footer-reg">BE 08332520</span>
+    </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" aria-label="Remonter en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+<style>
+#scroll-top {
+  position: fixed;
+  bottom: 162px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--orange);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9997;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  pointer-events: none;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+}
+#scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+#scroll-top:hover {
+  background: var(--orange);
+}
+#scroll-top svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+</style>
+<script>
+(function(){
+  var btn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, {passive: true});
+})();
+</script>
+
+<button id="chat-bubble" aria-label="Ouvrir le chat">
+    <span><div id="chat-notif">1</div></span>
+    <svg class="chat-open-icon" viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>
+    <svg class="chat-close-icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</button>
+<div id="chat-window">
+    <div class="chat-header">
+        <div class="chat-avatar">&#127968;</div>
+        <div style="flex:1;">
+            <div class="chat-header-name">Fred Rénovation</div>
+            <div class="chat-header-status">En ligne — répond immédiatement</div>
+        </div>
+        <button onclick="closeChat()" style="background:rgba(255,255,255,0.12);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'" title="Fermer">&#10005;</button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-suggestions" id="chat-suggestions">
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#127968; Toiture</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#128737; EPDM</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#9728; Velux</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#129695; Menuiserie</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#128683; Volets</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#127777; Isolation</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#129454; Placo</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#128703; Carrelage</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#129521; Bardage</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">&#128176; Devis</button>
+    </div>
+    <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="Posez votre question…" autocomplete="off" />
+        <button id="chat-send"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    </div>
+</div>
+
+<script>
+const KB=[
+  {keys:['bonjour','salut','bonsoir','hello','coucou','bjr'],reply:'&#128075; <strong>Bonjour !</strong> Je suis l&apos;assistant de Fred Rénovation.<br>Cliquez sur une catégorie ci-dessus ou posez directement votre question !<br><br>&#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a>'},
+  {keys:['fuit','fuite','infiltr','humidit','mouill','eau','gouttiere','dégât'],reply:'&#128269; <strong>Toiture qui fuit ?</strong><br>Inspection rapide des noues, faîtage et solins. Intervention rapide garantie.<br><br>&#128073; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Urgence%20toiture" target="_blank" style="color:#E8490F">Devis urgent !</a> ou &#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a>'},
+  {keys:['urgent','urgence','rapide','intervention'],reply:'&#9889; <strong>Intervention rapide</strong><br>Fred Rénovation intervient rapidement pour toute urgence toiture ou rénovation.<br><br>&#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a> — Appelez maintenant !'},
+  {keys:['toiture','couverture','tuile','zinc','bac acier','charpente','toit'],reply:'&#127968; <strong>Toiture & Couverture</strong><br>Réparation, rénovation ou entretien de votre toit. Fred intervient sur tous types de couvertures.<br><br>✔ Tuile &nbsp;✔ Zinc &nbsp;✔ Bac acier<br>✔ Pose neuve &nbsp;✔ Réparation &nbsp;✔ Rénovation complète<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Un toit en bon état, c&apos;est votre première protection.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Toiture" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['epdm','toiture plate','plate','etancheite','étanchéité','terrasse'],reply:'&#128737;&#65039; <strong>Toiture plate EPDM</strong><br>Spécialisation dans l&apos;étanchéité des toits plats et terrasses grâce à cette membrane en caoutchouc synthétique.<br><br>✔ Durée de vie 30 à 50 ans &nbsp;✔ Résistance UV<br>✔ Étanchéité optimale &nbsp;✔ Protection durable<br>✔ Entretien minimal<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">La solution la plus fiable pour vos toits plats.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20EPDM" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['velux','fenetre de toit','lucarne','lumiere','skylight','verriere','combles'],reply:'&#9728;&#65039; <strong>Velux & Fenêtres de toit</strong><br>Installation ou remplacement de fenêtres de toit pour apporter de la lumière naturelle dans vos combles.<br><br>✔ Double vitrage thermique &nbsp;✔ Pose soignée<br>✔ Plus de luminosité &nbsp;✔ Bien-être amélioré<br>✔ Valorisation de votre bien<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Min. 1/6 de la surface au sol recommandé.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Velux" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['pvc','aluminium','alu','menuiserie','chassis','fenetre','porte','double vitrage','bois'],reply:'&#129695; <strong>Menuiserie PVC & ALU</strong><br>Travaux sur vos ouvertures, portes et fenêtres en bois, PVC ou aluminium pour améliorer confort et sécurité.<br><br>✔ Isolation thermique & phonique &nbsp;✔ Sécurité renforcée<br>✔ Design sur-mesure &nbsp;✔ Économies d&apos;énergie<br>✔ Réduction des courants d&apos;air<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Des châssis performants = moins de chauffage à payer.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Menuiserie" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['volet','volets roulants','motorise','motorisé','store','battant'],reply:'&#128683; <strong>Volets Roulants & Battants</strong><br>Pose, réparation ou motorisation de vos volets roulants ou battants pour plus de confort au quotidien.<br><br>✔ Manuels ou motorisés &nbsp;✔ Confort quotidien<br>✔ Sécurité renforcée &nbsp;✔ Économies d&apos;énergie<br>✔ Domotique possible<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Motorisez vos volets et contrôlez-les depuis votre téléphone.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Volets" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['isolation','isoler','thermique','energie','chaleur','froid','laine','ouate'],reply:'&#127777;&#65039; <strong>Isolation Thermique</strong><br>Travaux destinés à améliorer l&apos;efficacité thermique de votre habitation et réduire vos factures.<br><br>✔ Combles (priorité n°1 — 30% des pertes)<br>✔ Murs intérieurs & extérieurs<br>✔ Sols &nbsp;✔ Primes énergie disponibles<br>✔ Confort hiver & été garanti<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Un logement bien isolé = jusqu&apos;à -40% sur vos factures.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Isolation" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['placo','cloison','cloisonnement','doublage','faux plafond','plafond','platre','plâtre'],reply:'&#129454; <strong>Placo & Cloisonnement</strong><br>Aménagement intérieur, pose de cloisons sèches et faux plafonds en plaques de plâtre.<br><br>✔ Séparation de pièces &nbsp;✔ Doublage des murs<br>✔ Faux plafonds &nbsp;✔ Isolation acoustique<br>✔ Finitions soignées &nbsp;✔ Rapidité d&apos;exécution<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Réaménagez votre intérieur selon vos besoins.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Placo" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['carrelage','faience','faiençe','credence','crédence','salle de bain','douche','cuisine','revêtement','revetement'],reply:'&#128703; <strong>Carrelage Sol & Mur</strong><br>Revêtement de sols ou de murs, en intérieur comme en extérieur, pour toutes vos pièces.<br><br>✔ Salle de bain & douche &nbsp;✔ Cuisine<br>✔ Séjour & couloir &nbsp;✔ Faïences & crédences<br>✔ Pose soignée &nbsp;✔ Résultat impeccable<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Chaque pose est réalisée avec soin pour un rendu parfait.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Carrelage" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['bardage','facade','façade','crepis','crépis','exterieur','extérieur','parement','ravalement'],reply:'&#129521; <strong>Bardage Extérieur</strong><br>Pose d&apos;un revêtement extérieur sur vos façades pour la protection et l&apos;esthétique de votre maison.<br><br>✔ Bois ou composite &nbsp;✔ Embellissement garanti<br>✔ Protection durable &nbsp;✔ Isolation intégrée possible<br>✔ Valorisation de votre bien immobilier<br><br><em style="color:rgba(0,0,0,0.5);font-size:12px;">Modernisez l&apos;aspect extérieur de votre maison.</em><br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20Bardage" target="_blank" style="color:#E8490F">Demander un devis gratuit</a>'},
+  {keys:['devis','tarif','prix','cout','coût','combien','gratuit','estimation'],reply:'&#128176; <strong>Devis gratuit sous 48h</strong><br>Accès direct pour obtenir une estimation personnalisée du coût de vos futurs travaux, sans engagement.<br><br>1️⃣ Demande en ligne ou par téléphone<br>2️⃣ Visite technique gratuite<br>3️⃣ Chiffrage clair, sans surprise<br>4️⃣ Prix transparents — aucun frais caché<br><br>&#128231; <a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Demande%20de%20devis" target="_blank" style="color:#E8490F">contact.fredrenovation59@gmail.com</a><br>&#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a>'},
+  {keys:['contact','telephone','mail','email','joindre','appeler','horaire'],reply:'&#128222; <strong>Contactez Fred</strong><br>Tél : <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a><br>Email : <a href="mailto:contact.fredrenovation59@gmail.com" style="color:#E8490F">contact.fredrenovation59@gmail.com</a><br><br>&#128337; Lun–Ven : 8h00–18h00<br>&#128337; Samedi : 9h00–14h00'},
+  {keys:['garantie','assurance','certifie','certifié','qualite','qualité','confiance'],reply:'&#128737;&#65039; <strong>Qualité & Garantie</strong><br>✔ Matériaux certifiés &nbsp;✔ Pose professionnelle<br>✔ 100% satisfaction client &nbsp;✔ Artisan local<br>✔ Prix transparents &nbsp;✔ Aucun frais caché'},
+  {keys:['belgique','region','zone','deplacement','déplacement','ou'],reply:'&#127759; <strong>Zone d&apos;intervention</strong><br>Fred Rénovation intervient partout en <strong>Belgique</strong>.<br>N° BCE : BE 0832502696<br><br>&#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a>'},
+  {keys:['merci','super','parfait','nickel','top','excellent','bravo'],reply:'&#128522; Merci pour votre confiance ! Fred sera ravi de vous accompagner dans votre projet.<br><br>&#128222; <a href="tel:0782253309" style="color:#E8490F">07 82 25 33 09</a>'}
+];
+const bubble=document.getElementById('chat-bubble'),chatWin=document.getElementById('chat-window'),messages=document.getElementById('chat-messages'),inputEl=document.getElementById('chat-input'),sendBtn=document.getElementById('chat-send'),notifEl=document.getElementById('chat-notif'),suggsEl=document.getElementById('chat-suggestions');
+let opened=false;
+let chatHistory=[];
+
+const SYSTEM_PROMPT=`Tu es l'assistant virtuel de Fred Rénovation, une entreprise d'artisan couvreur basée en Belgique (N° BCE: BE 0832502696).
+Tu t'appelles "L'assistant Fred Rénovation". Tu es chaleureux, professionnel et tu parles toujours en français.
+Tu aides les clients à comprendre les services proposés et à obtenir un devis.
+
+Services proposés :
+- Toiture & Couverture : tuile, zinc, bac acier — pose neuve, rénovation, réparation
+- Toiture plate EPDM : étanchéité des toits plats et terrasses, durée de vie 30-50 ans
+- Velux & Fenêtres de toit : installation/remplacement, apport de lumière dans les combles
+- Menuiserie PVC & ALU : portes et fenêtres haute performance thermique et phonique
+- Volets roulants : manuels ou motorisés, confort et sécurité
+- Rénovation intérieure : placo, peinture, aménagement
+- Isolation thermique : combles, murs, sols — économies d'énergie jusqu'à -40%
+- Placo & Cloisonnement : cloisons sèches, doublage, faux plafonds
+- Carrelage Sol & Mur : faïences, crédences, toutes pièces
+- Bardage extérieur : bois ou composite, embellissement et protection de façade
+
+Contact :
+- Téléphone : 07 82 25 33 09
+- Email : contact.fredrenovation59@gmail.com
+- Horaires : Lun-Ven 8h-18h, Sam 9h-14h
+- Devis gratuit sous 48h, sans engagement
+
+Règles importantes :
+- Réponds toujours en français, de façon naturelle et conversationnelle
+- Sois concis (3-5 phrases max sauf si on te demande plus de détails)
+- Propose toujours en fin de réponse le contact ou le devis gratuit si c'est pertinent
+- Ne parle que des services de Fred Rénovation
+- Si tu ne sais pas, redirige vers le 07 82 25 33 09
+- Tu peux utiliser des emojis avec modération`;
+
+bubble.addEventListener('click',()=>{opened=!opened;bubble.classList.toggle('open',opened);chatWin.classList.toggle('open',opened);if(opened){notifEl.style.display='none';if(!messages.children.length){addBotMsg('&#128075; <strong>Bonjour !</strong> Je suis l&apos;assistant de Fred Rénovation.<br>Comment puis-je vous aider aujourd&apos;hui ?');}setTimeout(()=>inputEl.focus(),300);}});
+
+function addUserMsg(t){const d=document.createElement('div');d.className='msg user';d.innerHTML=`<div class="msg-avatar">&#128100;</div><div class="msg-bubble">${t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`;messages.appendChild(d);scrollBottom();}
+function addBotMsg(h){const d=document.createElement('div');d.className='msg bot';d.innerHTML=`<div class="msg-avatar">&#127968;</div><div class="msg-bubble">${h}</div>`;messages.appendChild(d);scrollBottom();}
+function showTyping(){const d=document.createElement('div');d.className='msg bot';d.id='typing-msg';d.innerHTML='<div class="msg-avatar">&#127968;</div><div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';messages.appendChild(d);scrollBottom();return d;}
+function scrollBottom(){setTimeout(()=>messages.scrollTop=messages.scrollHeight,50);}
+
+async function askClaude(userText){
+  chatHistory.push({role:'user',content:userText});
+  const body={
+    model:'claude-sonnet-4-20250514',
+    max_tokens:1000,
+    system:SYSTEM_PROMPT,
+    messages:chatHistory
+  };
+  const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  });
+  const data=await resp.json();
+  const reply=data.content&&data.content[0]?data.content[0].text:'Désolé, une erreur est survenue. Appelez-nous au 07 82 25 33 09 !';
+  chatHistory.push({role:'assistant',content:reply});
+  return reply;
+}
+
+function textToHtml(text){
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/\n/g,'<br>')
+    .replace(/(07 82 25 33 09)/g,'<a href="tel:0782253309" style="color:#E8490F;font-weight:700;">$1</a>')
+    .replace(/(contact\.fredrenovation59@gmail\.com)/g,'<a href="mailto:contact.fredrenovation59@gmail.com" style="color:#E8490F;">$1</a>');
+}
+
+function findAnswerLocal(text){
+  const low=text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  for(const item of KB)if(item.keys.some(k=>low.includes(k)))return item.reply;
+  return null;
+}
+
+async function sendMessage(text){
+  if(!text.trim())return;
+  suggsEl.style.display='none';
+  addUserMsg(text);
+  inputEl.value='';
+  sendBtn.disabled=true;
+  inputEl.disabled=true;
+  const t=showTyping();
+
+  // Essai local d'abord (instantané)
+  const localReply=findAnswerLocal(text);
+
+  try{
+    const reply=await Promise.race([
+      askClaude(text),
+      new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),8000))
+    ]);
+    t.remove();
+    addBotMsg(textToHtml(reply));
+  }catch(e){
+    t.remove();
+    if(localReply){
+      addBotMsg(localReply);
+    } else {
+      addBotMsg('&#129300; Je n&apos;ai pas trouvé de réponse précise à votre question.<br><br>&#128222; Appelez Fred directement : <a href="tel:0782253309" style="color:#E8490F;font-weight:700;">07 82 25 33 09</a><br>&#128231; <a href="mailto:contact.fredrenovation59@gmail.com" style="color:#E8490F;">contact.fredrenovation59@gmail.com</a>');
+    }
+  }
+  sendBtn.disabled=false;
+  inputEl.disabled=false;
+  setTimeout(()=>inputEl.focus(),100);
+}
+
+function closeChat(){opened=false;bubble.classList.remove('open');chatWin.classList.remove('open');messages.innerHTML='';chatHistory=[];suggsEl.style.display='flex';notifEl.style.display='flex';}
+sendBtn.addEventListener('click',()=>sendMessage(inputEl.value));
+inputEl.addEventListener('keydown',e=>{if(e.key==='Enter')sendMessage(inputEl.value);});
+function sendSuggestion(btn){sendMessage(btn.textContent.replace(/^[^\w]+/,''));}
+</script>
+
+<style>
+#admin-overlay{display:none;position:fixed;inset:0;background:rgba(5,12,28,0.88);z-index:99990;align-items:center;justify-content:center;backdrop-filter:blur(5px);}
+#admin-overlay.show{display:flex;}
+#admin-login{background:#fff;border-radius:10px;padding:40px 36px;width:360px;box-shadow:0 24px 60px rgba(0,0,0,0.4);text-align:center;border-top:4px solid var(--orange);}
+#admin-login .al-logo{width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;}
+#admin-login h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--navy);margin-bottom:4px;text-transform:uppercase;}
+#admin-login p{font-size:13px;color:var(--texte-doux);margin-bottom:24px;}
+#admin-login input[type=password]{width:100%;padding:11px 14px;border:2px solid #dde3ef;border-radius:6px;font-size:14px;outline:none;transition:border-color 0.2s;margin-bottom:12px;}
+#admin-login input[type=password]:focus{border-color:var(--orange);}
+#admin-login .al-btn{width:100%;padding:13px;background:var(--orange);color:#fff;border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+#admin-login .al-btn:hover{background:var(--orange-dark);}
+#admin-login .al-err{color:#c0392b;font-size:12px;margin-top:8px;display:none;}
+#admin-login .al-cancel{margin-top:14px;font-size:12px;color:var(--texte-doux);cursor:pointer;background:none;border:none;text-decoration:underline;}
+#admin-panel{display:none;background:#f0f4fa;border-radius:12px;width:92vw;max-width:900px;max-height:88vh;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.4);flex-direction:column;}
+#admin-panel.show{display:flex;}
+.ap-header{background:var(--navy);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:3px solid var(--orange);}
+.ap-header h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.05em;}
+.ap-header-right{display:flex;align-items:center;gap:10px;}
+.ap-logout{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:5px;cursor:pointer;transition:background 0.2s;}
+.ap-logout:hover{background:rgba(255,255,255,0.2);}
+.ap-close{background:none;border:none;color:rgba(255,255,255,0.55);font-size:22px;cursor:pointer;line-height:1;padding:0 4px;}
+.ap-close:hover{color:#fff;}
+.ap-tabs{display:flex;background:var(--navy-mid);flex-shrink:0;overflow-x:auto;}
+.ap-tab{padding:11px 18px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.55);cursor:pointer;border:none;background:none;letter-spacing:0.06em;text-transform:uppercase;transition:all 0.2s;white-space:nowrap;}
+.ap-tab:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.ap-tab.active{color:#fff;background:rgba(255,255,255,0.12);border-bottom:3px solid var(--orange);}
+.ap-body{flex:1;overflow-y:auto;padding:24px;}
+.ap-section{display:none;}
+.ap-section.active{display:block;}
+.ap-label{font-size:11px;font-weight:700;color:var(--texte-doux);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;display:block;}
+.ap-input,.ap-textarea,.ap-select{width:100%;padding:10px 13px;border:2px solid #d8dff0;border-radius:6px;font-size:13.5px;color:var(--texte);background:#fff;outline:none;transition:border-color 0.2s;}
+.ap-textarea{resize:vertical;min-height:80px;}
+.ap-input:focus,.ap-textarea:focus,.ap-select:focus{border-color:var(--orange);}
+.ap-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.ap-field{margin-bottom:14px;}
+.ap-btn{padding:10px 22px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all 0.18s;letter-spacing:0.04em;text-transform:uppercase;}
+.ap-btn-primary{background:var(--orange);color:#fff;}
+.ap-btn-primary:hover{background:var(--orange-dark);}
+.ap-btn-danger{background:#fdecea;color:#c0392b;border:1px solid #f5c6c2;}
+.ap-btn-danger:hover{background:#f5c6c2;}
+.ap-btn-sm{padding:6px 13px;font-size:11px;}
+.ap-card{background:#fff;border-radius:8px;padding:18px 20px;margin-bottom:14px;border:1px solid #d8dff0;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.ap-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.ap-card-title{font-size:14px;font-weight:700;color:var(--navy);}
+.ap-section-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #d8dff0;}
+.ap-tag-preview{display:inline-block;background:var(--orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+.strip-item-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.strip-item-row input{flex:1;}
+.review-card{background:#fff;border-radius:6px;padding:14px 16px;margin-bottom:10px;border:1px solid #d8dff0;display:flex;align-items:flex-start;gap:12px;}
+.review-stars{color:#f0a500;font-size:14px;letter-spacing:1px;}
+.ap-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.ap-stat{background:#fff;border-radius:8px;padding:16px 18px;border:1px solid #d8dff0;text-align:center;}
+.ap-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:var(--orange);}
+.ap-stat-label{font-size:11px;color:var(--texte-doux);margin-top:2px;text-transform:uppercase;letter-spacing:0.06em;}
+@media(max-width:640px){#admin-panel{width:98vw;max-height:95vh;}.ap-row{grid-template-columns:1fr;}.ap-stats{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){
+  #chat-window{width:calc(100vw - 24px);right:12px;bottom:96px;max-height:70vh;}
+  #chat-bubble{bottom:20px;right:16px;width:52px;height:52px;}
+  #scroll-top{bottom:86px;right:16px;width:42px;height:42px;}
+  #scroll-top svg{width:18px;height:18px;}
+}
+</style>
+
+<div id="admin-overlay">
+    <div id="admin-login">
+        <div class="al-logo">&#128272;</div>
+        <h2>Espace Admin</h2>
+        <p>Fred Rénovation — accès restreint</p>
+        <input type="password" id="admin-pwd" placeholder="Mot de passe" autocomplete="current-password" />
+        <button class="al-btn" onclick="doLogin()">Connexion</button>
+        <div class="al-err" id="admin-err">Mot de passe incorrect.</div>
+        <button class="al-cancel" onclick="closeAdmin()">Annuler</button>
+    </div>
+    <div id="admin-panel">
+        <div class="ap-header">
+            <h2>&#9889; Admin — Fred Rénovation</h2>
+            <div class="ap-header-right">
+                <button class="ap-logout" onclick="doLogout()">Déconnexion</button>
+                <button class="ap-close" onclick="closeAdmin()">&#10005;</button>
+            </div>
+        </div>
+        <div class="ap-tabs">
+            <button class="ap-tab active" onclick="showTab('dashboard')">&#128202; Dashboard</button>
+            <button class="ap-tab" onclick="showTab('services')">&#128295; Services</button>
+            <button class="ap-tab" onclick="showTab('strip')">&#128226; Annonces</button>
+            <button class="ap-tab" onclick="showTab('reviews')">&#11088; Avis</button>
+            <button class="ap-tab" onclick="showTab('contact')">&#128222; Contact</button>
+            <button class="ap-tab" onclick="showTab('pwd')">&#128273; Mot de passe</button>
+        </div>
+        <div class="ap-body">
+            <div class="ap-section active" id="tab-dashboard"><div class="ap-section-title">Tableau de bord</div><div class="ap-stats" id="dash-stats"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Dernières modifications</span></div><div id="dash-log" style="font-size:13px;color:var(--texte-doux);line-height:1.8;"></div></div></div>
+            <div class="ap-section" id="tab-services"><div class="ap-section-title">Gérer les services</div><div id="services-list"></div><button class="ap-btn ap-btn-primary" onclick="addService()">+ Ajouter un service</button></div>
+            <div class="ap-section" id="tab-strip"><div class="ap-section-title">Bandeau d'annonces</div><p style="font-size:13px;color:var(--texte-doux);margin-bottom:16px;">Ces textes apparaissent dans le bandeau orange sous le héro.</p><div id="strip-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addStripItem()">+ Ajouter</button><button class="ap-btn ap-btn-primary" onclick="saveStrip()">&#128190; Enregistrer</button></div></div>
+            <div class="ap-section" id="tab-reviews"><div class="ap-section-title">Avis clients</div><div id="reviews-list"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Ajouter un avis</span></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Prénom &amp; Nom</label><input class="ap-input" id="rev-name" placeholder="Marie D." /></div><div class="ap-field"><label class="ap-label">Note</label><select class="ap-select" id="rev-stars"><option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;</option><option value="4">&#11088;&#11088;&#11088;&#11088;</option><option value="3">&#11088;&#11088;&#11088;</option><option value="2">&#11088;&#11088;</option><option value="1">&#11088;</option></select></div></div><div class="ap-field"><label class="ap-label">Commentaire</label><textarea class="ap-textarea" id="rev-text" placeholder="Travail soigné..."></textarea></div><div class="ap-field"><label class="ap-label">Service</label><input class="ap-input" id="rev-service" placeholder="Toiture, Isolation..." /></div><button class="ap-btn ap-btn-primary" onclick="addReview()">Ajouter l'avis</button></div></div>
+            <div class="ap-section" id="tab-contact"><div class="ap-section-title">Informations de contact</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Téléphone</label><input class="ap-input" id="ct-phone" placeholder="+32 4XX XXX XXX" /></div><div class="ap-field"><label class="ap-label">Email</label><input class="ap-input" id="ct-email" value="contact.fredrenovation59@gmail.com" /></div></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Ville / Région</label><input class="ap-input" id="ct-city" placeholder="Belgique" /></div><div class="ap-field"><label class="ap-label">Numéro TVA / BCE</label><input class="ap-input" id="ct-tva" placeholder="BE 08332520" /></div></div><div class="ap-field"><label class="ap-label">Slogan</label><input class="ap-input" id="ct-slogan" placeholder="Votre maison, notre passion." /></div><div class="ap-field"><label class="ap-label">Années d'expérience</label><input class="ap-input" id="ct-years" placeholder="15+" /></div><button class="ap-btn ap-btn-primary" onclick="saveContact()">&#128190; Enregistrer</button></div></div>
+            <div class="ap-section" id="tab-pwd"><div class="ap-section-title">Changer le mot de passe</div><div class="ap-card" style="max-width:380px;"><div class="ap-field"><label class="ap-label">Mot de passe actuel</label><input class="ap-input" type="password" id="pwd-current" /></div><div class="ap-field"><label class="ap-label">Nouveau mot de passe</label><input class="ap-input" type="password" id="pwd-new" /></div><div class="ap-field"><label class="ap-label">Confirmer</label><input class="ap-input" type="password" id="pwd-confirm" /></div><button class="ap-btn ap-btn-primary" onclick="changePwd()">&#128273; Changer</button><div id="pwd-msg" style="font-size:13px;margin-top:10px;"></div></div></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const ADMIN_PWD_KEY='fred_admin_pwd',DEFAULT_PWD='fred2026';
+const JSONBIN_ID='6a23f41eda38895dfe906803';
+const JSONBIN_KEY='$2a$10$bFHR6ZNE/kq3cZ/E1aT.bO1hCf5UcTk4Cp.xeq3e5VNp1l6XOuR36';
+const JSONBIN_URL='https://api.jsonbin.io/v3/b/'+JSONBIN_ID;
+
+let _dataCache=null;
+
+function getAdminPwd(){return localStorage.getItem(ADMIN_PWD_KEY)||DEFAULT_PWD;}
+
+function getData(){return _dataCache||defaultData();}
+
+async function loadDataFromServer(){
+  try{
+    const r=await fetch(JSONBIN_URL+'/latest',{
+      headers:{'X-Master-Key':JSONBIN_KEY}
+    });
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const j=await r.json();
+    const d=j.record||j;
+    if(!d||!d.services){
+      const def=defaultData();
+      await saveData(def);
+      _dataCache=def;
+    }else{
+      _dataCache=d;
+    }
+  }catch(e){
+    console.warn('JSONBin load error:',e);
+    if(!_dataCache)_dataCache=defaultData();
+  }
+  return _dataCache;
+}
+
+async function saveData(d){
+  d.lastSaved=new Date().toLocaleString('fr-FR');
+  _dataCache=d;
+  try{
+    const r=await fetch(JSONBIN_URL,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
+      body:JSON.stringify(d)
+    });
+    if(!r.ok)throw new Error('HTTP '+r.status);
+  }catch(e){
+    console.error('JSONBin save error:',e);
+    alert('⚠️ Erreur de sauvegarde en ligne. Vérifiez votre connexion.');
+  }
+}
+function defaultData(){return{services:[{id:1,tag:'Toiture',title:'Couverture traditionnelle',text:'Tuile, zinc, bac acier. Des matériaux haut de gamme pour allier durabilité et esthétique.',img:'https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=700&auto=format&fit=crop'},{id:2,tag:'Étanchéité',title:'Toiture plate EPDM',text:'Résistante et hautement durable, notre solution EPDM garantit une protection optimale.',img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=700&auto=format&fit=crop'},{id:3,tag:'Velux',title:'Fenêtres de toit',text:'Plus de lumière, plus de confort. Pose parfaite de Velux pour apporter de la clarté.',img:'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=700&auto=format&fit=crop'},{id:4,tag:'Menuiserie',title:'Châssis PVC & ALU',text:'Remplacement de fenêtres et portes. Optimisation des performances thermiques et phoniques.',img:'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?q=80&w=700&auto=format&fit=crop'},{id:5,tag:'Domotique',title:'Volets Roulants',text:'Installation de systèmes manuels ou motorisés pour votre confort quotidien.',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=700&auto=format&fit=crop'},{id:6,tag:'Isolation',title:'Isolation Thermique',text:"Isolation performante des combles, murs ou sols pour réduire vos déperditions d'énergie.",img:'https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3?q=80&w=700&auto=format&fit=crop'},{id:7,tag:'Aménagement',title:'Placo & Cloisonnement',text:'Doublage des murs, séparations de pièces et faux plafonds avec finitions soignées.',img:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=700&auto=format&fit=crop'},{id:8,tag:'Revêtements',title:'Carrelage Sol & Mur',text:"Pose de carrelages, faïences et crédences pour pièces d'eau, cuisines ou séjours.",img:'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=700&auto=format&fit=crop'},{id:9,tag:'Façade',title:'Bardage Extérieur',text:'Revêtement esthétique bois ou composite pour moderniser la façade tout en isolant.',img:'https://images.unsplash.com/photo-1542614471-001ccf2b449c?q=80&w=700&auto=format&fit=crop'}],strip:['Toiture & Charpente','Toiture Plate EPDM','Velux & Lucarnes','Interventions Urgentes'],reviews:[],contact:{phone:'07 82 25 33 09',email:'contact.fredrenovation59@gmail.com',city:'Belgique',tva:'BE 08332520',slogan:'Votre maison, notre passion.',years:'15+'},lastSaved:null,log:[]};}
+async function logAction(msg){const d=getData();if(!d.log)d.log=[];d.log.unshift(new Date().toLocaleString('fr-FR')+' — '+msg);if(d.log.length>20)d.log=d.log.slice(0,20);await saveData(d);}
+async function openAdmin(){document.getElementById('admin-overlay').classList.add('show');document.getElementById('admin-login').style.display='block';document.getElementById('admin-panel').classList.remove('show');document.getElementById('admin-pwd').value='';document.getElementById('admin-err').style.display='none';setTimeout(()=>document.getElementById('admin-pwd').focus(),200);}
+function closeAdmin(){document.getElementById('admin-overlay').classList.remove('show');}
+async function doLogin(){const val=document.getElementById('admin-pwd').value;if(val===getAdminPwd()){document.getElementById('admin-login').style.display='none';document.getElementById('admin-panel').classList.add('show');// Afficher un loader pendant le chargement
+document.getElementById('admin-panel').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#888;font-size:15px;">⏳ Chargement des données...</div>';document.getElementById('admin-panel').classList.add('show');
+await loadDataFromServer();
+// Restore panel HTML
+document.getElementById('admin-panel').innerHTML=`<div class="ap-header"><h2>⚡ Admin — Fred Rénovation</h2><div class="ap-header-right"><button class="ap-logout" onclick="doLogout()">Déconnexion</button><button class="ap-close" onclick="closeAdmin()">✕</button></div></div><div class="ap-tabs"><button class="ap-tab active" onclick="showTab('dashboard')">📊 Dashboard</button><button class="ap-tab" onclick="showTab('services')">🔧 Services</button><button class="ap-tab" onclick="showTab('strip')">📢 Annonces</button><button class="ap-tab" onclick="showTab('reviews')">⭐ Avis</button><button class="ap-tab" onclick="showTab('contact')">📞 Contact</button><button class="ap-tab" onclick="showTab('pwd')">🔑 Mot de passe</button></div><div class="ap-body"><div class="ap-section active" id="tab-dashboard"><div class="ap-section-title">Tableau de bord</div><div class="ap-stats" id="dash-stats"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Dernières modifications</span></div><div id="dash-log" style="font-size:13px;color:var(--texte-doux);line-height:1.8;"></div></div></div><div class="ap-section" id="tab-services"><div class="ap-section-title">Gérer les services</div><div id="services-list"></div><button class="ap-btn ap-btn-primary" onclick="addService()">+ Ajouter un service</button></div><div class="ap-section" id="tab-strip"><div class="ap-section-title">Bandeau d'annonces</div><p style="font-size:13px;color:var(--texte-doux);margin-bottom:16px;">Ces textes apparaissent dans le bandeau orange sous le héro.</p><div id="strip-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addStripItem()">+ Ajouter</button><button class="ap-btn ap-btn-primary" onclick="saveStrip()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-reviews"><div class="ap-section-title">Avis clients</div><div id="reviews-list"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Ajouter un avis</span></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Prénom & Nom</label><input class="ap-input" id="rev-name" placeholder="Marie D." /></div><div class="ap-field"><label class="ap-label">Note</label><select class="ap-select" id="rev-stars"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option></select></div></div><div class="ap-field"><label class="ap-label">Commentaire</label><textarea class="ap-textarea" id="rev-text" placeholder="Travail soigné..."></textarea></div><div class="ap-field"><label class="ap-label">Service</label><input class="ap-input" id="rev-service" placeholder="Toiture, Isolation..." /></div><button class="ap-btn ap-btn-primary" onclick="addReview()">Ajouter l'avis</button></div></div><div class="ap-section" id="tab-contact"><div class="ap-section-title">Informations de contact</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Téléphone</label><input class="ap-input" id="ct-phone" placeholder="+32 4XX XXX XXX" /></div><div class="ap-field"><label class="ap-label">Email</label><input class="ap-input" id="ct-email" value="contact.fredrenovation59@gmail.com" /></div></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Ville / Région</label><input class="ap-input" id="ct-city" placeholder="Belgique" /></div><div class="ap-field"><label class="ap-label">Numéro TVA / BCE</label><input class="ap-input" id="ct-tva" placeholder="BE 08332520" /></div></div><div class="ap-field"><label class="ap-label">Slogan</label><input class="ap-input" id="ct-slogan" placeholder="Votre maison, notre passion." /></div><div class="ap-field"><label class="ap-label">Années d'expérience</label><input class="ap-input" id="ct-years" placeholder="15+" /></div><button class="ap-btn ap-btn-primary" onclick="saveContact()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-pwd"><div class="ap-section-title">Changer le mot de passe</div><div class="ap-card" style="max-width:380px;"><div class="ap-field"><label class="ap-label">Mot de passe actuel</label><input class="ap-input" type="password" id="pwd-current" /></div><div class="ap-field"><label class="ap-label">Nouveau mot de passe</label><input class="ap-input" type="password" id="pwd-new" /></div><div class="ap-field"><label class="ap-label">Confirmer</label><input class="ap-input" type="password" id="pwd-confirm" /></div><button class="ap-btn ap-btn-primary" onclick="changePwd()">🔑 Changer</button><div id="pwd-msg" style="font-size:13px;margin-top:10px;"></div></div></div></div>`;
+refreshAll();}else{document.getElementById('admin-err').style.display='block';document.getElementById('admin-pwd').value='';document.getElementById('admin-pwd').focus();}}
+document.getElementById('admin-pwd').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+function doLogout(){document.getElementById('admin-panel').classList.remove('show');document.getElementById('admin-login').style.display='block';document.getElementById('admin-pwd').value='';}
+function showTab(name){document.querySelectorAll('.ap-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');event.currentTarget.classList.add('active');if(name==='dashboard')refreshDashboard();if(name==='services')renderServices();if(name==='strip')renderStrip();if(name==='reviews')renderReviews();if(name==='contact')loadContact();}
+function refreshAll(){refreshDashboard();renderServices();renderStrip();renderReviews();loadContact();applyDataToPage();}
+function refreshDashboard(){const d=getData();document.getElementById('dash-stats').innerHTML=`<div class="ap-stat"><div class="ap-stat-num">${d.services.length}</div><div class="ap-stat-label">Services</div></div><div class="ap-stat"><div class="ap-stat-num">${d.strip.length}</div><div class="ap-stat-label">Annonces</div></div><div class="ap-stat"><div class="ap-stat-num">${d.reviews.length}</div><div class="ap-stat-label">Avis</div></div><div class="ap-stat"><div class="ap-stat-num">${d.lastSaved?'&#10003;':'—'}</div><div class="ap-stat-label">Sauvegardé</div></div>`;document.getElementById('dash-log').innerHTML=d.log&&d.log.length?d.log.map(l=>`<div>• ${l}</div>`).join(''):'<div style="color:#aaa">Aucune modification.</div>';}
+function renderServices(){const d=getData();const el=document.getElementById('services-list');el.innerHTML='';d.services.forEach(s=>{el.innerHTML+=`<div class="ap-card" id="svc-card-${s.id}"><div class="ap-card-header"><span class="ap-card-title"><span class="ap-tag-preview">${escA(s.tag)}</span> &nbsp;${escA(s.title)}</span><div style="display:flex;gap:6px;"><button class="ap-btn ap-btn-sm ap-btn-primary" onclick="toggleSvcEdit(${s.id})">&#9998; Modifier</button><button class="ap-btn ap-btn-sm ap-btn-danger" onclick="deleteService(${s.id})">&#128465; Supprimer</button></div></div><div id="svc-edit-${s.id}" style="display:none;"><div class="ap-row"><div class="ap-field"><label class="ap-label">Tag</label><input class="ap-input" id="svc-tag-${s.id}" value="${escA(s.tag)}" /></div><div class="ap-field"><label class="ap-label">Titre</label><input class="ap-input" id="svc-title-${s.id}" value="${escA(s.title)}" /></div></div><div class="ap-field"><label class="ap-label">Description</label><textarea class="ap-textarea" id="svc-text-${s.id}">${escA(s.text)}</textarea></div><div class="ap-field"><label class="ap-label">URL image</label><input class="ap-input" id="svc-img-${s.id}" value="${escA(s.img)}" /></div><button class="ap-btn ap-btn-primary" onclick="saveService(${s.id})">&#128190; Enregistrer</button></div></div>`;});}
+function toggleSvcEdit(id){const el=document.getElementById('svc-edit-'+id);el.style.display=el.style.display==='none'?'block':'none';}
+async function saveService(id){const d=getData();const s=d.services.find(x=>x.id===id);if(!s)return;s.tag=document.getElementById('svc-tag-'+id).value.trim();s.title=document.getElementById('svc-title-'+id).value.trim();s.text=document.getElementById('svc-text-'+id).value.trim();s.img=document.getElementById('svc-img-'+id).value.trim();await saveData(d);await logAction('Service modifié : '+s.title);applyDataToPage();alert('✅ "'+s.title+'" enregistré !');toggleSvcEdit(id);}
+async function deleteService(id){if(!confirm('Supprimer ?'))return;const d=getData();const s=d.services.find(x=>x.id===id);d.services=d.services.filter(x=>x.id!==id);await saveData(d);await logAction('Service supprimé : '+(s?s.title:id));renderServices();applyDataToPage();}
+async function addService(){const d=getData();const newId=Date.now();d.services.push({id:newId,tag:'Nouveau',title:'Nouveau service',text:'Description.',img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=700&auto=format&fit=crop'});await saveData(d);await logAction('Nouveau service ajouté');renderServices();applyDataToPage();setTimeout(()=>{document.getElementById('svc-edit-'+newId).style.display='block';document.getElementById('svc-edit-'+newId).scrollIntoView({behavior:'smooth'});},100);}
+function renderStrip(){const d=getData();const el=document.getElementById('strip-list');el.innerHTML='';d.strip.forEach((item,i)=>{el.innerHTML+=`<div class="strip-item-row"><input class="ap-input" value="${escA(item)}" id="strip-item-${i}" /><button class="ap-btn ap-btn-sm ap-btn-danger" onclick="removeStripItem(${i})">&#10005;</button></div>`;});}
+async function addStripItem(){const d=getData();d.strip.push('Nouvelle annonce');await saveData(d);renderStrip();}
+async function removeStripItem(i){const d=getData();d.strip.splice(i,1);await saveData(d);renderStrip();}
+async function saveStrip(){const d=getData();d.strip=Array.from(document.querySelectorAll('[id^="strip-item-"]')).map(inp=>inp.value.trim()).filter(Boolean);await saveData(d);await logAction('Bandeau mis à jour');applyDataToPage();alert('✅ Bandeau enregistré !');}
+function renderReviews(){const d=getData();const el=document.getElementById('reviews-list');if(!d.reviews.length){el.innerHTML='<p style="color:var(--texte-doux);font-size:13px;margin-bottom:16px;">Aucun avis.</p>';return;}el.innerHTML=d.reviews.map((r,i)=>`<div class="review-card"><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;"><strong style="font-size:14px;">${escA(r.name)}</strong><span class="review-stars">${'⭐'.repeat(parseInt(r.stars))}</span>${r.service?`<span style="font-size:11px;background:#fff4f0;color:var(--orange);padding:2px 8px;border-radius:3px;font-weight:700;">${escA(r.service)}</span>`:''}</div><p style="font-size:13px;color:var(--texte-doux);">${escA(r.text)}</p></div><button class="ap-btn ap-btn-sm ap-btn-danger" onclick="deleteReview(${i})">&#128465;</button></div>`).join('');}
+async function addReview(){const name=document.getElementById('rev-name').value.trim();const text=document.getElementById('rev-text').value.trim();if(!name||!text){alert('Nom et commentaire requis.');return;}const d=getData();if(!d.reviews)d.reviews=[];d.reviews.push({name,stars:document.getElementById('rev-stars').value,text,service:document.getElementById('rev-service').value.trim(),date:new Date().toLocaleDateString('fr-FR')});await saveData(d);await logAction('Avis ajouté : '+name);document.getElementById('rev-name').value='';document.getElementById('rev-text').value='';document.getElementById('rev-service').value='';renderReviews();alert('✅ Avis ajouté !');}
+async function deleteReview(i){if(!confirm('Supprimer ?'))return;const d=getData();d.reviews.splice(i,1);await saveData(d);await logAction('Avis supprimé');renderReviews();}
+function loadContact(){const d=getData();const c=d.contact||{};document.getElementById('ct-phone').value=c.phone||'';document.getElementById('ct-email').value=c.email||'contact.fredrenovation59@gmail.com';document.getElementById('ct-city').value=c.city||'';document.getElementById('ct-tva').value=c.tva||'BE 08332520';document.getElementById('ct-slogan').value=c.slogan||'';document.getElementById('ct-years').value=c.years||'15+';}
+async function saveContact(){const d=getData();d.contact={phone:document.getElementById('ct-phone').value.trim(),email:document.getElementById('ct-email').value.trim(),city:document.getElementById('ct-city').value.trim(),tva:document.getElementById('ct-tva').value.trim(),slogan:document.getElementById('ct-slogan').value.trim(),years:document.getElementById('ct-years').value.trim()};await saveData(d);await logAction('Contact mis à jour');applyDataToPage();alert('✅ Contact enregistré !');}
+function changePwd(){const cur=document.getElementById('pwd-current').value;const nw=document.getElementById('pwd-new').value;const cf=document.getElementById('pwd-confirm').value;const msg=document.getElementById('pwd-msg');if(cur!==getAdminPwd()){msg.style.color='#c0392b';msg.textContent='Mot de passe actuel incorrect.';return;}if(nw.length<4){msg.style.color='#c0392b';msg.textContent='Minimum 4 caractères.';return;}if(nw!==cf){msg.style.color='#c0392b';msg.textContent='Les mots de passe ne correspondent pas.';return;}localStorage.setItem(ADMIN_PWD_KEY,nw);msg.style.color='#0D1F3C';msg.textContent='✅ Mot de passe changé !';document.getElementById('pwd-current').value='';document.getElementById('pwd-new').value='';document.getElementById('pwd-confirm').value='';}
+function applyDataToPage(){const d=getData();const grid=document.getElementById('prestation-grid-main');if(grid){grid.innerHTML='';d.services.forEach((s,i)=>{const num=String(i+1).padStart(2,'0');grid.innerHTML+=`<div class="prest-card"><div class="prest-img-box"><span class="prest-num">${num}</span><img src="${escA(s.img)}" alt="${escA(s.title)}" loading="lazy"></div><div class="prest-body"><span class="prest-tag">${escA(s.tag)}</span><h3 class="prest-title">${escA(s.title).toUpperCase()}</h3><p class="prest-text">${escA(s.text)}</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20${encodeURIComponent(s.title)}" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>`;});const cnt=document.getElementById('prest-count-label');if(cnt)cnt.textContent=d.services.length+' SERVICES';}const stripEl=document.getElementById('strip-display');if(stripEl&&d.strip&&d.strip.length)stripEl.innerHTML=d.strip.map(t=>`<span class="strip-item">${escA(t)}</span>`).join('');const c=d.contact||{};const footerReg=document.getElementById('footer-reg');if(footerReg&&c.tva)footerReg.textContent=c.tva;const whyNum1=document.getElementById('why-num-1');if(whyNum1&&c.years)whyNum1.textContent=c.years;const elA=document.getElementById('page-phone-link');if(elA&&c.phone){elA.textContent=c.phone;elA.href='tel:'+c.phone.replace(/\s/g,'');}const elB=document.getElementById('page-email-link');if(elB&&c.email){elB.textContent=c.email;elB.href='mailto:'+c.email;}const elC=document.getElementById('page-city');if(elC&&c.city)elC.textContent=c.city;const elD=document.getElementById('page-tva');if(elD&&c.tva)elD.textContent=c.tva;const elE=document.getElementById('page-slogan');if(elE&&c.slogan)elE.textContent=c.slogan;
+// Avis clients
+const revGrid=document.getElementById('reviews-display');const revEmpty=document.getElementById('reviews-empty');
+if(revGrid){const reviews=d.reviews||[];if(reviews.length===0){revGrid.style.display='none';if(revEmpty)revEmpty.style.display='block';}else{revGrid.style.display='grid';if(revEmpty)revEmpty.style.display='none';revGrid.innerHTML=reviews.map(r=>{const stars='⭐'.repeat(parseInt(r.stars)||5);return`<div class="review-card"><div class="review-stars">${stars}</div><p class="review-text">"${escA(r.text)}"</p><div class="review-author">${escA(r.name)}</div>${r.service?`<div class="review-service">${escA(r.service)}</div>`:''}<div class="review-date">${escA(r.date||'')}</div></div>`;}).join('');}}}
+function escA(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// Chargement initial depuis npoint pour TOUS les visiteurs
+(async function init(){
+  try{
+    await loadDataFromServer();
+  }catch(e){
+    console.warn('Init fallback:',e);
+  }
+  applyDataToPage();
+})();
+</script>
+</body>
+</html>
