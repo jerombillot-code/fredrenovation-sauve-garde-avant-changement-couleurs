@@ -946,16 +946,122 @@ async function doLogin(){const val=document.getElementById('admin-pwd').value;if
 document.getElementById('admin-panel').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#888;font-size:15px;">⏳ Chargement des données...</div>';document.getElementById('admin-panel').classList.add('show');
 await loadDataFromServer();
 // Restore panel HTML
-document.getElementById('admin-panel').innerHTML=`<div class="ap-header"><h2>⚡ Admin — Fred Rénovation</h2><div class="ap-header-right"><button class="ap-logout" onclick="doLogout()">Déconnexion</button><button class="ap-close" onclick="closeAdmin()">✕</button></div></div><div class="ap-tabs"><button class="ap-tab active" onclick="showTab('dashboard')">📊 Dashboard</button><button class="ap-tab" onclick="showTab('highlight')">✨ Notre Différence</button><button class="ap-tab" onclick="showTab('services')">🔧 Services</button><button class="ap-tab" onclick="showTab('strip')">📢 Annonces</button><button class="ap-tab" onclick="showTab('reviews')">⭐ Avis</button><button class="ap-tab" onclick="showTab('contact')">📞 Contact</button><button class="ap-tab" onclick="showTab('pwd')">🔑 Mot de passe</button></div><div class="ap-body"><div class="ap-section active" id="tab-dashboard"><div class="ap-section-title">Tableau de bord</div><div class="ap-stats" id="dash-stats"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Dernières modifications</span></div><div id="dash-log" style="font-size:13px;color:var(--texte-doux);line-height:1.8;"></div></div></div><div class="ap-section" id="tab-highlight"><div class="ap-section-title">Notre Différence — En-tête</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Label (petit texte orange)</label><input class="ap-input" id="hl-label" placeholder="Notre Différence" /></div><div class="ap-field"><label class="ap-label">Sous-titre</label><input class="ap-input" id="hl-desc" placeholder="Pas la plus chère — la meilleure pour vous." /></div></div><div class="ap-field"><label class="ap-label">Titre principal (HTML autorisé)</label><input class="ap-input" id="hl-title" placeholder='LA SOLUTION <span class="accent">INTELLIGENTE</span>' /></div><button class="ap-btn ap-btn-primary" style="margin-top:8px;" onclick="saveHighlightHeader()">💾 Enregistrer l'en-tête</button></div><div class="ap-section-title" style="margin-top:24px;">Cartes (4 maximum)</div><div id="highlight-cards-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addHighlightCard()">+ Ajouter une carte</button><button class="ap-btn ap-btn-primary" onclick="saveHighlightCards()">💾 Enregistrer les cartes</button></div></div><div class="ap-section" id="tab-services"><div class="ap-section-title">Gérer les services</div><div id="services-list"></div><button class="ap-btn ap-btn-primary" onclick="addService()">+ Ajouter un service</button></div><div class="ap-section" id="tab-strip"><div class="ap-section-title">Bandeau d'annonces</div><p style="font-size:13px;color:var(--texte-doux);margin-bottom:16px;">Ces textes apparaissent dans le bandeau orange sous le héro.</p><div id="strip-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addStripItem()">+ Ajouter</button><button class="ap-btn ap-btn-primary" onclick="saveStrip()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-reviews"><div class="ap-section-title">Avis clients</div><div id="reviews-list"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Ajouter un avis</span></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Prénom & Nom</label><input class="ap-input" id="rev-name" placeholder="Marie D." /></div><div class="ap-field"><label class="ap-label">Note</label><select class="ap-select" id="rev-stars"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option></select></div></div><div class="ap-field"><label class="ap-label">Commentaire</label><textarea class="ap-textarea" id="rev-text" placeholder="Travail soigné..."></textarea></div><div class="ap-field"><label class="ap-label">Service</label><input class="ap-input" id="rev-service" placeholder="Toiture, Isolation..." /></div><button class="ap-btn ap-btn-primary" onclick="addReview()">Ajouter l'avis</button></div></div><div class="ap-section" id="tab-contact"><div class="ap-section-title">Informations de contact</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Téléphone</label><input class="ap-input" id="ct-phone" placeholder="+32 4XX XXX XXX" /></div><div class="ap-field"><label class="ap-label">Email</label><input class="ap-input" id="ct-email" value="contact.fredrenovation59@gmail.com" /></div></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Ville / Région</label><input class="ap-input" id="ct-city" placeholder="Belgique" /></div><div class="ap-field"><label class="ap-label">Numéro TVA / BCE</label><input class="ap-input" id="ct-tva" placeholder="BE 08332520" /></div></div><div class="ap-field"><label class="ap-label">Slogan</label><input class="ap-input" id="ct-slogan" placeholder="Votre maison, notre passion." /></div><div class="ap-field"><label class="ap-label">Années d'expérience</label><input class="ap-input" id="ct-years" placeholder="15+" /></div><button class="ap-btn ap-btn-primary" onclick="saveContact()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-pwd"><div class="ap-section-title">Changer le mot de passe</div><div class="ap-card" style="max-width:380px;"><div class="ap-field"><label class="ap-label">Mot de passe actuel</label><input class="ap-input" type="password" id="pwd-current" /></div><div class="ap-field"><label class="ap-label">Nouveau mot de passe</label><input class="ap-input" type="password" id="pwd-new" /></div><div class="ap-field"><label class="ap-label">Confirmer</label><input class="ap-input" type="password" id="pwd-confirm" /></div><button class="ap-btn ap-btn-primary" onclick="changePwd()">🔑 Changer</button><div id="pwd-msg" style="font-size:13px;margin-top:10px;"></div></div></div></div>`;
+document.getElementById('admin-panel').innerHTML=`<div class="ap-header"><h2>⚡ Admin — Fred Rénovation</h2><div class="ap-header-right"><button class="ap-logout" onclick="doLogout()">Déconnexion</button><button class="ap-close" onclick="closeAdmin()">✕</button></div></div><div class="ap-tabs"><button class="ap-tab active" onclick="showTab('dashboard')">📊 Dashboard</button><button class="ap-tab" onclick="showTab('highlight')">✨ Notre Différence</button><button class="ap-tab" onclick="showTab('services')">🔧 Services</button><button class="ap-tab" onclick="showTab('strip')">📢 Annonces</button><button class="ap-tab" onclick="showTab('reviews')">⭐ Avis</button><button class="ap-tab" onclick="showTab('contact')">📞 Contact</button><button class="ap-tab" onclick="showTab('pwd')">🔑 Mot de passe</button></div><div class="ap-body"><div class="ap-section active" id="tab-dashboard"><div class="ap-section-title">Tableau de bord</div><div class="ap-stats" id="dash-stats"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Dernières modifications</span></div><div id="dash-log" style="font-size:13px;color:var(--texte-doux);line-height:1.8;"></div></div></div><div class="ap-section" id="tab-highlight"><div class="ap-section-title">En-tête de section</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Label (petit texte orange)</label><input class="ap-input" id="hl-label" placeholder="Notre Différence" /></div><div class="ap-field"><label class="ap-label">Sous-titre</label><input class="ap-input" id="hl-desc" placeholder="Pas la plus chère..." /></div></div><div class="ap-field"><label class="ap-label">Titre principal</label><input class="ap-input" id="hl-title" placeholder='LA SOLUTION INTELLIGENTE' /></div><button class="ap-btn ap-btn-primary" style="margin-top:8px;" onclick="saveHighlightHeader()">💾 Enregistrer l'en-tête</button></div><div class="ap-section-title" style="margin-top:24px;">Cartes (4 maximum)</div><div id="highlight-cards-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addHighlightCard()">+ Ajouter une carte</button><button class="ap-btn ap-btn-primary" onclick="saveHighlightCards()">💾 Enregistrer les cartes</button></div></div><div class="ap-section" id="tab-services"><div class="ap-section-title">Gérer les services</div><div id="services-list"></div><button class="ap-btn ap-btn-primary" onclick="addService()">+ Ajouter un service</button></div><div class="ap-section" id="tab-strip"><div class="ap-section-title">Bandeau d'annonces</div><p style="font-size:13px;color:var(--texte-doux);margin-bottom:16px;">Ces textes apparaissent dans le bandeau orange sous le héro.</p><div id="strip-list"></div><div style="display:flex;gap:10px;margin-top:8px;"><button class="ap-btn ap-btn-primary" onclick="addStripItem()">+ Ajouter</button><button class="ap-btn ap-btn-primary" onclick="saveStrip()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-reviews"><div class="ap-section-title">Avis clients</div><div id="reviews-list"></div><div class="ap-card"><div class="ap-card-header"><span class="ap-card-title">Ajouter un avis</span></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Prénom & Nom</label><input class="ap-input" id="rev-name" placeholder="Marie D." /></div><div class="ap-field"><label class="ap-label">Note</label><select class="ap-select" id="rev-stars"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option></select></div></div><div class="ap-field"><label class="ap-label">Commentaire</label><textarea class="ap-textarea" id="rev-text" placeholder="Travail soigné..."></textarea></div><div class="ap-field"><label class="ap-label">Service</label><input class="ap-input" id="rev-service" placeholder="Toiture, Isolation..." /></div><button class="ap-btn ap-btn-primary" onclick="addReview()">Ajouter l'avis</button></div></div><div class="ap-section" id="tab-contact"><div class="ap-section-title">Informations de contact</div><div class="ap-card"><div class="ap-row"><div class="ap-field"><label class="ap-label">Téléphone</label><input class="ap-input" id="ct-phone" placeholder="+32 4XX XXX XXX" /></div><div class="ap-field"><label class="ap-label">Email</label><input class="ap-input" id="ct-email" value="contact.fredrenovation59@gmail.com" /></div></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Ville / Région</label><input class="ap-input" id="ct-city" placeholder="Belgique" /></div><div class="ap-field"><label class="ap-label">Numéro TVA / BCE</label><input class="ap-input" id="ct-tva" placeholder="BE 08332520" /></div></div><div class="ap-field"><label class="ap-label">Slogan</label><input class="ap-input" id="ct-slogan" placeholder="Votre maison, notre passion." /></div><div class="ap-field"><label class="ap-label">Années d'expérience</label><input class="ap-input" id="ct-years" placeholder="15+" /></div><button class="ap-btn ap-btn-primary" onclick="saveContact()">💾 Enregistrer</button></div></div><div class="ap-section" id="tab-pwd"><div class="ap-section-title">Changer le mot de passe</div><div class="ap-card" style="max-width:380px;"><div class="ap-field"><label class="ap-label">Mot de passe actuel</label><input class="ap-input" type="password" id="pwd-current" /></div><div class="ap-field"><label class="ap-label">Nouveau mot de passe</label><input class="ap-input" type="password" id="pwd-new" /></div><div class="ap-field"><label class="ap-label">Confirmer</label><input class="ap-input" type="password" id="pwd-confirm" /></div><button class="ap-btn ap-btn-primary" onclick="changePwd()">🔑 Changer</button><div id="pwd-msg" style="font-size:13px;margin-top:10px;"></div></div></div></div>`;
 refreshAll();}else{document.getElementById('admin-err').style.display='block';document.getElementById('admin-pwd').value='';document.getElementById('admin-pwd').focus();}}
 document.getElementById('admin-pwd').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 function doLogout(){document.getElementById('admin-panel').classList.remove('show');document.getElementById('admin-login').style.display='block';document.getElementById('admin-pwd').value='';}
 function showTab(name){document.querySelectorAll('.ap-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');event.currentTarget.classList.add('active');if(name==='dashboard')refreshDashboard();if(name==='highlight')renderHighlight();if(name==='services')renderServices();if(name==='strip')renderStrip();if(name==='reviews')renderReviews();if(name==='contact')loadContact();}
-function renderHighlight(){const d=getData();const hl=d.highlight||{};const lbl=document.getElementById('hl-label');if(lbl)lbl.value=hl.label||'Notre Différence';const ttl=document.getElementById('hl-title');if(ttl)ttl.value=hl.title||'';const dsc=document.getElementById('hl-desc');if(dsc)dsc.value=hl.desc||'';const el=document.getElementById('highlight-cards-list');if(!el)return;const cards=hl.cards||[];el.innerHTML=cards.map((c,i)=>`<div class="ap-card" style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><strong style="font-size:13px;">Carte ${i+1}</strong><button class="ap-btn ap-btn-sm ap-btn-danger" onclick="removeHighlightCard(${i})">✕ Supprimer</button></div><div class="ap-row"><div class="ap-field"><label class="ap-label">Badge (catégorie)</label><input class="ap-input" id="hl-cat-${i}" value="${escA(c.cat)}" /></div><div class="ap-field"><label class="ap-label">Titre</label><input class="ap-input" id="hl-ctitle-${i}" value="${escA(c.title)}" /></div></div><div class="ap-field"><label class="ap-label">Description</label><input class="ap-input" id="hl-cdesc-${i}" value="${escA(c.desc)}" /></div><div class="ap-field"><label class="ap-label">URL image</label><input class="ap-input" id="hl-cimg-${i}" value="${escA(c.img)}" /></div></div>`).join('');}
-async function saveHighlightHeader(){const d=getData();if(!d.highlight)d.highlight={};d.highlight.label=document.getElementById('hl-label').value.trim();d.highlight.title=document.getElementById('hl-title').value.trim();d.highlight.desc=document.getElementById('hl-desc').value.trim();await saveData(d);await logAction('Notre Différence — en-tête mis à jour');applyDataToPage();alert('✅ En-tête enregistré !');}
-async function saveHighlightCards(){const d=getData();if(!d.highlight)d.highlight={};const cards=d.highlight.cards||[];d.highlight.cards=cards.map((c,i)=>({cat:document.getElementById('hl-cat-'+i).value.trim(),title:document.getElementById('hl-ctitle-'+i).value.trim(),desc:document.getElementById('hl-cdesc-'+i).value.trim(),img:document.getElementById('hl-cimg-'+i).value.trim()}));await saveData(d);await logAction('Notre Différence — cartes mises à jour');applyDataToPage();alert('✅ Cartes enregistrées !');}
-async function addHighlightCard(){const d=getData();if(!d.highlight)d.highlight={};if(!d.highlight.cards)d.highlight.cards=[];if(d.highlight.cards.length>=4){alert('Maximum 4 cartes.');return;}d.highlight.cards.push({cat:'Nouveau',title:'NOUVEAU TITRE',desc:'Description de la carte.',img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=600&auto=format&fit=crop'});await saveData(d);renderHighlight();applyDataToPage();}
-async function removeHighlightCard(i){if(!confirm('Supprimer cette carte ?'))return;const d=getData();d.highlight.cards.splice(i,1);await saveData(d);renderHighlight();applyDataToPage();}
+
+function renderHighlight(){
+  const d=getData();const hl=d.highlight||{};
+  const lbl=document.getElementById('hl-label');if(lbl)lbl.value=hl.label||'';
+  const ttl=document.getElementById('hl-title');if(ttl)ttl.value=(hl.title||'').replace(/<[^>]+>/g,'');
+  const dsc=document.getElementById('hl-desc');if(dsc)dsc.value=hl.desc||'';
+  const el=document.getElementById('highlight-cards-list');if(!el)return;
+  const cards=hl.cards||[];
+  el.innerHTML=cards.map((c,i)=>{
+    const dropId='hl-'+i;
+    const previewHtml=c.img
+      ?`<div class="img-drop-preview"><img src="${c.img.replace(/"/g,'&quot;')}" alt="apercu"><button class="img-drop-remove" onclick="event.stopPropagation();clearHlImg(${i})">&#10005;</button></div>`
+      :`<div class="img-drop-placeholder"><div class="img-drop-icon">&#128247;</div><div class="img-drop-text">Glissez une photo ici<br><span>ou cliquez pour choisir</span></div><div class="img-drop-hint">JPG PNG WEBP &mdash; max 10 Mo</div></div>`;
+    return `<div class="ap-card" style="margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <strong style="font-size:13px;">Carte ${i+1}</strong>
+        <button class="ap-btn ap-btn-sm ap-btn-danger" onclick="removeHighlightCard(${i})">✕ Supprimer</button>
+      </div>
+      <div class="ap-row">
+        <div class="ap-field"><label class="ap-label">Badge (catégorie)</label><input class="ap-input" id="hl-cat-${i}" value="${escA(c.cat)}" /></div>
+        <div class="ap-field"><label class="ap-label">Titre</label><input class="ap-input" id="hl-ctitle-${i}" value="${escA(c.title)}" /></div>
+      </div>
+      <div class="ap-field"><label class="ap-label">Description</label><input class="ap-input" id="hl-cdesc-${i}" value="${escA(c.desc)}" /></div>
+      <div class="ap-field"><label class="ap-label">Image</label>
+        <div class="img-drop-zone" id="drop-${dropId}"
+          onclick="document.getElementById('file-${dropId}').click()"
+          ondragover="event.preventDefault();this.classList.add('drag-over')"
+          ondragleave="this.classList.remove('drag-over')"
+          ondrop="handleHlImgDrop(event,${i})">${previewHtml}</div>
+        <input type="file" id="file-${dropId}" accept="image/*" style="display:none" onchange="handleHlImgFile(event,${i})"/>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function clearHlImg(i){
+  const dropId='hl-'+i;
+  const drop=document.getElementById('drop-'+dropId);
+  if(!drop)return;
+  drop.dataset.img='';
+  drop.innerHTML='<div class="img-drop-placeholder"><div class="img-drop-icon">&#128247;</div><div class="img-drop-text">Glissez une photo ici<br><span>ou cliquez pour choisir</span></div><div class="img-drop-hint">JPG PNG WEBP &mdash; max 10 Mo</div></div>';
+  const fi=document.getElementById('file-'+dropId);if(fi)fi.value='';
+}
+
+function setHlDropImg(i,url){
+  const dropId='hl-'+i;
+  const drop=document.getElementById('drop-'+dropId);
+  if(!drop)return;
+  drop.dataset.img=url;
+  drop.innerHTML=`<div class="img-drop-preview"><img src="${url}" alt="apercu"><button class="img-drop-remove" onclick="event.stopPropagation();clearHlImg(${i})">&#10005;</button></div>`;
+}
+
+function showHlDropLoading(i){
+  const dropId='hl-'+i;
+  const drop=document.getElementById('drop-'+dropId);
+  if(!drop)return;
+  drop.innerHTML=`<div class="img-drop-placeholder"><div class="img-drop-icon" style="animation:spin 1s linear infinite;display:inline-block">&#9696;</div><div class="img-drop-text">Upload en cours...</div></div>`;
+}
+
+async function handleHlImgFile(evt,i){
+  const file=evt.target.files[0];if(!file)return;
+  if(file.size>10*1024*1024){alert('Image trop lourde (max 10 Mo).');return;}
+  showHlDropLoading(i);
+  try{const url=await uploadToCloudinary(file);setHlDropImg(i,url);}
+  catch(e){alert('Erreur upload : '+e.message);clearHlImg(i);}
+}
+
+async function handleHlImgDrop(evt,i){
+  evt.preventDefault();
+  const dropId='hl-'+i;
+  document.getElementById('drop-'+dropId).classList.remove('drag-over');
+  const file=evt.dataTransfer.files[0];
+  if(!file||!file.type.startsWith('image/')){alert('Fichier image requis.');return;}
+  if(file.size>10*1024*1024){alert('Image trop lourde (max 10 Mo).');return;}
+  showHlDropLoading(i);
+  try{const url=await uploadToCloudinary(file);setHlDropImg(i,url);}
+  catch(e){alert('Erreur upload : '+e.message);clearHlImg(i);}
+}
+
+async function saveHighlightHeader(){
+  const d=getData();if(!d.highlight)d.highlight={};
+  d.highlight.label=document.getElementById('hl-label').value.trim();
+  d.highlight.title=document.getElementById('hl-title').value.trim();
+  d.highlight.desc=document.getElementById('hl-desc').value.trim();
+  await saveData(d);await logAction('Notre Différence — en-tête mis à jour');applyDataToPage();alert('✅ En-tête enregistré !');
+}
+
+async function saveHighlightCards(){
+  const d=getData();if(!d.highlight)d.highlight={};
+  const cards=d.highlight.cards||[];
+  d.highlight.cards=cards.map((c,i)=>{
+    const dropId='hl-'+i;
+    const drop=document.getElementById('drop-'+dropId);
+    const img=drop&&drop.dataset.img?drop.dataset.img:c.img;
+    return{cat:document.getElementById('hl-cat-'+i).value.trim(),title:document.getElementById('hl-ctitle-'+i).value.trim(),desc:document.getElementById('hl-cdesc-'+i).value.trim(),img};
+  });
+  await saveData(d);await logAction('Notre Différence — cartes mises à jour');applyDataToPage();alert('✅ Cartes enregistrées !');
+}
+
+async function addHighlightCard(){
+  const d=getData();if(!d.highlight)d.highlight={};if(!d.highlight.cards)d.highlight.cards=[];
+  if(d.highlight.cards.length>=4){alert('Maximum 4 cartes.');return;}
+  d.highlight.cards.push({cat:'Nouveau',title:'NOUVEAU TITRE',desc:'Description.',img:''});
+  await saveData(d);renderHighlight();
+}
+
+async function removeHighlightCard(i){
+  if(!confirm('Supprimer cette carte ?'))return;
+  const d=getData();d.highlight.cards.splice(i,1);
+  await saveData(d);renderHighlight();applyDataToPage();
+}
 function refreshAll(){refreshDashboard();renderHighlight();renderServices();renderStrip();renderReviews();loadContact();applyDataToPage();}
 function refreshDashboard(){const d=getData();document.getElementById('dash-stats').innerHTML=`<div class="ap-stat"><div class="ap-stat-num">${d.services.length}</div><div class="ap-stat-label">Services</div></div><div class="ap-stat"><div class="ap-stat-num">${d.strip.length}</div><div class="ap-stat-label">Annonces</div></div><div class="ap-stat"><div class="ap-stat-num">${d.reviews.length}</div><div class="ap-stat-label">Avis</div></div><div class="ap-stat"><div class="ap-stat-num">${d.lastSaved?'&#10003;':'—'}</div><div class="ap-stat-label">Sauvegardé</div></div>`;document.getElementById('dash-log').innerHTML=d.log&&d.log.length?d.log.map(l=>`<div>• ${l}</div>`).join(''):'<div style="color:#aaa">Aucune modification.</div>';}
 function renderServices(){
@@ -1025,7 +1131,7 @@ function loadContact(){const d=getData();const c=d.contact||{};document.getEleme
 async function saveContact(){const d=getData();d.contact={phone:document.getElementById('ct-phone').value.trim(),email:document.getElementById('ct-email').value.trim(),city:document.getElementById('ct-city').value.trim(),tva:document.getElementById('ct-tva').value.trim(),slogan:document.getElementById('ct-slogan').value.trim(),years:document.getElementById('ct-years').value.trim()};await saveData(d);await logAction('Contact mis à jour');applyDataToPage();alert('✅ Contact enregistré !');}
 function changePwd(){const cur=document.getElementById('pwd-current').value;const nw=document.getElementById('pwd-new').value;const cf=document.getElementById('pwd-confirm').value;const msg=document.getElementById('pwd-msg');if(cur!==getAdminPwd()){msg.style.color='#c0392b';msg.textContent='Mot de passe actuel incorrect.';return;}if(nw.length<4){msg.style.color='#c0392b';msg.textContent='Minimum 4 caractères.';return;}if(nw!==cf){msg.style.color='#c0392b';msg.textContent='Les mots de passe ne correspondent pas.';return;}localStorage.setItem(ADMIN_PWD_KEY,nw);msg.style.color='#0D1F3C';msg.textContent='✅ Mot de passe changé !';document.getElementById('pwd-current').value='';document.getElementById('pwd-new').value='';document.getElementById('pwd-confirm').value='';}
 function applyDataToPage(){const d=getData();
-// HIGHLIGHT SECTION
+// HIGHLIGHT
 const hl=d.highlight||{};const hlLabel=document.getElementById('highlight-label');if(hlLabel&&hl.label)hlLabel.textContent=hl.label;const hlTitle=document.getElementById('highlight-title');if(hlTitle&&hl.title)hlTitle.innerHTML=hl.title;const hlDesc=document.getElementById('highlight-desc');if(hlDesc&&hl.desc)hlDesc.textContent=hl.desc;const hlGrid=document.getElementById('highlight-grid');if(hlGrid&&hl.cards&&hl.cards.length){hlGrid.innerHTML=hl.cards.map(c=>`<div class="focus-card"><div class="focus-card-img"><span class="focus-card-cat">${escA(c.cat)}</span><img src="${escA(c.img)}" alt="${escA(c.title)}" loading="lazy"></div><div class="focus-card-body"><div class="focus-card-line"></div><div class="focus-card-title">${escA(c.title)}</div><div class="focus-card-desc">${escA(c.desc)}</div></div></div>`).join('');}
 // SERVICES
 const grid=document.getElementById('prestation-grid-main');if(grid){grid.innerHTML='';d.services.forEach((s,i)=>{const num=String(i+1).padStart(2,'0');grid.innerHTML+=`<div class="prest-card"><div class="prest-img-box"><span class="prest-num">${num}</span><img src="${escA(s.img)}" alt="${escA(s.title)}" loading="lazy"></div><div class="prest-body"><span class="prest-tag">${escA(s.tag)}</span><h3 class="prest-title">${escA(s.title).toUpperCase()}</h3><p class="prest-text">${escA(s.text)}</p></div><div class="prest-footer"><a href="https://mail.google.com/mail/?view=cm&to=contact.fredrenovation59@gmail.com&su=Devis%20${encodeURIComponent(s.title)}" target="_blank" class="prest-link">En savoir plus &#8594;</a></div></div>`;});const cnt=document.getElementById('prest-count-label');if(cnt)cnt.textContent=d.services.length+' SERVICES';}const stripEl=document.getElementById('strip-display');if(stripEl&&d.strip&&d.strip.length)stripEl.innerHTML=d.strip.map(t=>`<span class="strip-item">${escA(t)}</span>`).join('');const c=d.contact||{};const footerReg=document.getElementById('footer-reg');if(footerReg&&c.tva)footerReg.textContent=c.tva;const whyNum1=document.getElementById('why-num-1');if(whyNum1&&c.years)whyNum1.textContent=c.years;const elA=document.getElementById('page-phone-link');if(elA&&c.phone){elA.textContent=c.phone;elA.href='tel:'+c.phone.replace(/\s/g,'');}const elB=document.getElementById('page-email-link');if(elB&&c.email){elB.textContent=c.email;elB.href='mailto:'+c.email;}const elC=document.getElementById('page-city');if(elC&&c.city)elC.textContent=c.city;const elD=document.getElementById('page-tva');if(elD&&c.tva)elD.textContent=c.tva;const elE=document.getElementById('page-slogan');if(elE&&c.slogan)elE.textContent=c.slogan;
